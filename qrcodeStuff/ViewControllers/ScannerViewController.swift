@@ -192,7 +192,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             if error == nil {
                 //check if document exists
                 if document != nil && document!.exists {
-                    let documentData = document!.data()
+                    // let documentData = document!.data()
                     self.getCapacity(buildingName: code)
                 }
                 else

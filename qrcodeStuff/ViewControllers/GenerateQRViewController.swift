@@ -16,7 +16,7 @@ class GenerateQRViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        getBuilding(buildingName: "Building3")
+        getBuilding(buildingName: "Building1")
     }
     
     func generateQRCode(from string: String) -> UIImage? {
@@ -40,7 +40,7 @@ class GenerateQRViewController: UIViewController {
             if error == nil {
                 //check if document exists
                 if document != nil && document!.exists {
-                    let documentData = document!.data()
+                    // let documentData = document!.data()
                     let image = self.generateQRCode(from: buildingName)
                     self.qrImage.image = image
                 }
