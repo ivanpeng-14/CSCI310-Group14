@@ -1,0 +1,6 @@
+framework module Pods_team14 {
+  umbrella header "Pods-team14-umbrella.h"
+
+  export *
+  module * { export * }
+}
