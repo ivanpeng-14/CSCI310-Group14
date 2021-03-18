@@ -16,9 +16,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
+    var studentID = "DXUd2IZFa0gC9O1RVHumJSNGhkk2"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.black
@@ -116,13 +118,14 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         {
             let db = Firestore.firestore()
             
-            db.collection("students").document("test").getDocument { (document, error) in //change to actual student later!!!
+            db.collection("students").document(studentID).getDocument { (document, error) in //change to actual student later!!!
                 if error == nil {
                     //check if document exists
                     if document != nil && document!.exists {
                         let documentData = document!.data()
                         let currentBuilding = documentData!["currBuilding"] as? String ?? "-1"
                         self.displayAlert(studentBuilding: currentBuilding, curr: curr, total: total, code: code)
+                      
                     }
                 }
                 else {
@@ -134,7 +137,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     func displayAlert(studentBuilding: String, curr: Int, total:Int, code: String)
     {
-        print(studentBuilding)
         // student is checked into the building already, and can check out
         if studentBuilding == code
         {
@@ -144,6 +146,20 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             }))
             alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (action) in
                 //update database
+                let db = Firestore.firestore()
+            
+                //update building history
+                let buildingHistory = db.collection("buildings").document(code)
+                buildingHistory.updateData(["checkInOutHistory" : FieldValue.arrayUnion(["studentIDTest checked out at \(Date())"])])
+                
+                //update capacity
+                let newCapacity = curr - 1
+                buildingHistory.updateData(["currentCapacity": newCapacity])
+                
+                //update students currBuilding
+                let studentDoc = db.collection("students").document(self.studentID)
+                studentDoc.updateData(["currBuilding": ""])
+                
                 
                 //go to next screen
                 let nextView = self.storyboard?.instantiateViewController(identifier: "CheckedVC")
@@ -162,6 +178,18 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             }))
             alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (action) in
                 //update database
+                let db = Firestore.firestore()
+                //update building history
+                let buildingHistory = db.collection("buildings").document(code)
+                buildingHistory.updateData(["checkInOutHistory" : FieldValue.arrayUnion(["studentIDTest checked in at  \(Date())"])])
+                
+                //update capacity
+                let newCapacity = curr + 1
+                buildingHistory.updateData(["currentCapacity": newCapacity])
+                
+                //update students currBuilding
+                let studentDoc = db.collection("students").document(self.studentID)
+                studentDoc.updateData(["currBuilding": code])
                 
                 //go to next screen
                 let nextView = self.storyboard?.instantiateViewController(identifier: "CheckedVC")
@@ -215,7 +243,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     // _ completion: @escaping (_ curr: Int, _ total: Int) -> String
     func getCapacity(buildingName: String)
     {
-        print("buildingname \(buildingName)")
         let db = Firestore.firestore()
 
         db.collection("buildings").document(buildingName).getDocument { (document, error) in
@@ -224,7 +251,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 if document != nil && document!.exists {
                     
                     let documentData = document!.data()
-                    print(documentData!)
+                    //print(documentData!)
                     let currentCapacity = documentData!["currentCapacity"] as? Int ?? -1
                     let totalCapacity = documentData!["totalCapacity"] as? Int ?? -1
                     self.found(curr: currentCapacity, total: totalCapacity, code: buildingName)
