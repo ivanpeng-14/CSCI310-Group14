@@ -12,5 +12,7 @@ target 'team14' do
     pod 'Firebase/Firestore'
     pod 'Firebase/Analytics'
     pod 'Firebase/Auth'
+    pod 'SwiftCSV'
+
 
 end
