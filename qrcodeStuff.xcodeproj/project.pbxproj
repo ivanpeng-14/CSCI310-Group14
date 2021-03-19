@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1429F29CCB1D4F665DB8FA74 /* Pods_qrcodeStuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D509E9B7950F2730DF164C /* Pods_qrcodeStuff.framework */; };
-		8F4212AD2601AC6E0098006A /* FilterStudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4212AC2601AC6E0098006A /* FilterStudentsViewController.swift */; };
+		8F4212FE260477EC0098006A /* FilterStudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4212FD260477EC0098006A /* FilterStudentsTableViewController.swift */; };
+		8F421301260483020098006A /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F421300260483020098006A /* Student.swift */; };
+		8F42130B260487EF0098006A /* FilterStudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F42130A260487EF0098006A /* FilterStudentsTableViewCell.swift */; };
 		B12EA1ED260008550082CA9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12EA1EC260008550082CA9C /* AppDelegate.swift */; };
 		B12EA1EF260008550082CA9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12EA1EE260008550082CA9C /* SceneDelegate.swift */; };
 		B12EA1F4260008550082CA9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12EA1F2260008550082CA9C /* Main.storyboard */; };
@@ -23,7 +25,9 @@
 		2093DCFD0E3CB7330B73A258 /* Pods-qrcodeStuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff.debug.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff/Pods-qrcodeStuff.debug.xcconfig"; sourceTree = "<group>"; };
 		22D509E9B7950F2730DF164C /* Pods_qrcodeStuff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qrcodeStuff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D303D2235D2187906F4C5F7 /* Pods-qrcodeStuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff.release.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff/Pods-qrcodeStuff.release.xcconfig"; sourceTree = "<group>"; };
-		8F4212AC2601AC6E0098006A /* FilterStudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStudentsViewController.swift; sourceTree = "<group>"; };
+		8F4212FD260477EC0098006A /* FilterStudentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStudentsTableViewController.swift; sourceTree = "<group>"; };
+		8F421300260483020098006A /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		8F42130A260487EF0098006A /* FilterStudentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStudentsTableViewCell.swift; sourceTree = "<group>"; };
 		B12EA1E9260008550082CA9C /* qrcodeStuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qrcodeStuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12EA1EC260008550082CA9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B12EA1EE260008550082CA9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +69,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8F421305260485000098006A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8F42130A260487EF0098006A /* FilterStudentsTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8F4213072604851C0098006A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8F421300260483020098006A /* Student.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B12EA1E0260008550082CA9C = {
 			isa = PBXGroup;
 			children = (
@@ -86,7 +106,9 @@
 		B12EA1EB260008550082CA9C /* qrcodeStuff */ = {
 			isa = PBXGroup;
 			children = (
-				B12EA21A26000BD70082CA9C /* ViewControllers */,
+				8F4213072604851C0098006A /* Models */,
+				8F421305260485000098006A /* Views */,
+				B12EA21A26000BD70082CA9C /* Controllers */,
 				B12EA1EC260008550082CA9C /* AppDelegate.swift */,
 				B12EA1EE260008550082CA9C /* SceneDelegate.swift */,
 				B12EA1F2260008550082CA9C /* Main.storyboard */,
@@ -98,14 +120,14 @@
 			path = qrcodeStuff;
 			sourceTree = "<group>";
 		};
-		B12EA21A26000BD70082CA9C /* ViewControllers */ = {
+		B12EA21A26000BD70082CA9C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				B12EA22026000C6A0082CA9C /* ScannerViewController.swift */,
 				B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */,
-				8F4212AC2601AC6E0098006A /* FilterStudentsViewController.swift */,
+				8F4212FD260477EC0098006A /* FilterStudentsTableViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,8 +248,10 @@
 				B12EA1ED260008550082CA9C /* AppDelegate.swift in Sources */,
 				B12EA22126000C6A0082CA9C /* ScannerViewController.swift in Sources */,
 				B1C703FF26004A5B00313817 /* GenerateQRViewController.swift in Sources */,
-				8F4212AD2601AC6E0098006A /* FilterStudentsViewController.swift in Sources */,
+				8F42130B260487EF0098006A /* FilterStudentsTableViewCell.swift in Sources */,
 				B12EA1EF260008550082CA9C /* SceneDelegate.swift in Sources */,
+				8F4212FE260477EC0098006A /* FilterStudentsTableViewController.swift in Sources */,
+				8F421301260483020098006A /* Student.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
