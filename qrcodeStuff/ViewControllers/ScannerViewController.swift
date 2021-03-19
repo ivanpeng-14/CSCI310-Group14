@@ -150,7 +150,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
                 //update building history
                 let buildingHistory = db.collection("buildings").document(code)
-                buildingHistory.updateData(["checkInOutHistory" : FieldValue.arrayUnion(["studentIDTest checked out at \(Date())"])])
+                //buildingHistory.updateData(["currentStudents" : FieldValue.arrayUnion(["studentIDTest checked out at \(Date())"])])
+                buildingHistory.updateData(["currentStudents" : FieldValue.arrayRemove([self.studentID])])
                 
                 //update capacity
                 let newCapacity = curr - 1
@@ -159,6 +160,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 //update students currBuilding
                 let studentDoc = db.collection("students").document(self.studentID)
                 studentDoc.updateData(["currBuilding": ""])
+                
+                //update student history
+                let studentHistory = db.collection("students").document(self.studentID)
+                studentHistory.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked out of \(code) at \(Date())"])])
                 
                 
                 //go to next screen
@@ -181,7 +186,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 let db = Firestore.firestore()
                 //update building history
                 let buildingHistory = db.collection("buildings").document(code)
-                buildingHistory.updateData(["checkInOutHistory" : FieldValue.arrayUnion(["studentIDTest checked in at  \(Date())"])])
+                buildingHistory.updateData(["currentStudents" : FieldValue.arrayUnion([self.studentID])])
                 
                 //update capacity
                 let newCapacity = curr + 1
@@ -190,6 +195,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 //update students currBuilding
                 let studentDoc = db.collection("students").document(self.studentID)
                 studentDoc.updateData(["currBuilding": code])
+                studentDoc.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked into \(code) at \(Date())"])])
                 
                 //go to next screen
                 let nextView = self.storyboard?.instantiateViewController(identifier: "CheckedVC")
