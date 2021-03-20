@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseFirestore
 
-class BuildingXXXViewController: UIViewController {
+class BuildingManageiewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var numStudentsLabel: UITextField!
@@ -48,7 +48,7 @@ class BuildingXXXViewController: UIViewController {
     
     
 }
-extension BuildingXXXViewController: UITableViewDelegate, UITableViewDataSource {
+extension BuildingManageiewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return buildings.count
     }

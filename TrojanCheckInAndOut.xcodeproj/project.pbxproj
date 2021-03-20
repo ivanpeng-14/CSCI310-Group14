@@ -31,7 +31,7 @@
 		0803CE6A2601CE2400910D31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0803CE6D2601CE2400910D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0803CE6F2601CE2400910D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0868ADE32603F11F00E21DF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0868ADE32603F11F00E21DF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0868ADE62603F34D00E21DF8 /* building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = building.swift; sourceTree = "<group>"; };
 		0868ADE82603F35C00E21DF8 /* buildingFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buildingFirebase.swift; sourceTree = "<group>"; };
 		0868ADEA2603F38200E21DF8 /* buildingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buildingService.swift; sourceTree = "<group>"; };
