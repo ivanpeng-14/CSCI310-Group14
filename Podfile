@@ -1,11 +1,11 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'qrcodeStuff' do
+target 'TrojanCheckInAndOut' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for qrcodeStuff
+  # Pods for TrojanCheckInAndOut
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore'
 
