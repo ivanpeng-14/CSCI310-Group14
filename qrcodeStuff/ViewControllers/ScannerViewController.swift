@@ -196,6 +196,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 let studentDoc = db.collection("students").document(self.studentID)
                 studentDoc.updateData(["currBuilding": code])
                 studentDoc.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked into \(code) at \(Date())"])])
+                studentDoc.updateData(["lastCheckIn": "\(Date())"])
                 
                 //go to next screen
                 let nextView = self.storyboard?.instantiateViewController(identifier: "CheckedVC")
