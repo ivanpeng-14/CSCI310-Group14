@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "90A629CED96E472C2FBFF094C57B5751"
-               BuildableName = "Pods_qrcodeStuff.framework"
-               BlueprintName = "Pods-qrcodeStuff"
+               BlueprintIdentifier = "044C98137565BA7893AAFF97D52F7F0F"
+               BuildableName = "Pods_TrojanCheckInAndOut.framework"
+               BlueprintName = "Pods-TrojanCheckInAndOut"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

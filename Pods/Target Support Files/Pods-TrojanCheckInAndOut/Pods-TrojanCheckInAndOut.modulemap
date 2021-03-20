@@ -1,0 +1,6 @@
+framework module Pods_TrojanCheckInAndOut {
+  umbrella header "Pods-TrojanCheckInAndOut-umbrella.h"
+
+  export *
+  module * { export * }
+}

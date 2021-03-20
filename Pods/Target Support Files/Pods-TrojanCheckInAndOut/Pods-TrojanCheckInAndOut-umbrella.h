@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_qrcodeStuffVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_qrcodeStuffVersionString[];
+FOUNDATION_EXPORT double Pods_TrojanCheckInAndOutVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_TrojanCheckInAndOutVersionString[];
 

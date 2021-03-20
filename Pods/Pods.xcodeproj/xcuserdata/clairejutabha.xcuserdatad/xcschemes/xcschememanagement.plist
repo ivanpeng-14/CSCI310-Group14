@@ -67,7 +67,7 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
-		<key>Pods-qrcodeStuff.xcscheme</key>
+		<key>Pods-TrojanCheckInAndOut.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
