@@ -3,4 +3,5 @@ struct appBuilding {
     let currentCapacity: Int
     let totalCapacity: Int
     let buildingName: String
+    let buildingID: String
 }

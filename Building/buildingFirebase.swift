@@ -8,7 +8,9 @@ extension appBuilding {
                                 checkInOutHistory: document["checkInOutHistory"] as? Array<String>,
                                 currentCapacity: document["currentCapacity"] as? Int ?? 0,
                                 totalCapacity: document["totalCapacity"] as? Int ?? 0,
-                                buildingName: document["buildingName"] as? String ?? "loading..."))
+                                buildingName: document["buildingName"] as? String ?? "loading...",
+                                buildingID: document.documentID)
+                             )
         }
         return buildings
     }
