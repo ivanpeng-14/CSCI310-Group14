@@ -1,13 +1,13 @@
 //
-//  BuildingXXXTableViewCell.swift
+//  BuildingManageTableViewCell.swift
 //  qrcodeStuff
 //
-//  Created by Jenny Hu on 3/18/21.
+//  Created by Claire Jutabha on 3/18/21.
 //
 
 import UIKit
 
-class BuildingXXXTableViewCell: UITableViewCell {
+class BuildingManageTableViewCell: UITableViewCell {
 
 //    @IBOutlet weak var studentNameLabel: UILabel!
 //    @IBOutlet weak var studentIDLabel: UILabel!
@@ -22,14 +22,7 @@ class BuildingXXXTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-//    func setStudent(studentName: String, studentID: String)
-//    {
-//        studentNameLabel.text = studentName
-//        studentIDLabel.text = studentID
-//    }
     
     func setBuilding(buildingName: String, buildingCurrentCapacity: String, buildingTotalCapacity: String)
     {

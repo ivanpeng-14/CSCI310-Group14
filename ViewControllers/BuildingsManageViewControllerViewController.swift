@@ -57,7 +57,7 @@ extension BuildingManageiewController: UITableViewDelegate, UITableViewDataSourc
         let buildingName = buildings[indexPath.row].name
         let buildingCurrentCapacity = String(buildings[indexPath.row].currentCapacity)
         let buildingTotalCapacity = String(buildings[indexPath.row].totalCapacity)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BuildingCell") as! BuildingXXXTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BuildingCell") as! BuildingManageTableViewCell
         cell.setBuilding(buildingName: buildingName, buildingCurrentCapacity: buildingCurrentCapacity, buildingTotalCapacity: buildingTotalCapacity)
         return cell
     }
