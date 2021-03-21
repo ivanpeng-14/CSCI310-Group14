@@ -39,18 +39,24 @@ class ViewController: UIViewController, UIDocumentPickerDelegate{
             print(csvFile.header)
             print(csvFile.namedRows)
             print(csvFile.namedColumns)
-            
+                        
             // update Buildings in firestore
             let db = Firestore.firestore()
-            db.collection("buildingsTEST").addDocument(data: [
-                                                        "header": csvFile.header, "namedRows": csvFile.namedRows, "namedColumns" : csvFile.namedColumns]
-            ) { err in
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    print("Document successfully written!")
+            for arrItem in csvFile.namedRows {
+                print(arrItem);
+                db.collection("buildingsTEST").document(arrItem["buildingName"]!).setData( [
+                    "totalCapacity": arrItem["totalCapacity"]!,
+                    "currentCapacity": 0,
+                    "currentStudents" : []
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
                 }
             }
+            
         } catch {
             // Catch errors from trying to load files
             print("csverror")
