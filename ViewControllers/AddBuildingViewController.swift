@@ -49,10 +49,11 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
             let db = Firestore.firestore()
             for arrItem in csvFile.namedRows {
                 print(arrItem);
-                db.collection("buildings").document(arrItem["buildingName"]!).setData( [
-                    "totalCapacity": Int(arrItem["totalCapacity"]!) ?? 0,
+                db.collection("buildings").addDocument(data: [
+                    "buildingName": arrItem["buildingName"]! , "totalCapacity": Int(arrItem["totalCapacity"]!) ?? 0,
                     "currentCapacity": 0,
                     "currentStudents" : []
+                    
                 ]) { err in
                     if let err = err {
                         print("Error writing document: \(err)")

@@ -56,7 +56,7 @@ class BuildingViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
 //        cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text = buildings[indexPath.row].name + " " + String(buildings[indexPath.row].currentCapacity) + "/" + String(buildings[indexPath.row].totalCapacity)
+        cell.textLabel?.text = buildings[indexPath.row].buildingName + " " + String(buildings[indexPath.row].currentCapacity) + "/" + String(buildings[indexPath.row].totalCapacity)
         cell.textLabel?.font = .systemFont(ofSize: 20, weight: .medium)
         print(buildings[indexPath.row].self)
 //        cell.detailTextLabel?.text = buidings[indexPath.row].checkInOutHistory

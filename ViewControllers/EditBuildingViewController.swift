@@ -27,7 +27,6 @@ class EditBuildingViewController: UIViewController {
     }
     func editBuilding(){
         let db = Firestore.firestore()
-
         db.collection("buildings").document("building name").setData([
             "name": "new name",
             "currentCapacity": 0,

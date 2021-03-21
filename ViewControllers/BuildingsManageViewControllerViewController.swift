@@ -54,7 +54,7 @@ extension BuildingManageiewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let buildingName = buildings[indexPath.row].name
+        let buildingName = buildings[indexPath.row].buildingName
         let buildingCurrentCapacity = String(buildings[indexPath.row].currentCapacity)
         let buildingTotalCapacity = String(buildings[indexPath.row].totalCapacity)
         let cell = tableView.dequeueReusableCell(withIdentifier: "BuildingCell") as! BuildingManageTableViewCell
