@@ -1,0 +1,24 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+# add pods for desired Firebase products
+# https://firebase.google.com/docs/ios/setup#available-pods
+
+target 'login2' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for login2
+  pod 'Firebase'
+  pod 'Firebase/Auth'
+  pod 'FirebaseUI/Auth'
+  
+  target 'login2Tests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'login2UITests' do
+    # Pods for testing
+  end
+
+end
