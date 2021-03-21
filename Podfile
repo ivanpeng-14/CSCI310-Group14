@@ -8,5 +8,6 @@ target 'TrojanCheckInAndOut' do
   # Pods for TrojanCheckInAndOut
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore'
+  pod 'SwiftCSV'
 
 end
