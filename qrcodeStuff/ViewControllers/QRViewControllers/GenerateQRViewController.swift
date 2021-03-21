@@ -12,11 +12,20 @@ class GenerateQRViewController: UIViewController {
 
     @IBOutlet weak var qrImage: UIImageView!
     
+    
+    @IBAction func backButton(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(identifier: "BuildingsIManageVC") as! BuildingManageiewController
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    var buildingName: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        getBuilding(buildingName: "Building1")
+        getBuilding(buildingName: self.buildingName!)
     }
     
     func generateQRCode(from string: String) -> UIImage? {
