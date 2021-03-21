@@ -66,7 +66,11 @@ extension BuildingManageiewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: "QRCodeVC", sender: self)
+        let alert = UIAlertController(title: "Building Info", message: "Choose an option.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Get QR Code", style: .default, handler: { (action) in
+            self.performSegue(withIdentifier: "QRCodeVC", sender: self)
+        }))
+        self.present(alert, animated: true)
         
     }
     
