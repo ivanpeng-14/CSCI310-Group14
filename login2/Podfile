@@ -11,6 +11,9 @@ target 'login2' do
   pod 'Firebase'
   pod 'Firebase/Auth'
   pod 'FirebaseUI/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
   
   target 'login2Tests' do
     inherit! :search_paths
