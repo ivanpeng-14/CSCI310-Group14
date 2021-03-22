@@ -260,27 +260,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             }
         }
 
-//        db.collection("buildings").document(code).getDocument { (document, error) in
-//            if error == nil {
-//                //check if document exists
-//                if document != nil && document!.exists {
-//                    // let documentData = document!.data()
-//                    self.getCapacity(buildingName: code)
-//                }
-//                else
-//                {
-//                    print("Building does not exist")
-//                    let alert = UIAlertController(title: "Building does not exist", message: "", preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "Try again", style: .cancel, handler: { (action) in
-//                        self.viewDidLoad()
-//                    }))
-//                    self.present(alert, animated: true)
-//                }
-//            }
-//            else {
-//                print("Building does not exist")
-//            }
-//        }
     }
     
     // building should exist at this point

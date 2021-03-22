@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="alf-2P-tzm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="any-O9-vTW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -179,41 +179,35 @@
         <!--Building XXX-->
         <scene sceneID="tmG-Mq-Bff">
             <objects>
-                <viewController title="Building XXX" id="4u6-jV-0m6" customClass="BuildingXXXViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Building XXX" wantsFullScreenLayout="YES" id="4u6-jV-0m6" customClass="BuildingXXXViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jd3-ck-iSW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Building1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i73-9n-ExD">
-                                <rect key="frame" x="122" y="155" width="171" height="29"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="There are currently 0 students in this building." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c7X-nC-hCQ">
-                                <rect key="frame" x="26.5" y="156" width="361" height="34"/>
+                                <rect key="frame" x="33" y="76" width="361" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tju-jc-ZxT">
-                                <rect key="frame" x="0.0" y="239" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="195" width="414" height="613"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentCell" id="7q3-dL-k0z" customClass="BuildingXXXTableViewCell" customModule="qrcodeStuff" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7q3-dL-k0z" id="wL5-bB-IW3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWW-Zb-s3v">
-                                                    <rect key="frame" x="25" y="11" width="45" height="21.5"/>
+                                                    <rect key="frame" x="25" y="11" width="45" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfA-bq-GJk">
-                                                    <rect key="frame" x="377.5" y="11" width="16.5" height="21.5"/>
+                                                    <rect key="frame" x="377.5" y="11" width="16.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -236,14 +230,13 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfB-3m-nBo">
-                                <rect key="frame" x="128.5" y="82" width="157" height="30"/>
+                                <rect key="frame" x="128.5" y="38" width="157" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LL2-gm-6PW">
-                                <rect key="frame" x="190" y="120" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LL2-gm-6PW">
+                                <rect key="frame" x="190" y="136" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="backButton:" destination="4u6-jV-0m6" eventType="touchUpInside" id="NYe-Wj-Gnx"/>
@@ -253,21 +246,21 @@
                         <viewLayoutGuide key="safeArea" id="fOM-ma-iB9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="c7X-nC-hCQ" firstAttribute="top" secondItem="HfB-3m-nBo" secondAttribute="bottom" constant="8" symbolic="YES" id="1HZ-lW-cPo"/>
                             <constraint firstItem="HfB-3m-nBo" firstAttribute="centerX" secondItem="Jd3-ck-iSW" secondAttribute="centerX" id="1Ya-PG-kZu"/>
-                            <constraint firstItem="i73-9n-ExD" firstAttribute="centerX" secondItem="c7X-nC-hCQ" secondAttribute="centerX" id="8he-dV-jzs"/>
+                            <constraint firstItem="LL2-gm-6PW" firstAttribute="top" secondItem="c7X-nC-hCQ" secondAttribute="bottom" constant="26" id="6PK-XD-kmi"/>
                             <constraint firstItem="Tju-jc-ZxT" firstAttribute="leading" secondItem="Jd3-ck-iSW" secondAttribute="leading" id="AKf-Ma-iI1"/>
-                            <constraint firstItem="c7X-nC-hCQ" firstAttribute="top" secondItem="i73-9n-ExD" secondAttribute="bottom" constant="16" id="JSn-l9-b6n"/>
-                            <constraint firstItem="i73-9n-ExD" firstAttribute="leading" secondItem="fOM-ma-iB9" secondAttribute="leading" constant="122" id="OoV-lh-31q"/>
-                            <constraint firstItem="c7X-nC-hCQ" firstAttribute="centerX" secondItem="Tju-jc-ZxT" secondAttribute="centerX" id="QNb-8Y-HGN"/>
-                            <constraint firstItem="i73-9n-ExD" firstAttribute="top" secondItem="fOM-ma-iB9" secondAttribute="top" constant="67" id="ROJ-Kw-pjN"/>
                             <constraint firstItem="Tju-jc-ZxT" firstAttribute="bottom" secondItem="fOM-ma-iB9" secondAttribute="bottom" id="SdR-6Q-bPf"/>
                             <constraint firstItem="HfB-3m-nBo" firstAttribute="top" secondItem="fOM-ma-iB9" secondAttribute="top" constant="38" id="T2B-EC-6Qb"/>
+                            <constraint firstItem="Tju-jc-ZxT" firstAttribute="top" secondItem="LL2-gm-6PW" secondAttribute="bottom" constant="29" id="XnC-1B-two"/>
                             <constraint firstAttribute="trailing" secondItem="Tju-jc-ZxT" secondAttribute="trailing" id="bT6-VB-wfg"/>
-                            <constraint firstItem="Tju-jc-ZxT" firstAttribute="top" secondItem="c7X-nC-hCQ" secondAttribute="bottom" constant="49" id="jGD-RB-oRd"/>
+                            <constraint firstItem="LL2-gm-6PW" firstAttribute="centerX" secondItem="HfB-3m-nBo" secondAttribute="centerX" id="h3H-Je-Z7s"/>
+                            <constraint firstItem="c7X-nC-hCQ" firstAttribute="trailing" secondItem="Jd3-ck-iSW" secondAttribute="trailingMargin" id="z5q-7H-bFU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e8O-j9-8Fb"/>
                     <connections>
+                        <outlet property="buildingNameLabel" destination="HfB-3m-nBo" id="toj-FV-qL6"/>
                         <outlet property="numStudentsLabel" destination="c7X-nC-hCQ" id="pVD-AR-ajY"/>
                         <outlet property="tableView" destination="Tju-jc-ZxT" id="h8R-sA-me4"/>
                     </connections>
@@ -460,6 +453,7 @@
                     <connections>
                         <outlet property="tableView" destination="JVf-4u-xcQ" id="ifb-O9-xo5"/>
                         <segue destination="x7u-VO-qA9" kind="show" identifier="QRCodeVC" id="b4Q-B9-iUI"/>
+                        <segue destination="4u6-jV-0m6" kind="show" identifier="buildingInfoVC" id="XRi-4q-xfQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="He1-sz-O6g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

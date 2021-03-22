@@ -70,21 +70,24 @@ extension BuildingManageiewController: UITableViewDelegate, UITableViewDataSourc
         alert.addAction(UIAlertAction(title: "Get QR Code", style: .default, handler: { (action) in
             self.performSegue(withIdentifier: "QRCodeVC", sender: self)
         }))
-//        alert.addAction(UIAlertAction(title: "Get Building Info", style: .default, handler: { (action) in
-//            self.performSegue(withIdentifier: "BuildingXXXVC", sender: self)
-//        }))
+        alert.addAction(UIAlertAction(title: "Get Building Info", style: .default, handler: { (action) in
+            self.performSegue(withIdentifier: "buildingInfoVC", sender: self)
+        }))
         self.present(alert, animated: true)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? GenerateQRViewController {
+            destination.modalPresentationStyle = .fullScreen
             let index = tableView.indexPathForSelectedRow?.row
             destination.buildingName = buildings[index!].buildingName
         }
         if let destination2 = segue.destination as? BuildingXXXViewController {
+            destination2.modalPresentationStyle = .fullScreen
             let index = tableView.indexPathForSelectedRow?.row
             destination2.buildingName = buildings[index!].buildingName
+            
         }
     }
     

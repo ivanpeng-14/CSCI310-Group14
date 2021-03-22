@@ -12,8 +12,9 @@ class BuildingXXXViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var numStudentsLabel: UITextField!
+    @IBOutlet weak var buildingNameLabel: UILabel!
     
-    var buildingName = ""
+    var buildingName: String?
     var studentsArray: [String] = []
     var IDArray: [String] = []
 
@@ -31,43 +32,87 @@ class BuildingXXXViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        
+        buildingNameLabel.text = buildingName!
+    
         let db = Firestore.firestore()
-        db.collection("buildings").document(buildingName).getDocument { (document, error) in
+        
+        db.collection("buildings").whereField("buildingName", isEqualTo: self.buildingName).getDocuments { (querySnapshot, error) in
             if error == nil {
-                //check if document exists
-                if document != nil && document!.exists {
-                    
-                    let documentData = document!.data()
-                    
-                    //fix label
-                    let currNum = documentData!["currentCapacity"] as? Int ?? -1
-                    //let totalNum = documentData!["totalCapacity"] as? Int ?? -1
-                    self.numStudentsLabel.text = "There are currently \(currNum) students in this building"
-                    
-                    let tempArray = documentData!["currentStudents"] as? [String] ?? ["Building is empty"]
-                    for item in tempArray
-                    {
-                        print(item)
-                        db.collection("students").document(item).getDocument { (document, error) in
-                            let documentData = document!.data()
-                            let name = documentData!["name"] as? String ?? ""
-                            self.studentsArray.append((name))
-                            let id = documentData!["studentID"] as? Int ?? -1
-                            self.IDArray.append(String(id))
-                            self.tableView.reloadData()
+                for document in querySnapshot!.documents {
+                    let buildingID = document.documentID
+                    db.collection("buildings").document(buildingID).getDocument { (document, error) in
+                        if error == nil {
+                            //check if document exists
+                            if document != nil && document!.exists {
+                                let documentData = document!.data()
+                                //fix label
+                                let currNum = documentData!["currentCapacity"] as? Int ?? -1
+                                //let totalNum = documentData!["totalCapacity"] as? Int ?? -1
+                                self.numStudentsLabel.text = "There are currently \(currNum) students in this building"
+                                
+                                let tempArray = documentData!["currentStudents"] as? [String] ?? ["Building is empty"]
+                                for item in tempArray
+                                {
+                                    print(item)
+                                    db.collection("students").document(item).getDocument { (document, error) in
+                                        let documentData = document!.data()
+                                        let name = documentData!["name"] as? String ?? ""
+                                        self.studentsArray.append((name))
+                                        let id = documentData!["studentID"] as? Int ?? -1
+                                        self.IDArray.append(String(id))
+                                        self.tableView.reloadData()
+                                    }
+                                }
+                              
+                               
+                            }
+                         
                         }
+                        else {
+                            print("Building does not exist")
+                        }
+                        
                     }
-                  
-                   
                 }
-             
             }
-            else {
-                print("Building does not exist")
-            }
-            
         }
+        
+//        
+//        db.collection("buildings").document(buildingName!).getDocument { (document, error) in
+//            if error == nil {
+//                //check if document exists
+//                if document != nil && document!.exists {
+//                    
+//                    let documentData = document!.data()
+//                    
+//                    //fix label
+//                    let currNum = documentData!["currentCapacity"] as? Int ?? -1
+//                    //let totalNum = documentData!["totalCapacity"] as? Int ?? -1
+//                    self.numStudentsLabel.text = "There are currently \(currNum) students in this building"
+//                    
+//                    let tempArray = documentData!["currentStudents"] as? [String] ?? ["Building is empty"]
+//                    for item in tempArray
+//                    {
+//                        print(item)
+//                        db.collection("students").document(item).getDocument { (document, error) in
+//                            let documentData = document!.data()
+//                            let name = documentData!["name"] as? String ?? ""
+//                            self.studentsArray.append((name))
+//                            let id = documentData!["studentID"] as? Int ?? -1
+//                            self.IDArray.append(String(id))
+//                            self.tableView.reloadData()
+//                        }
+//                    }
+//                  
+//                   
+//                }
+//             
+//            }
+//            else {
+//                print("Building does not exist")
+//            }
+//            
+//        }
         
         
     }
