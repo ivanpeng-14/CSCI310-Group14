@@ -8,5 +8,6 @@ target 'qrcodeStuff' do
   # Pods for qrcodeStuff
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore'
+	pod 'SwiftCSV'
 
 end

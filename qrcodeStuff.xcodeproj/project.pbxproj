@@ -25,6 +25,7 @@
 		B17C6E792607D7BF00C8E964 /* BuildingsManageViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6E772607D7BF00C8E964 /* BuildingsManageViewControllerViewController.swift */; };
 		B17C6E7A2607D7BF00C8E964 /* EditBuildingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6E782607D7BF00C8E964 /* EditBuildingViewController.swift */; };
 		B17C6E7D2607D7DD00C8E964 /* BuildingsManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6E7C2607D7DD00C8E964 /* BuildingsManageTableViewCell.swift */; };
+		B17C6E9426081E7200C8E964 /* AddBuildingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6E9326081E7200C8E964 /* AddBuildingViewController.swift */; };
 		B1C703FF26004A5B00313817 /* GenerateQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		B17C6E772607D7BF00C8E964 /* BuildingsManageViewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingsManageViewControllerViewController.swift; sourceTree = "<group>"; };
 		B17C6E782607D7BF00C8E964 /* EditBuildingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditBuildingViewController.swift; sourceTree = "<group>"; };
 		B17C6E7C2607D7DD00C8E964 /* BuildingsManageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingsManageTableViewCell.swift; sourceTree = "<group>"; };
+		B17C6E9326081E7200C8E964 /* AddBuildingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBuildingViewController.swift; sourceTree = "<group>"; };
 		B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQRViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,7 +126,6 @@
 				B17C6E732607D78E00C8E964 /* BuildingViewControllers */,
 				B17C6E722607D77C00C8E964 /* QRViewControllers */,
 				8F4212AC2601AC6E0098006A /* FilterStudentsViewController.swift */,
-				B144A22026040DF10011FB9C /* BuildingXXXViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -171,6 +172,8 @@
 				B17C6E772607D7BF00C8E964 /* BuildingsManageViewControllerViewController.swift */,
 				B17C6E782607D7BF00C8E964 /* EditBuildingViewController.swift */,
 				B17C6E742607D7A300C8E964 /* BuildingViewController.swift */,
+				B17C6E9326081E7200C8E964 /* AddBuildingViewController.swift */,
+				B144A22026040DF10011FB9C /* BuildingXXXViewController.swift */,
 			);
 			path = BuildingViewControllers;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			files = (
 				B17C6E7A2607D7BF00C8E964 /* EditBuildingViewController.swift in Sources */,
 				B12EA1ED260008550082CA9C /* AppDelegate.swift in Sources */,
+				B17C6E9426081E7200C8E964 /* AddBuildingViewController.swift in Sources */,
 				B12EA22126000C6A0082CA9C /* ScannerViewController.swift in Sources */,
 				B17C6E6F2607D74B00C8E964 /* buildingFirebase.swift in Sources */,
 				B17C6E7D2607D7DD00C8E964 /* BuildingsManageTableViewCell.swift in Sources */,

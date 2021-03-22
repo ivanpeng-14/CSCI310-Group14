@@ -56,7 +56,7 @@ extension BuildingManageiewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let buildingName = buildings[indexPath.row].name
+        let buildingName = buildings[indexPath.row].buildingName
         let buildingCurrentCapacity = String(buildings[indexPath.row].currentCapacity)
         let buildingTotalCapacity = String(buildings[indexPath.row].totalCapacity)
         let cell = tableView.dequeueReusableCell(withIdentifier: "BuildingCell") as! BuildingManageTableViewCell
@@ -70,6 +70,9 @@ extension BuildingManageiewController: UITableViewDelegate, UITableViewDataSourc
         alert.addAction(UIAlertAction(title: "Get QR Code", style: .default, handler: { (action) in
             self.performSegue(withIdentifier: "QRCodeVC", sender: self)
         }))
+//        alert.addAction(UIAlertAction(title: "Get Building Info", style: .default, handler: { (action) in
+//            self.performSegue(withIdentifier: "BuildingXXXVC", sender: self)
+//        }))
         self.present(alert, animated: true)
         
     }
@@ -77,7 +80,11 @@ extension BuildingManageiewController: UITableViewDelegate, UITableViewDataSourc
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? GenerateQRViewController {
             let index = tableView.indexPathForSelectedRow?.row
-            destination.buildingName = buildings[index!].name
+            destination.buildingName = buildings[index!].buildingName
+        }
+        if let destination2 = segue.destination as? BuildingXXXViewController {
+            let index = tableView.indexPathForSelectedRow?.row
+            destination2.buildingName = buildings[index!].buildingName
         }
     }
     

@@ -25,7 +25,6 @@ class GenerateQRViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         getBuilding(buildingName: self.buildingName!)
     }
     
@@ -45,23 +44,26 @@ class GenerateQRViewController: UIViewController {
     }
     
     func getBuilding(buildingName: String) {
-        let db = Firestore.firestore()
-        db.collection("buildings").document(buildingName).getDocument { (document, error) in
-            if error == nil {
-                //check if document exists
-                if document != nil && document!.exists {
-                    // let documentData = document!.data()
-                    let image = self.generateQRCode(from: buildingName)
-                    self.qrImage.image = image
-                }
-                else {
-                    print("ERRRor")
-                }
-            }
-            else {
-                print("error")
-            }
-        }
+        let image = self.generateQRCode(from: buildingName)
+        self.qrImage.image = image
+//        let db = Firestore.firestore()
+//        db.collection("buildings").document(buildingName).getDocument { (document, error) in
+//            if error == nil {
+//                //check if document exists
+//                if document != nil && document!.exists {
+//                    // let documentData = document!.data()
+//                    let image = self.generateQRCode(from: buildingName)
+//                    self.qrImage.image = image
+//                }
+//                else {
+//                    print("ERRRor")
+//                }
+//            }
+//            else {
+//                print("error")
+//            }
+//        }
+        
     }
 
     

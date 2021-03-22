@@ -13,11 +13,17 @@ class BuildingXXXViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var numStudentsLabel: UITextField!
     
-    var buildingName = "Building1"
+    var buildingName = ""
     var studentsArray: [String] = []
     var IDArray: [String] = []
 
-
+    @IBAction func backButton(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(identifier: "BuildingsIManageVC") as! BuildingManageiewController
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

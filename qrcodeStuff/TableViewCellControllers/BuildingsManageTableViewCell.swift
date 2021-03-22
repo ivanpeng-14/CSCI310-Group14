@@ -10,11 +10,6 @@ import UIKit
 
 class BuildingManageTableViewCell: UITableViewCell {
     
-
-    @IBOutlet weak var codeButton: UIButton!
-
-    //    @IBOutlet weak var studentNameLabel: UILabel!
-//    @IBOutlet weak var studentIDLabel: UILabel!
     @IBOutlet weak var buildingNameLabel: UILabel!
     @IBOutlet weak var buildingCurrentCapacityLabel: UILabel!
     @IBOutlet weak var buildingTotalCapacityLabel: UILabel!
