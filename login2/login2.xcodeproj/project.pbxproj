@@ -24,6 +24,7 @@
 		1FF3CCDF2601D45A00CE12C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FF3CCDE2601D45900CE12C1 /* GoogleService-Info.plist */; };
 		1FF5561B26080B680089AC4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5561A26080B680089AC4E /* Constants.swift */; };
 		1FF5562026080CF90089AC4E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5561F26080CF90089AC4E /* HomeViewController.swift */; };
+		1FF55628260838420089AC4E /* VisitHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF55627260838420089AC4E /* VisitHistoryViewController.swift */; };
 		A4F88C239CE26C22B7687551 /* Pods_login2_login2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0BE6C01009FD515F3DCB2C /* Pods_login2_login2UITests.framework */; };
 		A6AD68CBABBC11FB9830849E /* Pods_login2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817524B85FDB394067BD9573 /* Pods_login2.framework */; };
 		BB92723F27622B957D8CE1E0 /* Pods_login2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9311D59C062A77E2AECA97 /* Pods_login2Tests.framework */; };
@@ -70,6 +71,7 @@
 		1FF3CCDE2601D45900CE12C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FF5561A26080B680089AC4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1FF5561F26080CF90089AC4E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1FF55627260838420089AC4E /* VisitHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitHistoryViewController.swift; sourceTree = "<group>"; };
 		23C87FFE8FDAF2353D28C91C /* Pods-login2-login2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-login2-login2UITests.debug.xcconfig"; path = "Target Support Files/Pods-login2-login2UITests/Pods-login2-login2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		40E1C8775C4352D1BF9058F6 /* Pods-login2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-login2.release.xcconfig"; path = "Target Support Files/Pods-login2/Pods-login2.release.xcconfig"; sourceTree = "<group>"; };
 		5CF90BB2E735CD55C4966F0D /* Pods-login2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-login2Tests.debug.xcconfig"; path = "Target Support Files/Pods-login2Tests/Pods-login2Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				1F4068BB2607F286006031E1 /* StudentSignUpViewController.swift */,
 				1F4068C02607F28F006031E1 /* ManagerSignUpViewController.swift */,
 				1FF5561F26080CF90089AC4E /* HomeViewController.swift */,
+				1FF55627260838420089AC4E /* VisitHistoryViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				1FF3CCB02601D43100CE12C1 /* ViewController.swift in Sources */,
 				1FF3CCAC2601D43100CE12C1 /* AppDelegate.swift in Sources */,
 				1F3F86422605BB1C00FA3EFB /* DesignableView.swift in Sources */,
+				1FF55628260838420089AC4E /* VisitHistoryViewController.swift in Sources */,
 				1F3F86472605CA5A00FA3EFB /* UIViewController+Extensions.swift in Sources */,
 				1F4068B72607F27B006031E1 /* ProfileSelectionViewController.swift in Sources */,
 				1FACFF9F260804FA0072E0B6 /* Utilities.swift in Sources */,
