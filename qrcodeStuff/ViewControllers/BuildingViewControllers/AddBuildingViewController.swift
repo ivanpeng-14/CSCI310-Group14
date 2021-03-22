@@ -23,6 +23,28 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
     
     //MARK: Properties
 
+    @IBOutlet weak var buildingNameTextField: UITextField!
+    
+    @IBOutlet weak var capacityTextField: UITextField!
+    
+    
+    @IBAction func addBuildingButton(_ sender: Any) {
+        let db = Firestore.firestore()
+        db.collection("buildings").addDocument(data: [
+            "buildingName": buildingNameTextField.text ,
+            "totalCapacity": Int(capacityTextField.text ?? "0"),
+            "currentCapacity": 0,
+            "currentStudents" : []
+            
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
     @IBAction func uploadCSVButton(_ sender: UIButton) {
         let supportedfiles : [UTType] = [UTType.commaSeparatedText]
                 
