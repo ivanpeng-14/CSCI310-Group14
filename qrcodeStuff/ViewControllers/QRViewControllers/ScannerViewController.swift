@@ -223,9 +223,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     func getBuildingName(code: String) {
         
         let db = Firestore.firestore()
-        
+        print(code)
         // find building name
-        db.collection("buildings").whereField("name", isEqualTo: code).getDocuments { (querySnapshot, error) in
+        db.collection("buildings").whereField("buildingName", isEqualTo: code).getDocuments { (querySnapshot, error) in
             if error == nil {
                 for document in querySnapshot!.documents{
                     self.buildingID = document.documentID
@@ -235,7 +235,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                             //check if document exists
                             if document != nil && document!.exists {
                                 let documentData = document!.data()
-                                let buildingName = documentData!["name"] as? String ?? ""
+                                let buildingName = documentData!["buildingName"] as? String ?? ""
                                 print(buildingName)
                                 self.getCapacity(buildingName: self.buildingID, buildingActualName: buildingName)
                             }
