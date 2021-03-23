@@ -39,6 +39,15 @@
 		B17C6EF02608777400C8E964 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6EEE2608777300C8E964 /* UIViewController+Extensions.swift */; };
 		B17C6EF12608777400C8E964 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6EEF2608777400C8E964 /* DesignableView.swift */; };
 		B1C703FF26004A5B00313817 /* GenerateQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */; };
+		BF2BC6B72609ADB900E01139 /* PhotoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */; };
+		BF2BC6BF2609AE0500E01139 /* ManagerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */; };
+		BF2BC6C02609AE0500E01139 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BB2609AE0500E01139 /* ProfileEditViewController.swift */; };
+		BF2BC6C12609AE0500E01139 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BC2609AE0500E01139 /* DeleteAccountViewController.swift */; };
+		BF2BC6C22609AE0500E01139 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BD2609AE0500E01139 /* ProfilePageViewController.swift */; };
+		BF2BC6C32609AE0500E01139 /* StudentTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BE2609AE0500E01139 /* StudentTabBarController.swift */; };
+		BFDF6EDB2609A48C0019D52C /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDF6ED82609A48C0019D52C /* UserData.swift */; };
+		BFDF6EDC2609A48C0019D52C /* UIPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDF6ED92609A48C0019D52C /* UIPhotoDelegate.swift */; };
+		BFDF6EDD2609A48C0019D52C /* FirestoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDF6EDA2609A48C0019D52C /* FirestoreAccessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +87,15 @@
 		B17C6EEE2608777300C8E964 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		B17C6EEF2608777400C8E964 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQRViewController.swift; sourceTree = "<group>"; };
+		BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoUploadViewController.swift; path = qrcodeStuff/ViewControllers/CarlosViewControllers/PhotoUploadViewController.swift; sourceTree = SOURCE_ROOT; };
+		BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTabBarController.swift; path = qrcodeStuff/ViewControllers/CarlosViewControllers/ManagerTabBarController.swift; sourceTree = SOURCE_ROOT; };
+		BF2BC6BB2609AE0500E01139 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		BF2BC6BC2609AE0500E01139 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeleteAccountViewController.swift; path = qrcodeStuff/ViewControllers/CarlosViewControllers/DeleteAccountViewController.swift; sourceTree = SOURCE_ROOT; };
+		BF2BC6BD2609AE0500E01139 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
+		BF2BC6BE2609AE0500E01139 /* StudentTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTabBarController.swift; sourceTree = "<group>"; };
+		BFDF6ED82609A48C0019D52C /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = qrcodeStuff/Helpers/UserData.swift; sourceTree = SOURCE_ROOT; };
+		BFDF6ED92609A48C0019D52C /* UIPhotoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIPhotoDelegate.swift; path = qrcodeStuff/Helpers/UIPhotoDelegate.swift; sourceTree = SOURCE_ROOT; };
+		BFDF6EDA2609A48C0019D52C /* FirestoreAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirestoreAccessor.swift; path = qrcodeStuff/Helpers/FirestoreAccessor.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +176,7 @@
 		B12EA21A26000BD70082CA9C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BFDF6F032609AAA30019D52C /* CarlosViewControllers */,
 				B17C6EDF2608773D00C8E964 /* IvanViewControllers */,
 				8F814C8726086B1F008FF4E2 /* FilterStudentsTableViewController.swift */,
 				B17C6E732607D78E00C8E964 /* BuildingViewControllers */,
@@ -219,6 +238,9 @@
 		B17C6ED9260876E900C8E964 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				BFDF6EDA2609A48C0019D52C /* FirestoreAccessor.swift */,
+				BFDF6ED92609A48C0019D52C /* UIPhotoDelegate.swift */,
+				BFDF6ED82609A48C0019D52C /* UserData.swift */,
 				B17C6EDA260876E900C8E964 /* Constants.swift */,
 				B17C6EDB260876E900C8E964 /* Utilities.swift */,
 			);
@@ -236,6 +258,19 @@
 				B17C6EE62608775D00C8E964 /* VisitHistoryViewController.swift */,
 			);
 			path = IvanViewControllers;
+			sourceTree = "<group>";
+		};
+		BFDF6F032609AAA30019D52C /* CarlosViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */,
+				BF2BC6BC2609AE0500E01139 /* DeleteAccountViewController.swift */,
+				BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */,
+				BF2BC6BB2609AE0500E01139 /* ProfileEditViewController.swift */,
+				BF2BC6BD2609AE0500E01139 /* ProfilePageViewController.swift */,
+				BF2BC6BE2609AE0500E01139 /* StudentTabBarController.swift */,
+			);
+			path = CarlosViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,26 +409,35 @@
 				B17C6E7A2607D7BF00C8E964 /* EditBuildingViewController.swift in Sources */,
 				B12EA1ED260008550082CA9C /* AppDelegate.swift in Sources */,
 				B17C6EF02608777400C8E964 /* UIViewController+Extensions.swift in Sources */,
+				BF2BC6BF2609AE0500E01139 /* ManagerTabBarController.swift in Sources */,
 				B17C6E9426081E7200C8E964 /* AddBuildingViewController.swift in Sources */,
+				BF2BC6C22609AE0500E01139 /* ProfilePageViewController.swift in Sources */,
 				B12EA22126000C6A0082CA9C /* ScannerViewController.swift in Sources */,
 				B17C6E6F2607D74B00C8E964 /* buildingFirebase.swift in Sources */,
+				BF2BC6B72609ADB900E01139 /* PhotoUploadViewController.swift in Sources */,
 				B17C6E7D2607D7DD00C8E964 /* BuildingsManageTableViewCell.swift in Sources */,
+				BFDF6EDC2609A48C0019D52C /* UIPhotoDelegate.swift in Sources */,
+				BF2BC6C02609AE0500E01139 /* ProfileEditViewController.swift in Sources */,
 				B17C6EEA2608775D00C8E964 /* StudentSignUpViewController.swift in Sources */,
 				B1C703FF26004A5B00313817 /* GenerateQRViewController.swift in Sources */,
 				B17C6EE92608775D00C8E964 /* HomeViewController.swift in Sources */,
 				B17C6E792607D7BF00C8E964 /* BuildingsManageViewControllerViewController.swift in Sources */,
 				8F814C8826086B1F008FF4E2 /* FilterStudentsTableViewController.swift in Sources */,
 				8F814C8526086B15008FF4E2 /* FilterStudentsTableViewCell.swift in Sources */,
+				BF2BC6C12609AE0500E01139 /* DeleteAccountViewController.swift in Sources */,
 				B17C6E752607D7A300C8E964 /* BuildingViewController.swift in Sources */,
 				B17C6EEB2608775D00C8E964 /* ProfileSelectionViewController.swift in Sources */,
 				B17C6E6E2607D74B00C8E964 /* buildingService.swift in Sources */,
 				B17C6EE72608775D00C8E964 /* ManagerSignUpViewController.swift in Sources */,
+				BF2BC6C32609AE0500E01139 /* StudentTabBarController.swift in Sources */,
 				B144A22126040DF10011FB9C /* BuildingXXXViewController.swift in Sources */,
 				B17C6EDD260876E900C8E964 /* Utilities.swift in Sources */,
 				B12EA1EF260008550082CA9C /* SceneDelegate.swift in Sources */,
 				B144A21D26040B060011FB9C /* BuildingXXXTableViewCell.swift in Sources */,
 				B17C6E6D2607D74B00C8E964 /* building.swift in Sources */,
 				B17C6EE82608775D00C8E964 /* ViewController.swift in Sources */,
+				BFDF6EDD2609A48C0019D52C /* FirestoreAccessor.swift in Sources */,
+				BFDF6EDB2609A48C0019D52C /* UserData.swift in Sources */,
 				8F814C8226086B0C008FF4E2 /* Student.swift in Sources */,
 				B17C6EEC2608775D00C8E964 /* VisitHistoryViewController.swift in Sources */,
 				B17C6EDC260876E900C8E964 /* Constants.swift in Sources */,
