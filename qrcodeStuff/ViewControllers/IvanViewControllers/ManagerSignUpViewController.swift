@@ -46,6 +46,10 @@ class ManagerSignUpViewController: UIViewController {
             
             return "Please fill in all fields."
         }
+        if uscEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).range(of: "@usc.edu") == nil {
+            
+            return "You must sign up with an USC email."
+        }
         
         // Check password strength -- TODO
         
@@ -82,12 +86,17 @@ class ManagerSignUpViewController: UIViewController {
             showError(error!)
         }
         else {
+            // Clear previous error labels, if any
+            showError("")
             
             // Create cleaned versions of the data
             let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = uscEmailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let isManager = true
+            let deleteStatus = false
+            let buildingList: [String] = []
             
             // Create the user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
@@ -99,18 +108,30 @@ class ManagerSignUpViewController: UIViewController {
                     let errorMessage = err!.localizedDescription
                     print(errorMessage)
                     self.errorLabel.text = errorMessage
-//                    self.showError("Error creating user")
+                    self.showError(errorMessage)
                 }
                 else {
                     
-                    // User was created successfully, now store the first name and last name
+                    // Adding student document
                     let db = Firestore.firestore()
+                    let uid = result!.user.uid
                     
-                    db.collection("students").addDocument(data: ["firstname":firstName, "lastname":lastName, "USC email":email, "password":password, "isManager": true, "uid": result!.user.uid ]) { (error) in
-                        
-                        if error != nil {
-                            // Show error message
-                            self.showError("Error adding student data")
+                    let studentData: [String: Any] = [
+                        "firstName": firstName,
+                        "lastName": lastName,
+                        "uscEmail": email,
+                        "password": password,
+                        "isManager": isManager,
+                        "deleteStatus": deleteStatus,
+                        "buildingList": buildingList,
+                        "uid": uid
+                    ]
+                    db.collection("manager").document(email).setData(studentData) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                            self.showError("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
                         }
                     }
                     

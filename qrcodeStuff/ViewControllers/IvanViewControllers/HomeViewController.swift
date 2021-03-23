@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 // Welcome screen after successful login/signup
 class HomeViewController: UIViewController {
@@ -14,12 +16,23 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
+    
     @IBAction func returnTapped(_ sender: Any) {
         self.transitionToLogin()
     }
     
+    @IBAction func buttonTapped(_ sender: Any) {
+            print("going to student feed")
+            self.transitionToStudentVisitHistory()
+    }
     
+    
+    @IBAction func goToManagerFeed(_ sender: Any) {
+        print("going to manager feed")
+            self.transitionToManagerFeed()
+    }
     /*
     // MARK: - Navigation
 
@@ -35,6 +48,24 @@ class HomeViewController: UIViewController {
         let loginViewController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.loginViewController) as? ViewController
 
         view.window?.rootViewController = loginViewController
+        view.window?.makeKeyAndVisible()
+        
+    }
+    
+    func transitionToStudentVisitHistory() {
+        
+        let studentViewHistoryViewController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.studentVisitHistoryViewController) as? StudentVisitHistoryViewController
+
+        view.window?.rootViewController = studentViewHistoryViewController
+        view.window?.makeKeyAndVisible()
+        
+    }
+    
+    func transitionToManagerFeed() {
+        
+        let managerFeedViewController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.managerFeedViewController) as? ManagerFeedViewController
+
+        view.window?.rootViewController = managerFeedViewController
         view.window?.makeKeyAndVisible()
         
     }

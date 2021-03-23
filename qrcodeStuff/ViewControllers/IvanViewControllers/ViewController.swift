@@ -24,6 +24,28 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setUpElements()
+//        // this is our array of arrays
+//        var groups = [[String]]()
+//
+//        // we create three simple string arrays for testing
+//        var groupA = ["England", "Ireland", "Scotland", "Wales"]
+//        var groupB = ["Canada", "Mexico", "United States"]
+//        var groupC = ["China", "Japan", "South Korea"]
+//
+//        // then add them all to the "groups" array
+//        groups.append(groupA)
+//        groups.append(groupB)
+//        groups.append(groupC)
+//
+//        // this will print out the array of arays
+//        print("The groups are:", groups)
+//
+//        // we now append an item to one of the arrays
+//        groups[1].append("Costa Rica")
+//        print("\nAfter adding Costa Rica, the groups are:", groups)
+//
+//        // and now print out groupB's contents again
+//        print("\nGroup B still contains:", groupB)
     }
 
     func setUpElements() {
@@ -52,29 +74,40 @@ class ViewController: UIViewController {
     @IBAction func continueTapped(_ sender: Any) {
         
         // Validate fields
-//        let error = validateFields()
+        let err = validateFields()
         
-        // Create cleaned versions of the text field
-        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        // Signing in the user
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+        if err != nil {
             
-            if error != nil {
-                print("Error signing in")
+            // There's something wrong with the fields, show error message
+            showError(err!)
+        }
+        else {
+            // Clear previous error labels, if any
+            showError("")
+            
+            // Create cleaned versions of the text field
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            // Signing in the user
+            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 
-                // Couldn't sign in
-                self.errorLabel.text = error!.localizedDescription
-                self.errorLabel.alpha = 1
-            }
-            else {
-                print("Successful login")
-                
-                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
-                
-                self.view.window?.rootViewController = homeViewController
-                self.view.window?.makeKeyAndVisible()
+                if error != nil {
+                    print("Error signing in")
+                    
+                    // Couldn't sign in
+                    self.errorLabel.text = error!.localizedDescription
+                    self.errorLabel.alpha = 1
+                }
+                else {
+                    
+                    print("Successful login")
+                    
+                    let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+                    
+                    self.view.window?.rootViewController = homeViewController
+                    self.view.window?.makeKeyAndVisible()
+                }
             }
         }
         
