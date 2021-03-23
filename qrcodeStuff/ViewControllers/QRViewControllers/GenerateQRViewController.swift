@@ -14,7 +14,7 @@ class GenerateQRViewController: UIViewController {
     
     
     @IBAction func backButton(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "BuildingsIManageVC") as! BuildingManageiewController
+        let vc = self.storyboard?.instantiateViewController(identifier: "ManagerTC") as! ManagerTabBarController
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
