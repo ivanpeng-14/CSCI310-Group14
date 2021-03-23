@@ -8,6 +8,8 @@
 import UIKit
 import AVFoundation
 import FirebaseFirestore
+import FirebaseAuth
+import Firebase
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
@@ -17,12 +19,26 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var previewLayer: AVCaptureVideoPreviewLayer!
     
     var studentID = "DXUd2IZFa0gC9O1RVHumJSNGhkk2"
+    // var studentID = ""
     var buildingID = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
+        // plz workkkkk
+//        let db = Firestore.firestore()
+//        let userID = Auth.auth().currentUser?.uid
+//        db.collection("students").whereField("uid", isEqualTo: userID!).getDocuments { (querySnapshot, error) in
+//            if error == nil {
+//                for document in querySnapshot!.documents{
+//                    self.studentID = document.documentID
+//                }
+//            }
+//        }
+        
+        
+        
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
@@ -81,6 +97,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         if (captureSession?.isRunning == false) {
             captureSession.startRunning()
         }
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -99,17 +116,17 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             guard let stringValue = readableObject.stringValue else { return }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
      
-            getBuildingName(code: stringValue)
+            getBuildingName(buildingName: stringValue)
         }
 
     
     }
     
-    func found(curr: Int, total:Int, code: String, buildingActualName: String) {
+    func found(curr: Int, total:Int, buildingID: String, buildingName: String) {
        // building is at capacity
         if curr >= total
         {
-            let alert = UIAlertController(title: "Building at Capacity", message: "There are currently \(curr) out of \(total) students in this building. Sorry lol", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Building at Capacity", message: "There are currently \(curr) out of \(total) students in \(buildingName). Sorry lol", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (action) in
                        self.viewDidLoad()
             }))
@@ -125,7 +142,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                     if document != nil && document!.exists {
                         let documentData = document!.data()
                         let currentBuilding = documentData!["currBuilding"] as? String ?? "-1"
-                        self.displayAlert(studentBuilding: currentBuilding, curr: curr, total: total, code: code, buildingActualName: buildingActualName)
+                        self.displayAlert(studentBuilding: currentBuilding, curr: curr, total: total, buildingID: buildingID, buildingName: buildingName)
                       
                     }
                 }
@@ -136,12 +153,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }
       
     }
-    func displayAlert(studentBuilding: String, curr: Int, total:Int, code: String, buildingActualName: String)
+    func displayAlert(studentBuilding: String, curr: Int, total:Int, buildingID: String, buildingName: String)
     {
         // student is checked into the building already, and can check out
-        if studentBuilding == code
+        if studentBuilding == buildingID
         {
-            let alert = UIAlertController(title: "Check Out", message: "Check out of \(buildingActualName)?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Check Out", message: "Check out of \(buildingName)?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action) in
                 self.viewDidLoad()
             }))
@@ -150,7 +167,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 let db = Firestore.firestore()
             
                 //update building history
-                let buildingHistory = db.collection("buildings").document(code)
+                let buildingHistory = db.collection("buildings").document(buildingID)
                 //buildingHistory.updateData(["currentStudents" : FieldValue.arrayUnion(["studentIDTest checked out at \(Date())"])])
                 buildingHistory.updateData(["currentStudents" : FieldValue.arrayRemove([self.studentID])])
                 
@@ -164,7 +181,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 
                 //update student history
                 let studentHistory = db.collection("students").document(self.studentID)
-                studentHistory.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked out of \(buildingActualName) at \(Date())"])])
+                studentHistory.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked out of \(buildingName) at \(Date())"])])
                 
                 
                 //go to next screen
@@ -178,7 +195,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         //student can check into this building
         else if studentBuilding == ""
         {
-            let alert = UIAlertController(title: "Check In", message: "There are currently \(curr) out of \(total) students in this building. Check in to \(buildingActualName)?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Check In", message: "There are currently \(curr) out of \(total) students in this building. Check in to \(buildingName)?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action) in
                 self.viewDidLoad()
             }))
@@ -186,7 +203,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 //update database
                 let db = Firestore.firestore()
                 //update building history
-                let buildingHistory = db.collection("buildings").document(code)
+                let buildingHistory = db.collection("buildings").document(buildingID)
                 buildingHistory.updateData(["currentStudents" : FieldValue.arrayUnion([self.studentID])])
                 
                 //update capacity
@@ -195,8 +212,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 
                 //update students currBuilding
                 let studentDoc = db.collection("students").document(self.studentID)
-                studentDoc.updateData(["currBuilding": code])
-                studentDoc.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked into \(buildingActualName) at \(Date())"])])
+                studentDoc.updateData(["currBuilding": buildingID])
+                studentDoc.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked into \(buildingName) at \(Date())"])])
                 studentDoc.updateData(["lastCheckIn": "\(Date())"])
                 
                 //go to next screen
@@ -209,23 +226,33 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         //student is not checked into the building, but needs to check out of another building
         else
         {
-            let alert = UIAlertController(title: "Error", message: "Please check out of \(studentBuilding) before checking in to \(code).", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (action) in
-                self.viewDidLoad()
-            }))
-            self.present(alert, animated: true)
+            let db = Firestore.firestore()
+            db.collection("buildings").document(studentBuilding).getDocument { (document, error) in
+                if error == nil {
+                    if document != nil && document!.exists {
+                        let studentBuildingName = document!.data()!["buildingName"] as? String ?? ""
+                        let alert = UIAlertController(title: "Error", message: "Please check out of \(studentBuildingName) before checking in to \(buildingName).", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (action) in
+                            self.viewDidLoad()
+                        }))
+                        self.present(alert, animated: true)
+                    }
+                }
+            }
+            
         }
         
         
     }
     
     //get building name from qr code
-    func getBuildingName(code: String) {
+    func getBuildingName(buildingName: String) {
         
         let db = Firestore.firestore()
-        print(code)
+        print("HELLO")
+        print(buildingName)
         // find building name
-        db.collection("buildings").whereField("buildingName", isEqualTo: code).getDocuments { (querySnapshot, error) in
+        db.collection("buildings").whereField("buildingName", isEqualTo: buildingName).getDocuments { (querySnapshot, error) in
             if error == nil {
                 for document in querySnapshot!.documents{
                     self.buildingID = document.documentID
@@ -234,10 +261,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                         if error == nil {
                             //check if document exists
                             if document != nil && document!.exists {
-                                let documentData = document!.data()
-                                let buildingName = documentData!["buildingName"] as? String ?? ""
-                                print(buildingName)
-                                self.getCapacity(buildingName: self.buildingID, buildingActualName: buildingName)
+//                                let documentData = document!.data()
+//                                let buildingName = documentData!["buildingName"] as? String ?? ""
+//                                print(buildingName)
+                                self.getCapacity(buildingID: self.buildingID, buildingName: buildingName)
                             }
                             else
                             {
@@ -264,11 +291,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     // building should exist at this point
     // _ completion: @escaping (_ curr: Int, _ total: Int) -> String
-    func getCapacity(buildingName: String, buildingActualName: String)
+    func getCapacity(buildingID: String, buildingName: String)
     {
         let db = Firestore.firestore()
 
-        db.collection("buildings").document(buildingName).getDocument { (document, error) in
+        db.collection("buildings").document(buildingID).getDocument { (document, error) in
             if error == nil {
                 //check if document exists
                 if document != nil && document!.exists {
@@ -277,7 +304,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                     //print(documentData!)
                     let currentCapacity = documentData!["currentCapacity"] as? Int ?? -1
                     let totalCapacity = documentData!["totalCapacity"] as? Int ?? -1
-                    self.found(curr: currentCapacity, total: totalCapacity, code: buildingName, buildingActualName: buildingActualName)
+                    self.found(curr: currentCapacity, total: totalCapacity, buildingID: buildingID, buildingName: buildingName)
                 }
              
             }

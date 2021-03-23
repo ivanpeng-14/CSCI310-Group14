@@ -226,6 +226,9 @@ PODS:
   - Firebase/Firestore (7.7.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 7.7.0)
+  - Firebase/Storage (7.7.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 7.7.0)
   - FirebaseAuth (7.7.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
@@ -252,6 +255,12 @@ PODS:
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 2.30907.0)
+  - FirebaseStorage (7.7.0):
+    - FirebaseCore (~> 7.0)
+    - GTMSessionFetcher/Core (~> 1.4)
+  - FirebaseUI/Auth (10.0.2):
+    - Firebase/Auth (>= 7.2.0)
+    - GoogleUtilities/UserDefaults
   - GoogleDataTransport (8.2.0):
     - nanopb (~> 2.30907.0)
   - GoogleUtilities/AppDelegateSwizzler (7.2.2):
@@ -268,6 +277,8 @@ PODS:
     - GoogleUtilities/Reachability
   - "GoogleUtilities/NSData+zlib (7.2.2)"
   - GoogleUtilities/Reachability (7.2.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (7.2.2):
     - GoogleUtilities/Logger
   - "gRPC-C++ (1.28.2)":
     - "gRPC-C++/Implementation (= 1.28.2)"
@@ -306,6 +317,8 @@ PODS:
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
+  - Firebase/Storage
+  - FirebaseUI/Auth
   - SwiftCSV
 
 SPEC REPOS:
@@ -317,6 +330,8 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseFirestore
+    - FirebaseStorage
+    - FirebaseUI
     - GoogleDataTransport
     - GoogleUtilities
     - "gRPC-C++"
@@ -335,6 +350,8 @@ SPEC CHECKSUMS:
   FirebaseCore: ac35d680a0bf32319a59966a1478e0741536b97b
   FirebaseCoreDiagnostics: 179bf3831213451c8addd036aca7fcf5492ec154
   FirebaseFirestore: 5e314d8ad3280576d641caf228f399dfb74f7914
+  FirebaseStorage: 9b940765fa33494258fab6131b6180fc7c2d80f5
+  FirebaseUI: 59db3d833773f985550897d54ceb811ba37fb9a5
   GoogleDataTransport: 1024b1a4dfbd7a0e92cb20d7e0a6f1fb66b449a4
   GoogleUtilities: 31c5b01f978a70c6cff2afc6272b3f1921614b43
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
@@ -345,6 +362,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SwiftCSV: ebc63cacc3820042537288c0cc647946261f7c2c
 
-PODFILE CHECKSUM: 20d4319ffc653ab059567f589a82c5df041ea3d3
+PODFILE CHECKSUM: 852f09c2091a0cf3a9415c26991b895714bb3cb4
 
 COCOAPODS: 1.10.1

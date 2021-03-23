@@ -56,7 +56,9 @@ class BuildingXXXViewController: UIViewController {
                                     print(item)
                                     db.collection("students").document(item).getDocument { (document, error) in
                                         let documentData = document!.data()
-                                        let name = documentData!["name"] as? String ?? ""
+                                        let firstName = documentData!["firstName"] as? String ?? ""
+                                        let lastName = documentData!["lastName"] as? String ?? ""
+                                        let name = "\(firstName) \(lastName)"
                                         self.studentsArray.append((name))
                                         let id = documentData!["studentID"] as? Int ?? -1
                                         self.IDArray.append(String(id))

@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1429F29CCB1D4F665DB8FA74 /* Pods_qrcodeStuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D509E9B7950F2730DF164C /* Pods_qrcodeStuff.framework */; };
-		1F6A4A212609A9460061A68A /* StudentVisitHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A4A202609A9460061A68A /* StudentVisitHistoryViewController.swift */; };
-		1F6A4A242609A9690061A68A /* ManagerFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A4A232609A9690061A68A /* ManagerFeedViewController.swift */; };
+		1F0133CB2609FC3200EBBF9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0133CA2609FC3200EBBF9F /* Main.storyboard */; };
 		8F814C8226086B0C008FF4E2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8126086B0C008FF4E2 /* Student.swift */; };
 		8F814C8526086B15008FF4E2 /* FilterStudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8426086B15008FF4E2 /* FilterStudentsTableViewCell.swift */; };
 		8F814C8826086B1F008FF4E2 /* FilterStudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8726086B1F008FF4E2 /* FilterStudentsTableViewController.swift */; };
 		B12EA1ED260008550082CA9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12EA1EC260008550082CA9C /* AppDelegate.swift */; };
 		B12EA1EF260008550082CA9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12EA1EE260008550082CA9C /* SceneDelegate.swift */; };
-		B12EA1F4260008550082CA9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12EA1F2260008550082CA9C /* Main.storyboard */; };
 		B12EA1F6260008560082CA9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B12EA1F5260008560082CA9C /* Assets.xcassets */; };
 		B12EA1F9260008560082CA9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12EA1F7260008560082CA9C /* LaunchScreen.storyboard */; };
 		B12EA206260009030082CA9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B12EA205260009030082CA9C /* GoogleService-Info.plist */; };
@@ -40,9 +38,19 @@
 		B17C6EF02608777400C8E964 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6EEE2608777300C8E964 /* UIViewController+Extensions.swift */; };
 		B17C6EF12608777400C8E964 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6EEF2608777400C8E964 /* DesignableView.swift */; };
 		B1C703FF26004A5B00313817 /* GenerateQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */; };
+		B1F536F62609C7D0001FFA2B /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F536F52609C7D0001FFA2B /* SuccessViewController.swift */; };
+		BF2BC6B72609ADB900E01139 /* PhotoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */; };
+		BF2BC6BF2609AE0500E01139 /* ManagerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */; };
+		BF2BC6C02609AE0500E01139 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BB2609AE0500E01139 /* ProfileEditViewController.swift */; };
+		BF2BC6C12609AE0500E01139 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BC2609AE0500E01139 /* DeleteAccountViewController.swift */; };
+		BF2BC6C22609AE0500E01139 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BD2609AE0500E01139 /* ProfilePageViewController.swift */; };
+		BFDF6EDB2609A48C0019D52C /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDF6ED82609A48C0019D52C /* UserData.swift */; };
+		BFDF6EDC2609A48C0019D52C /* UIPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDF6ED92609A48C0019D52C /* UIPhotoDelegate.swift */; };
+		BFDF6EDD2609A48C0019D52C /* FirestoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDF6EDA2609A48C0019D52C /* FirestoreAccessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F0133CA2609FC3200EBBF9F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1F6A4A202609A9460061A68A /* StudentVisitHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentVisitHistoryViewController.swift; sourceTree = "<group>"; };
 		1F6A4A232609A9690061A68A /* ManagerFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerFeedViewController.swift; sourceTree = "<group>"; };
 		2093DCFD0E3CB7330B73A258 /* Pods-qrcodeStuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff.debug.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff/Pods-qrcodeStuff.debug.xcconfig"; sourceTree = "<group>"; };
@@ -54,7 +62,6 @@
 		B12EA1E9260008550082CA9C /* qrcodeStuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qrcodeStuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12EA1EC260008550082CA9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B12EA1EE260008550082CA9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B12EA1F3260008550082CA9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B12EA1F5260008560082CA9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B12EA1F8260008560082CA9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B12EA1FA260008560082CA9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +87,16 @@
 		B17C6EEE2608777300C8E964 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		B17C6EEF2608777400C8E964 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQRViewController.swift; sourceTree = "<group>"; };
+		B1F536F52609C7D0001FFA2B /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
+		BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoUploadViewController.swift; path = qrcodeStuff/ViewControllers/CarlosViewControllers/PhotoUploadViewController.swift; sourceTree = SOURCE_ROOT; };
+		BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTabBarController.swift; path = qrcodeStuff/ViewControllers/CarlosViewControllers/ManagerTabBarController.swift; sourceTree = SOURCE_ROOT; };
+		BF2BC6BB2609AE0500E01139 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		BF2BC6BC2609AE0500E01139 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeleteAccountViewController.swift; path = qrcodeStuff/ViewControllers/CarlosViewControllers/DeleteAccountViewController.swift; sourceTree = SOURCE_ROOT; };
+		BF2BC6BD2609AE0500E01139 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
+		BF2BC6BE2609AE0500E01139 /* StudentTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTabBarController.swift; sourceTree = "<group>"; };
+		BFDF6ED82609A48C0019D52C /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = qrcodeStuff/Helpers/UserData.swift; sourceTree = SOURCE_ROOT; };
+		BFDF6ED92609A48C0019D52C /* UIPhotoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIPhotoDelegate.swift; path = qrcodeStuff/Helpers/UIPhotoDelegate.swift; sourceTree = SOURCE_ROOT; };
+		BFDF6EDA2609A48C0019D52C /* FirestoreAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirestoreAccessor.swift; path = qrcodeStuff/Helpers/FirestoreAccessor.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +165,7 @@
 				B12EA21A26000BD70082CA9C /* ViewControllers */,
 				B12EA1EC260008550082CA9C /* AppDelegate.swift */,
 				B12EA1EE260008550082CA9C /* SceneDelegate.swift */,
-				B12EA1F2260008550082CA9C /* Main.storyboard */,
+				1F0133CA2609FC3200EBBF9F /* Main.storyboard */,
 				B12EA1F5260008560082CA9C /* Assets.xcassets */,
 				B12EA1F7260008560082CA9C /* LaunchScreen.storyboard */,
 				B12EA1FA260008560082CA9C /* Info.plist */,
@@ -160,6 +177,7 @@
 		B12EA21A26000BD70082CA9C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BFDF6F032609AAA30019D52C /* CarlosViewControllers */,
 				B17C6EDF2608773D00C8E964 /* IvanViewControllers */,
 				8F814C8726086B1F008FF4E2 /* FilterStudentsTableViewController.swift */,
 				B17C6E732607D78E00C8E964 /* BuildingViewControllers */,
@@ -202,6 +220,7 @@
 			children = (
 				B12EA22026000C6A0082CA9C /* ScannerViewController.swift */,
 				B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */,
+				B1F536F52609C7D0001FFA2B /* SuccessViewController.swift */,
 			);
 			path = QRViewControllers;
 			sourceTree = "<group>";
@@ -221,6 +240,9 @@
 		B17C6ED9260876E900C8E964 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				BFDF6EDA2609A48C0019D52C /* FirestoreAccessor.swift */,
+				BFDF6ED92609A48C0019D52C /* UIPhotoDelegate.swift */,
+				BFDF6ED82609A48C0019D52C /* UserData.swift */,
 				B17C6EDA260876E900C8E964 /* Constants.swift */,
 				B17C6EDB260876E900C8E964 /* Utilities.swift */,
 			);
@@ -241,6 +263,19 @@
 			path = IvanViewControllers;
 			sourceTree = "<group>";
 		};
+		BFDF6F032609AAA30019D52C /* CarlosViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */,
+				BF2BC6BC2609AE0500E01139 /* DeleteAccountViewController.swift */,
+				BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */,
+				BF2BC6BB2609AE0500E01139 /* ProfileEditViewController.swift */,
+				BF2BC6BD2609AE0500E01139 /* ProfilePageViewController.swift */,
+				BF2BC6BE2609AE0500E01139 /* StudentTabBarController.swift */,
+			);
+			path = CarlosViewControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,6 +288,7 @@
 				B12EA1E6260008550082CA9C /* Frameworks */,
 				B12EA1E7260008550082CA9C /* Resources */,
 				734EA4E735D035C5CB22E6EA /* [CP] Embed Pods Frameworks */,
+				3D89F8FFD87F2261EB9EF675 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,13 +339,30 @@
 				B12EA1F9260008560082CA9C /* LaunchScreen.storyboard in Resources */,
 				B12EA206260009030082CA9C /* GoogleService-Info.plist in Resources */,
 				B12EA1F6260008560082CA9C /* Assets.xcassets in Resources */,
-				B12EA1F4260008550082CA9C /* Main.storyboard in Resources */,
+				1F0133CB2609FC3200EBBF9F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3D89F8FFD87F2261EB9EF675 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-qrcodeStuff/Pods-qrcodeStuff-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-qrcodeStuff/Pods-qrcodeStuff-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-qrcodeStuff/Pods-qrcodeStuff-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		734EA4E735D035C5CB22E6EA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -359,28 +412,35 @@
 				B17C6E7A2607D7BF00C8E964 /* EditBuildingViewController.swift in Sources */,
 				B12EA1ED260008550082CA9C /* AppDelegate.swift in Sources */,
 				B17C6EF02608777400C8E964 /* UIViewController+Extensions.swift in Sources */,
+				BF2BC6BF2609AE0500E01139 /* ManagerTabBarController.swift in Sources */,
 				B17C6E9426081E7200C8E964 /* AddBuildingViewController.swift in Sources */,
+				BF2BC6C22609AE0500E01139 /* ProfilePageViewController.swift in Sources */,
 				B12EA22126000C6A0082CA9C /* ScannerViewController.swift in Sources */,
 				B17C6E6F2607D74B00C8E964 /* buildingFirebase.swift in Sources */,
+				BF2BC6B72609ADB900E01139 /* PhotoUploadViewController.swift in Sources */,
 				B17C6E7D2607D7DD00C8E964 /* BuildingsManageTableViewCell.swift in Sources */,
+				BFDF6EDC2609A48C0019D52C /* UIPhotoDelegate.swift in Sources */,
+				BF2BC6C02609AE0500E01139 /* ProfileEditViewController.swift in Sources */,
+				B1F536F62609C7D0001FFA2B /* SuccessViewController.swift in Sources */,
 				B17C6EEA2608775D00C8E964 /* StudentSignUpViewController.swift in Sources */,
 				B1C703FF26004A5B00313817 /* GenerateQRViewController.swift in Sources */,
 				B17C6EE92608775D00C8E964 /* HomeViewController.swift in Sources */,
 				B17C6E792607D7BF00C8E964 /* BuildingsManageViewControllerViewController.swift in Sources */,
 				8F814C8826086B1F008FF4E2 /* FilterStudentsTableViewController.swift in Sources */,
 				8F814C8526086B15008FF4E2 /* FilterStudentsTableViewCell.swift in Sources */,
+				BF2BC6C12609AE0500E01139 /* DeleteAccountViewController.swift in Sources */,
 				B17C6E752607D7A300C8E964 /* BuildingViewController.swift in Sources */,
 				B17C6EEB2608775D00C8E964 /* ProfileSelectionViewController.swift in Sources */,
 				B17C6E6E2607D74B00C8E964 /* buildingService.swift in Sources */,
 				B17C6EE72608775D00C8E964 /* ManagerSignUpViewController.swift in Sources */,
-				1F6A4A242609A9690061A68A /* ManagerFeedViewController.swift in Sources */,
-				1F6A4A212609A9460061A68A /* StudentVisitHistoryViewController.swift in Sources */,
 				B144A22126040DF10011FB9C /* BuildingXXXViewController.swift in Sources */,
 				B17C6EDD260876E900C8E964 /* Utilities.swift in Sources */,
 				B12EA1EF260008550082CA9C /* SceneDelegate.swift in Sources */,
 				B144A21D26040B060011FB9C /* BuildingXXXTableViewCell.swift in Sources */,
 				B17C6E6D2607D74B00C8E964 /* building.swift in Sources */,
 				B17C6EE82608775D00C8E964 /* ViewController.swift in Sources */,
+				BFDF6EDD2609A48C0019D52C /* FirestoreAccessor.swift in Sources */,
+				BFDF6EDB2609A48C0019D52C /* UserData.swift in Sources */,
 				8F814C8226086B0C008FF4E2 /* Student.swift in Sources */,
 				B17C6EDC260876E900C8E964 /* Constants.swift in Sources */,
 				B17C6EF12608777400C8E964 /* DesignableView.swift in Sources */,
@@ -390,14 +450,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B12EA1F2260008550082CA9C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B12EA1F3260008550082CA9C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B12EA1F7260008560082CA9C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
