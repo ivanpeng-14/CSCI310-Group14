@@ -39,6 +39,7 @@
 		B17C6EF02608777400C8E964 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6EEE2608777300C8E964 /* UIViewController+Extensions.swift */; };
 		B17C6EF12608777400C8E964 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6EEF2608777400C8E964 /* DesignableView.swift */; };
 		B1C703FF26004A5B00313817 /* GenerateQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */; };
+		B1F536F62609C7D0001FFA2B /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F536F52609C7D0001FFA2B /* SuccessViewController.swift */; };
 		BF2BC6B72609ADB900E01139 /* PhotoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */; };
 		BF2BC6BF2609AE0500E01139 /* ManagerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */; };
 		BF2BC6C02609AE0500E01139 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BB2609AE0500E01139 /* ProfileEditViewController.swift */; };
@@ -87,6 +88,7 @@
 		B17C6EEE2608777300C8E964 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		B17C6EEF2608777400C8E964 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQRViewController.swift; sourceTree = "<group>"; };
+		B1F536F52609C7D0001FFA2B /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoUploadViewController.swift; path = qrcodeStuff/ViewControllers/CarlosViewControllers/PhotoUploadViewController.swift; sourceTree = SOURCE_ROOT; };
 		BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTabBarController.swift; path = qrcodeStuff/ViewControllers/CarlosViewControllers/ManagerTabBarController.swift; sourceTree = SOURCE_ROOT; };
 		BF2BC6BB2609AE0500E01139 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			children = (
 				B12EA22026000C6A0082CA9C /* ScannerViewController.swift */,
 				B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */,
+				B1F536F52609C7D0001FFA2B /* SuccessViewController.swift */,
 			);
 			path = QRViewControllers;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				B17C6E7D2607D7DD00C8E964 /* BuildingsManageTableViewCell.swift in Sources */,
 				BFDF6EDC2609A48C0019D52C /* UIPhotoDelegate.swift in Sources */,
 				BF2BC6C02609AE0500E01139 /* ProfileEditViewController.swift in Sources */,
+				B1F536F62609C7D0001FFA2B /* SuccessViewController.swift in Sources */,
 				B17C6EEA2608775D00C8E964 /* StudentSignUpViewController.swift in Sources */,
 				B1C703FF26004A5B00313817 /* GenerateQRViewController.swift in Sources */,
 				B17C6EE92608775D00C8E964 /* HomeViewController.swift in Sources */,
