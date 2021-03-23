@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="any-O9-vTW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qem-3f-BPy">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -606,7 +606,7 @@
         <!--View Controller-->
         <scene sceneID="55a-TK-gkb">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" id="UZ1-YM-xi4" customClass="ViewController" customModule="login2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="UZ1-YM-xi4" customClass="ViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9jD-6F-WLu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -648,7 +648,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Yxw-nM-aGc">
                                                         <rect key="frame" x="0.0" y="24.5" width="378" height="124"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C82-7e-RMl" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C82-7e-RMl" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="378" height="50"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TJO-rO-Fgo">
@@ -684,7 +684,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DAK-ta-vic" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DAK-ta-vic" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="74" width="378" height="50"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="29b-Bs-ZbV">
@@ -797,7 +797,7 @@
         <!--Profile Selection View Controller-->
         <scene sceneID="Ua2-OV-o2O">
             <objects>
-                <viewController id="fJU-Z9-ddQ" customClass="ProfileSelectionViewController" customModule="login2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fJU-Z9-ddQ" customClass="ProfileSelectionViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nOd-i6-cnm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -901,7 +901,7 @@
         <!--Student Sign Up View Controller-->
         <scene sceneID="luZ-u8-qVF">
             <objects>
-                <viewController id="5HT-w6-mWZ" customClass="StudentSignUpViewController" customModule="login2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5HT-w6-mWZ" customClass="StudentSignUpViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kne-L9-qXY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -944,7 +944,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="muA-b8-WRi">
                                                 <rect key="frame" x="0.0" y="70.5" width="378" height="494"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BB7-6o-zbl" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BB7-6o-zbl" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="378" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yMA-W6-mI4">
@@ -979,7 +979,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDu-Ks-dFY" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDu-Ks-dFY" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="74" width="378" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UGY-IN-dEu">
@@ -1014,7 +1014,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ph0-Zm-ekn" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ph0-Zm-ekn" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="148" width="378" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USC Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lPk-ua-oR6">
@@ -1049,7 +1049,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Wc-9P-cAx" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Wc-9P-cAx" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="222" width="378" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZDA-tk-1cC">
@@ -1084,7 +1084,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHR-4k-bUL" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHR-4k-bUL" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="296" width="378" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mgh-5D-sEf">
@@ -1119,7 +1119,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDw-Jr-ryA" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDw-Jr-ryA" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="370" width="378" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USC Student ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sHO-xn-rSo">
@@ -1154,7 +1154,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xfh-4T-BhH" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xfh-4T-BhH" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="444" width="378" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Major" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OqF-CU-VEz">
@@ -1257,7 +1257,7 @@
         <!--Manager Sign Up View Controller-->
         <scene sceneID="TvS-ge-Afi">
             <objects>
-                <viewController id="Wh2-Dq-ejb" customClass="ManagerSignUpViewController" customModule="login2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Wh2-Dq-ejb" customClass="ManagerSignUpViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="buZ-tg-oHC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1295,7 +1295,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="u5g-Zr-nNv">
                                                 <rect key="frame" x="0.0" y="24.5" width="378" height="346"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4M-qO-6zt" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4M-qO-6zt" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="378" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KbV-lB-Hdr">
@@ -1330,7 +1330,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COA-rb-DZ9" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COA-rb-DZ9" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="74" width="378" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vjk-NE-B8N">
@@ -1365,7 +1365,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1p-i3-BIP" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1p-i3-BIP" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="148" width="378" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USC Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I8z-FK-d8w">
@@ -1400,7 +1400,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiC-gb-LwD" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiC-gb-LwD" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="222" width="378" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QfN-m1-3wk">
@@ -1435,7 +1435,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lyj-Rt-s5M" customClass="DesignableView" customModule="login2" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lyj-Rt-s5M" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="296" width="378" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eof-4J-gjp">
@@ -1554,7 +1554,7 @@
         <!--Home View Controller-->
         <scene sceneID="Koz-MI-7w2">
             <objects>
-                <viewController storyboardIdentifier="HomeVC" id="izR-g0-zA6" customClass="HomeViewController" customModule="login2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" id="izR-g0-zA6" customClass="HomeViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dNr-z9-uGZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1574,6 +1574,14 @@
                                     <action selector="returnTapped:" destination="izR-g0-zA6" eventType="touchUpInside" id="cIz-15-Hpa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqf-fR-f3r">
+                                <rect key="frame" x="184" y="663" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="izR-g0-zA6" eventType="touchUpInside" id="Pua-tf-wQe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U2k-Nr-6TU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1583,10 +1591,10 @@
             </objects>
             <point key="canvasLocation" x="-5093" y="-36"/>
         </scene>
-        <!--Visit History View Controller-->
+        <!--View Controller-->
         <scene sceneID="a3G-H1-ZoR">
             <objects>
-                <viewController id="72A-nt-fqU" customClass="VisitHistoryViewController" customModule="login2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="72A-nt-fqU" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mgO-Bo-VRF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1661,7 +1669,128 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gBe-Cx-4fL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3974" y="96"/>
+            <point key="canvasLocation" x="-4168" y="822"/>
+        </scene>
+        <!--Buildings Manage-->
+        <scene sceneID="bAW-AO-gRe">
+            <objects>
+                <viewController storyboardIdentifier="StudentVisitHistoryVC" title="Buildings Manage" id="C3b-qB-h29" customClass="StudentVisitHistoryViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fQT-N5-m7r">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Tk-kQ-l77">
+                                <rect key="frame" x="0.0" y="195" width="414" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BuildingCell" rowHeight="43.5" id="HrV-XV-1WB" customClass="BuildingManageTableViewCell" customModule="qrcodeStuff" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HrV-XV-1WB" id="x5p-QD-vmy">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oQ-wD-z6n">
+                                                    <rect key="frame" x="25" y="11" width="45" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Curr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejb-ev-EE0">
+                                                    <rect key="frame" x="163.5" y="10" width="40" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="pUB-oX-clA"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="8oQ-wD-z6n" secondAttribute="bottom" id="ZdG-EW-ACU"/>
+                                                <constraint firstItem="ejb-ev-EE0" firstAttribute="top" secondItem="x5p-QD-vmy" secondAttribute="topMargin" constant="-1" id="hLj-Ul-xB5"/>
+                                                <constraint firstItem="8oQ-wD-z6n" firstAttribute="top" secondItem="x5p-QD-vmy" secondAttribute="topMargin" id="hZ4-Wg-jfn"/>
+                                                <constraint firstItem="8oQ-wD-z6n" firstAttribute="leading" secondItem="x5p-QD-vmy" secondAttribute="leadingMargin" constant="5" id="sYS-ZV-uh2"/>
+                                                <constraint firstItem="ejb-ev-EE0" firstAttribute="leading" secondItem="8oQ-wD-z6n" secondAttribute="trailing" constant="93.5" id="tVd-y4-XJT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="buildingCurrentCapacityLabel" destination="ejb-ev-EE0" id="9aT-Tw-rk4"/>
+                                            <outlet property="buildingNameLabel" destination="8oQ-wD-z6n" id="wi8-NT-LLP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Building Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I14-WS-0el">
+                                <rect key="frame" x="20" y="128" width="82" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Check In Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKp-EI-HVD">
+                                <rect key="frame" x="162" y="128" width="108" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWN-Is-EIF" customClass="DesignableView" customModule="qrcodeStuff" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="106" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihg-SM-wXq">
+                                        <rect key="frame" x="20" y="20" width="66" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="geE-mU-IQA"/>
+                                        </constraints>
+                                        <state key="normal" title="Checkout">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Ihg-SM-wXq" firstAttribute="centerX" secondItem="NWN-Is-EIF" secondAttribute="centerX" id="ZUP-t9-ncC"/>
+                                    <constraint firstItem="Ihg-SM-wXq" firstAttribute="top" secondItem="NWN-Is-EIF" secondAttribute="top" constant="20" id="jWk-4j-Ara"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Visit Feed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7C5-L4-Dle">
+                                <rect key="frame" x="87" y="113" width="240" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="N2N-pj-Z9o"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NWN-Is-EIF" firstAttribute="top" secondItem="N2N-pj-Z9o" secondAttribute="top" id="0XI-Ms-2aG"/>
+                            <constraint firstItem="NWN-Is-EIF" firstAttribute="leading" secondItem="3Tk-kQ-l77" secondAttribute="leading" id="9Xs-Qx-G4d"/>
+                            <constraint firstItem="N2N-pj-Z9o" firstAttribute="trailing" secondItem="NWN-Is-EIF" secondAttribute="trailing" constant="308" id="Egd-Pa-hVs"/>
+                            <constraint firstAttribute="trailing" secondItem="3Tk-kQ-l77" secondAttribute="trailing" id="PQf-eT-8vn"/>
+                            <constraint firstItem="3Tk-kQ-l77" firstAttribute="bottom" secondItem="N2N-pj-Z9o" secondAttribute="bottom" id="WDP-wB-sW7"/>
+                            <constraint firstItem="7C5-L4-Dle" firstAttribute="leading" secondItem="N2N-pj-Z9o" secondAttribute="leading" constant="87" id="dhn-80-c1d"/>
+                            <constraint firstItem="3Tk-kQ-l77" firstAttribute="top" secondItem="7C5-L4-Dle" secondAttribute="bottom" constant="53" id="qPr-ZL-3KN"/>
+                            <constraint firstItem="7C5-L4-Dle" firstAttribute="centerX" secondItem="3Tk-kQ-l77" secondAttribute="centerX" id="rb9-IA-d7N"/>
+                            <constraint firstItem="3Tk-kQ-l77" firstAttribute="leading" secondItem="fQT-N5-m7r" secondAttribute="leading" id="ui2-kP-bEI"/>
+                            <constraint firstItem="7C5-L4-Dle" firstAttribute="top" secondItem="N2N-pj-Z9o" secondAttribute="top" constant="69" id="v4G-vo-wZu"/>
+                            <constraint firstItem="7C5-L4-Dle" firstAttribute="top" secondItem="NWN-Is-EIF" secondAttribute="bottom" constant="9" id="ycv-Yt-MCW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6n1-w7-4Bi"/>
+                    <connections>
+                        <outlet property="tableView" destination="3Tk-kQ-l77" id="dOs-Dd-XB7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="le1-nK-v2n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4110" y="-106"/>
         </scene>
     </scenes>
     <resources>

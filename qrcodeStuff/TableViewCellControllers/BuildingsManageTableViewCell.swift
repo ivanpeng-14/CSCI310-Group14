@@ -27,6 +27,13 @@ class BuildingManageTableViewCell: UITableViewCell {
     {
         buildingNameLabel.text = buildingName
         buildingCurrentCapacityLabel.text = buildingCurrentCapacity
+//        buildingTotalCapacityLabel.text = buildingTotalCapacity
+    }
+    
+    func setBuildingViewForStudents(buildingName: String, buildingCurrentCapacity: String, buildingTotalCapacity: String)
+    {
+        buildingNameLabel.text = buildingName
+        buildingCurrentCapacityLabel.text = buildingCurrentCapacity
         buildingTotalCapacityLabel.text = buildingTotalCapacity
     }
 

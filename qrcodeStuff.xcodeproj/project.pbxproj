@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1429F29CCB1D4F665DB8FA74 /* Pods_qrcodeStuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D509E9B7950F2730DF164C /* Pods_qrcodeStuff.framework */; };
+		1F6A4A212609A9460061A68A /* StudentVisitHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A4A202609A9460061A68A /* StudentVisitHistoryViewController.swift */; };
+		1F6A4A242609A9690061A68A /* ManagerFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A4A232609A9690061A68A /* ManagerFeedViewController.swift */; };
 		8F814C8226086B0C008FF4E2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8126086B0C008FF4E2 /* Student.swift */; };
 		8F814C8526086B15008FF4E2 /* FilterStudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8426086B15008FF4E2 /* FilterStudentsTableViewCell.swift */; };
 		8F814C8826086B1F008FF4E2 /* FilterStudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8726086B1F008FF4E2 /* FilterStudentsTableViewController.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F6A4A202609A9460061A68A /* StudentVisitHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentVisitHistoryViewController.swift; sourceTree = "<group>"; };
+		1F6A4A232609A9690061A68A /* ManagerFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerFeedViewController.swift; sourceTree = "<group>"; };
 		2093DCFD0E3CB7330B73A258 /* Pods-qrcodeStuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff.debug.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff/Pods-qrcodeStuff.debug.xcconfig"; sourceTree = "<group>"; };
 		22D509E9B7950F2730DF164C /* Pods_qrcodeStuff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qrcodeStuff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D303D2235D2187906F4C5F7 /* Pods-qrcodeStuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff.release.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff/Pods-qrcodeStuff.release.xcconfig"; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 				B17C6EE42608775C00C8E964 /* StudentSignUpViewController.swift */,
 				B17C6EE22608775C00C8E964 /* ViewController.swift */,
 				B17C6EE62608775D00C8E964 /* VisitHistoryViewController.swift */,
+				1F6A4A202609A9460061A68A /* StudentVisitHistoryViewController.swift */,
+				1F6A4A232609A9690061A68A /* ManagerFeedViewController.swift */,
 			);
 			path = IvanViewControllers;
 			sourceTree = "<group>";
@@ -370,6 +376,8 @@
 				B17C6EEB2608775D00C8E964 /* ProfileSelectionViewController.swift in Sources */,
 				B17C6E6E2607D74B00C8E964 /* buildingService.swift in Sources */,
 				B17C6EE72608775D00C8E964 /* ManagerSignUpViewController.swift in Sources */,
+				1F6A4A242609A9690061A68A /* ManagerFeedViewController.swift in Sources */,
+				1F6A4A212609A9460061A68A /* StudentVisitHistoryViewController.swift in Sources */,
 				B144A22126040DF10011FB9C /* BuildingXXXViewController.swift in Sources */,
 				B17C6EDD260876E900C8E964 /* Utilities.swift in Sources */,
 				B12EA1EF260008550082CA9C /* SceneDelegate.swift in Sources */,

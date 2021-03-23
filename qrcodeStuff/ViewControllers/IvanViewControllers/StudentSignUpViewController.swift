@@ -86,6 +86,8 @@ class StudentSignUpViewController: UIViewController {
             showError(error!)
         }
         else {
+            // Clear previous error labels, if any
+            showError("")
             
             // Create cleaned versions of the data
             let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -94,6 +96,11 @@ class StudentSignUpViewController: UIViewController {
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let uscID = uscStudentIDTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let major = majorTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let isManager = false
+            let deleteStatus = false
+            let currBuilding = ""
+            let buildingHistory: [String] = []
+            let lastCheckIn = ""
             
             // Create the user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
@@ -105,18 +112,34 @@ class StudentSignUpViewController: UIViewController {
                     let errorMessage = err!.localizedDescription
                     print(errorMessage)
                     self.errorLabel.text = errorMessage
-//                    self.showError("Error creating user")
+                    self.showError(errorMessage)
                 }
                 else {
                     
-                    // User was created successfully, now store the first name and last name
+                    // Adding student document
                     let db = Firestore.firestore()
+                    let uid = result!.user.uid
                     
-                    db.collection("students").addDocument(data: ["firstname":firstName, "lastname":lastName, "USC email":email, "password":password, "USC ID": uscID, "Major":major, "isManager": false, "uid": result!.user.uid ]) { (error) in
-                        
-                        if error != nil {
-                            // Show error message
-                            self.showError("Error adding student data")
+                    let studentData: [String: Any] = [
+                        "firstName": firstName,
+                        "lastName": lastName,
+                        "uscEmail": email,
+                        "password": password,
+                        "uscID": uscID,
+                        "major": major,
+                        "isManager": isManager,
+                        "deleteStatus": deleteStatus,
+                        "currBuilding": currBuilding,
+                        "buidlingHistory": buildingHistory,
+                        "lastCheckIn": lastCheckIn,
+                        "uid": uid
+                    ]
+                    db.collection("students").document(uid).setData(studentData) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                            self.showError("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
                         }
                     }
                     
