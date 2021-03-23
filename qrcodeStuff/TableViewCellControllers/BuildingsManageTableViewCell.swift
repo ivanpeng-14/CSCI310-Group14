@@ -27,14 +27,14 @@ class BuildingManageTableViewCell: UITableViewCell {
     {
         buildingNameLabel.text = buildingName
         buildingCurrentCapacityLabel.text = buildingCurrentCapacity
-//        buildingTotalCapacityLabel.text = buildingTotalCapacity
+        buildingTotalCapacityLabel.text = buildingTotalCapacity
     }
     
-    func setBuildingViewForStudents(buildingName: String, buildingCurrentCapacity: String, buildingTotalCapacity: String)
+    func setBuildingViewFeed(buildingName: String, lastCheckInTime: String, checkIn: Bool)
     {
         buildingNameLabel.text = buildingName
-        buildingCurrentCapacityLabel.text = buildingCurrentCapacity
-        buildingTotalCapacityLabel.text = buildingTotalCapacity
+        buildingCurrentCapacityLabel.text = lastCheckInTime
+//        CheckInOrOut.text = checkIn
     }
 
 }

@@ -45,6 +45,10 @@ class ManagerSignUpViewController: UIViewController {
             
             return "Please fill in all fields."
         }
+        if uscEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).range(of: "@usc.edu") == nil {
+            
+            return "You must sign up with an USC email."
+        }
         
         // Check password strength -- TODO
         
@@ -89,7 +93,7 @@ class ManagerSignUpViewController: UIViewController {
             let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = uscEmailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let isManager = false
+            let isManager = true
             let deleteStatus = false
             let buildingList: [String] = []
             
@@ -121,7 +125,7 @@ class ManagerSignUpViewController: UIViewController {
                         "buildingList": buildingList,
                         "uid": uid
                     ]
-                    db.collection("students").document(uid).setData(studentData) { err in
+                    db.collection("manager").document(email).setData(studentData) { err in
                         if let err = err {
                             print("Error writing document: \(err)")
                             self.showError("Error writing document: \(err)")

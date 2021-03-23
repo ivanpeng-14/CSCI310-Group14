@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class StudentSignUpViewController: UIViewController {
+class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var firstNameTextField: UITextField!
     
@@ -34,10 +34,73 @@ class StudentSignUpViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setUpElements()
+        createPickerView()
+        dismissPickerView()
+    }
+    
+    var selectedMajor = String()
+    var majorList = [
+        "Aerospace Engineering",
+        "Mechanical Engineering",
+        "Astronatuical Engineering",
+        "Biomedical Engineering",
+        "Chemical Engineering",
+        "Civil Engineering",
+        "Environmental Engineering",
+        "Computer Science",
+        "Computer Science and Business Administration",
+        "Electrical Engineering",
+        "Computer Engineering",
+        "Industrial and Systems Engineering"
+    ]
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        sortMajors()
+        return majorList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        return majorList[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        selectedMajor = majorList[row] // selected item
+        majorTextField.text = selectedMajor
+    }
+    
+    func sortMajors() {
+        majorList.sort()
+    }
+    
+    func createPickerView() {
+           let pickerView = UIPickerView()
+           pickerView.delegate = self
+           majorTextField.inputView = pickerView
+    }
+    
+    func dismissPickerView() {
+       let toolBar = UIToolbar()
+       toolBar.sizeToFit()
+       let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+       toolBar.setItems([button], animated: true)
+       toolBar.isUserInteractionEnabled = true
+       majorTextField.inputAccessoryView = toolBar
+    }
+    
+    @objc func action() {
+          view.endEditing(true)
     }
     
     // Returns nil if correct, otherwise returns error label as String message
     func validateFields() -> String? {
+        
         
         // Check all fields are filled
         if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -49,6 +112,10 @@ class StudentSignUpViewController: UIViewController {
             majorTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             
             return "Please fill in all fields."
+        }
+        if uscEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).range(of: "@usc.edu") == nil {
+            
+            return "You must sign up with an USC email."
         }
         
         // Check password strength -- TODO
@@ -99,7 +166,6 @@ class StudentSignUpViewController: UIViewController {
             let isManager = false
             let deleteStatus = false
             let currBuilding = ""
-            let buildingHistory: [String] = []
             let lastCheckIn = ""
             
             // Create the user
@@ -130,11 +196,10 @@ class StudentSignUpViewController: UIViewController {
                         "isManager": isManager,
                         "deleteStatus": deleteStatus,
                         "currBuilding": currBuilding,
-                        "buidlingHistory": buildingHistory,
                         "lastCheckIn": lastCheckIn,
                         "uid": uid
                     ]
-                    db.collection("students").document(uid).setData(studentData) { err in
+                    db.collection("students").document(email).setData(studentData) { err in
                         if let err = err {
                             print("Error writing document: \(err)")
                             self.showError("Error writing document: \(err)")

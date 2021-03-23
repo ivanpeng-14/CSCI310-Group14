@@ -33,13 +33,18 @@ class StudentVisitHistoryViewController: UIViewController {
         }
     }
     
+    let user = Auth.auth().currentUser
+    var userEmail = ""
+    var studentVisitHistory = [[String]]()
+    var tempBuildingHistory = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.modalPresentationStyle = .fullScreen
         tableView.dataSource = self
         tableView.delegate = self
         loadData()
-        displayUserData()
+//        displayUserData()
     }
     
     func loadData() {
@@ -48,44 +53,59 @@ class StudentVisitHistoryViewController: UIViewController {
               service?.get(collectionID: "buildings") { buildings in
              self.allbuildings = buildings
          }
+        setUserEmail()
+        setBuildingData()
+    }
+    
+    func setUserEmail() {
+        if let emailWrapped = user?.email {
+            userEmail = emailWrapped
+            print(userEmail)
+            
+        }
+    }
+    
+    func setBuildingData() {
+        let db = Firestore.firestore()
+//        var buildingHistory: [String] = []
+        
+        // Grabbing buildingHistory data
+        db.collection("students").document(userEmail).addSnapshotListener { documentSnapshot, error in
+              guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
+              }
+              guard let data = document.data() else {
+                print("Document data was empty.")
+                return
+              }
+//              print("Current data: \(data)")
+            self.tempBuildingHistory = data["buildingHistory"] as? [String] ?? []
+            print("buildingHistory: \(self.tempBuildingHistory)")
+            
+        }
+        
+        
+
+    }
+    
+    func parseBuilding(buildingHistoryList: [String]) {
         
     }
     
     func displayUserData() {
-//        let user = Auth.auth().currentUser
-//        if let user = user {
-//          // The user's ID, unique to the Firebase project.
-//          // Do NOT use this value to authenticate with your backend server,
-//          // if you have one. Use getTokenWithCompletion:completion: instead.
-//          let uid = user.uid
-//          let email = user.email
-//
-//          var multiFactorString = "MultiFactor: "
-//          for info in user.multiFactor.enrolledFactors {
-//            multiFactorString += info.displayName ?? "[DispayName]"
-//            multiFactorString += " "
-//          }
-//          // ...
-//        }
+        
         let db = Firestore.firestore()
-//        let docRef = db.collection("cities").document("SF")
         let user = Auth.auth().currentUser
-        let userUID = ""
-        if let user = user {
-            let userUID = user.uid
-            print(userUID)
+        var email = ""
+        
+        if let emailWrapped = user?.email {
+            email = emailWrapped
+            print(email)
+            
         }
         
-//        docRef.getDocument { (document, error) in
-//            if let document = document, document.exists {
-//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-//                print("Document data: \(dataDescription)")
-//            } else {
-//                print("Document does not exist")
-//            }
-//        }
-        
-        db.collection("students").document(userUID).addSnapshotListener { documentSnapshot, error in
+        db.collection("students").document("\(email)").addSnapshotListener { documentSnapshot, error in
               guard let document = documentSnapshot else {
                 print("Error fetching document: \(error!)")
                 return
@@ -99,67 +119,76 @@ class StudentVisitHistoryViewController: UIViewController {
               let email = data["uscEmail"] as? String ?? ""
               print(firstName)
               print(email)
-            }
+        }
+        
+        print("Checked into Building1 at \(Date())")
     }
     
-//    func fetchData() {
-//            db.collection("users").addSnapshotListener { (querySnapshot, error) in
-//                let documents = querySnapshot?.documents else {
-//                    print("No documents")
-//                }
-//
-//                let docMap = documents.map { (queryDocumentSnapshot) -> User in
-//                    let data = queryDocumentSnapshot.data()
-//                    let name = data["name"] as? String ?? ""
-//                    let surname = data["surname"] as? String ?? ""
-//                    print(name)
-//                }
-//            }
-//    }
-    
+    @IBAction func checkInTapped(_ sender: Any) {
+        let db = Firestore.firestore()
+        let studentHistory = db.collection("students").document(userEmail)
+        studentHistory.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked into SGM106 at \(Date())"])])
+    }
     
 }
 extension StudentVisitHistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return buildings.count
+        return tempBuildingHistory.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let buildingName = buildings[indexPath.row].buildingName
-        let buildingCurrentCapacity = String(buildings[indexPath.row].currentCapacity)
-        let buildingTotalCapacity = String(buildings[indexPath.row].totalCapacity)
+        var buildingName = ""
+        var buildingTime = ""
+        var checkIn = false
+        
+        if tempBuildingHistory[indexPath.row].count == 7 { // check in
+            
+            let list = tempBuildingHistory[indexPath.row].split(separator: " ")
+            
+            buildingName = String(list[2])
+            buildingTime = String(list[3] + ", " + list[4])
+            checkIn = true
+        }
+        else { // check out
+            
+            let list = tempBuildingHistory[indexPath.row].split(separator: " ")
+            
+            buildingName = String(list[2])
+            buildingTime = String(list[4] + ", " + list[5])
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "BuildingCell") as! BuildingManageTableViewCell
-        cell.setBuilding(buildingName: buildingName, buildingCurrentCapacity: buildingCurrentCapacity, buildingTotalCapacity: buildingTotalCapacity)
+        cell.setBuildingViewFeed(buildingName: buildingName, lastCheckInTime: buildingTime, checkIn: checkIn)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let alert = UIAlertController(title: "Building Info", message: "Choose an option.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Get QR Code", style: .default, handler: { (action) in
-            self.performSegue(withIdentifier: "QRCodeVC", sender: self)
-        }))
-        alert.addAction(UIAlertAction(title: "Get Building Info", style: .default, handler: { (action) in
-            self.performSegue(withIdentifier: "buildingInfoVC", sender: self)
-        }))
-        self.present(alert, animated: true)
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? GenerateQRViewController {
-            destination.modalPresentationStyle = .fullScreen
-            let index = tableView.indexPathForSelectedRow?.row
-            destination.buildingName = buildings[index!].buildingName
-        }
-        if let destination2 = segue.destination as? BuildingXXXViewController {
-            destination2.modalPresentationStyle = .fullScreen
-            let index = tableView.indexPathForSelectedRow?.row
-            destination2.buildingName = buildings[index!].buildingName
-            
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        let alert = UIAlertController(title: "Building Info", message: "Choose an option.", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "Get QR Code", style: .default, handler: { (action) in
+//            self.performSegue(withIdentifier: "QRCodeVC", sender: self)
+//        }))
+//        alert.addAction(UIAlertAction(title: "Get Building Info", style: .default, handler: { (action) in
+//            self.performSegue(withIdentifier: "buildingInfoVC", sender: self)
+//        }))
+//        self.present(alert, animated: true)
+//
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destination = segue.destination as? GenerateQRViewController {
+//            destination.modalPresentationStyle = .fullScreen
+//            let index = tableView.indexPathForSelectedRow?.row
+//            destination.buildingName = buildings[index!].buildingName
+//        }
+//        if let destination2 = segue.destination as? BuildingXXXViewController {
+//            destination2.modalPresentationStyle = .fullScreen
+//            let index = tableView.indexPathForSelectedRow?.row
+//            destination2.buildingName = buildings[index!].buildingName
+//
+//        }
+//    }
     
 }
 

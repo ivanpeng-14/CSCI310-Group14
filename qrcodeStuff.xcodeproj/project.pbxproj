@@ -37,7 +37,6 @@
 		B17C6EE92608775D00C8E964 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6EE32608775C00C8E964 /* HomeViewController.swift */; };
 		B17C6EEA2608775D00C8E964 /* StudentSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6EE42608775C00C8E964 /* StudentSignUpViewController.swift */; };
 		B17C6EEB2608775D00C8E964 /* ProfileSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6EE52608775D00C8E964 /* ProfileSelectionViewController.swift */; };
-		B17C6EEC2608775D00C8E964 /* VisitHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6EE62608775D00C8E964 /* VisitHistoryViewController.swift */; };
 		B17C6EF02608777400C8E964 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6EEE2608777300C8E964 /* UIViewController+Extensions.swift */; };
 		B17C6EF12608777400C8E964 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6EEF2608777400C8E964 /* DesignableView.swift */; };
 		B1C703FF26004A5B00313817 /* GenerateQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */; };
@@ -78,7 +77,6 @@
 		B17C6EE32608775C00C8E964 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B17C6EE42608775C00C8E964 /* StudentSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentSignUpViewController.swift; sourceTree = "<group>"; };
 		B17C6EE52608775D00C8E964 /* ProfileSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSelectionViewController.swift; sourceTree = "<group>"; };
-		B17C6EE62608775D00C8E964 /* VisitHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitHistoryViewController.swift; sourceTree = "<group>"; };
 		B17C6EEE2608777300C8E964 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		B17C6EEF2608777400C8E964 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQRViewController.swift; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 				B17C6EE52608775D00C8E964 /* ProfileSelectionViewController.swift */,
 				B17C6EE42608775C00C8E964 /* StudentSignUpViewController.swift */,
 				B17C6EE22608775C00C8E964 /* ViewController.swift */,
-				B17C6EE62608775D00C8E964 /* VisitHistoryViewController.swift */,
 				1F6A4A202609A9460061A68A /* StudentVisitHistoryViewController.swift */,
 				1F6A4A232609A9690061A68A /* ManagerFeedViewController.swift */,
 			);
@@ -385,7 +382,6 @@
 				B17C6E6D2607D74B00C8E964 /* building.swift in Sources */,
 				B17C6EE82608775D00C8E964 /* ViewController.swift in Sources */,
 				8F814C8226086B0C008FF4E2 /* Student.swift in Sources */,
-				B17C6EEC2608775D00C8E964 /* VisitHistoryViewController.swift in Sources */,
 				B17C6EDC260876E900C8E964 /* Constants.swift in Sources */,
 				B17C6EF12608777400C8E964 /* DesignableView.swift in Sources */,
 			);
