@@ -56,14 +56,7 @@ class ProfilePageViewController: UIViewController {
             self.email.text = user?.email
             
             userData.getPhoto() { img, err in
-                if let img = img {
-                    self.profilePicture.image = img
-                    if img != UIImage(systemName: "person.fill") {
-                        self.profilePicture.contentMode = .scaleAspectFill
-                    } else {
-                        self.profilePicture.contentMode = .scaleAspectFit
-                    }
-                }
+                self.changeProfilePhoto(img)
             }
             
             if userData.isStudent() {
@@ -72,6 +65,17 @@ class ProfilePageViewController: UIViewController {
             } else {
                 self.id.isHidden = true
                 self.major.isHidden = true
+            }
+        }
+    }
+    
+    func changeProfilePhoto(_ img : UIImage?) {
+        if let img = img {
+            self.profilePicture.image = img
+            if img != UIImage(systemName: "person.fill") {
+                self.profilePicture.contentMode = .scaleAspectFill
+            } else {
+                self.profilePicture.contentMode = .scaleAspectFit
             }
         }
     }
@@ -85,6 +89,7 @@ class ProfilePageViewController: UIViewController {
             let dest = segue.destination as! ProfileEditViewController
             dest.user = self.user
             dest.userData = self.userData
+            dest.delegate = self
         }
     }
     

@@ -13,6 +13,7 @@ class ProfileEditViewController: UIPhotoDelegate, UITextFieldDelegate {
     // Current User
     var user : User?
     var userData : UserData?
+    var delegate : ProfilePageViewController?
     
     // Photo
     @IBOutlet weak var photoView: UIImageView!
@@ -68,7 +69,10 @@ class ProfileEditViewController: UIPhotoDelegate, UITextFieldDelegate {
         photoView.image = self.profilePhoto ?? photoView.image
         photoView.image = self.profilePhoto
         photoView.contentMode = .scaleAspectFill
-        userData!.updatePhoto(image: photoView.image!)
+        delegate?.changeProfilePhoto(self.profilePhoto)
+        if let userData = self.userData {
+            userData.updatePhoto(image: photoView.image!)
+        }
     }
     
     // Required by Protocol
