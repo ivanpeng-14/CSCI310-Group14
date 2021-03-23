@@ -8,6 +8,8 @@
 import UIKit
 import AVFoundation
 import FirebaseFirestore
+import FirebaseAuth
+import Firebase
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
@@ -16,13 +18,27 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
-    var studentID = "DXUd2IZFa0gC9O1RVHumJSNGhkk2"
+    // var studentID = "DXUd2IZFa0gC9O1RVHumJSNGhkk2"
+    var studentID = ""
     var buildingID = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
+        // plz workkkkk
+        let db = Firestore.firestore()
+        let userID = Auth.auth().currentUser?.uid
+        db.collection("students").whereField("uid", isEqualTo: userID!).getDocuments { (querySnapshot, error) in
+            if error == nil {
+                for document in querySnapshot!.documents{
+                    self.studentID = document.documentID
+                }
+            }
+        }
+        
+        
+        
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
@@ -81,6 +97,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         if (captureSession?.isRunning == false) {
             captureSession.startRunning()
         }
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
