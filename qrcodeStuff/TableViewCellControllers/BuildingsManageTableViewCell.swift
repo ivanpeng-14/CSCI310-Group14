@@ -30,4 +30,10 @@ class BuildingManageTableViewCell: UITableViewCell {
         buildingTotalCapacityLabel.text = buildingTotalCapacity
     }
 
+    func setBuildingViewFeed(buildingName: String, lastCheckInTime: String, checkIn: Bool)
+    {
+        buildingNameLabel.text = buildingName
+        buildingCurrentCapacityLabel.text = lastCheckInTime
+//        CheckInOrOut.text = checkIn
+    }
 }

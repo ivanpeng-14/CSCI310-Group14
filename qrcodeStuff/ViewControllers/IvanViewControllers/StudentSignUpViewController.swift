@@ -116,7 +116,7 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
         }
         if uscEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).range(of: "@usc.edu") == nil {
             
-            return "You must sign up with an USC email."
+            return "You must sign up with a USC email."
         }
         
         // Check password strength -- TODO

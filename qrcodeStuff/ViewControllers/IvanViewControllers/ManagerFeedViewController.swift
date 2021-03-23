@@ -81,6 +81,7 @@ class ManagerFeedViewController: UIViewController {
               }
 //              print("Current data: \(data)")
             self.tempBuildingHistory = data["buildingHistory"] as? [String] ?? []
+            self.tempBuildingHistory.reverse()
             print("buildingHistory: \(self.tempBuildingHistory)")
             
         }

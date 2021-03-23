@@ -81,6 +81,7 @@ class StudentVisitHistoryViewController: UIViewController {
               }
 //              print("Current data: \(data)")
             self.tempBuildingHistory = data["buildingHistory"] as? [String] ?? []
+            self.tempBuildingHistory.reverse()
             print("buildingHistory: \(self.tempBuildingHistory)")
             
         }
@@ -89,40 +90,36 @@ class StudentVisitHistoryViewController: UIViewController {
 
     }
     
-    func parseBuilding(buildingHistoryList: [String]) {
-        
-    }
-    
-    func displayUserData() {
-        
-        let db = Firestore.firestore()
-        let user = Auth.auth().currentUser
-        var email = ""
-        
-        if let emailWrapped = user?.email {
-            email = emailWrapped
-            print(email)
-            
-        }
-        
-        db.collection("students").document("\(email)").addSnapshotListener { documentSnapshot, error in
-              guard let document = documentSnapshot else {
-                print("Error fetching document: \(error!)")
-                return
-              }
-              guard let data = document.data() else {
-                print("Document data was empty.")
-                return
-              }
-              print("Current data: \(data)")
-              let firstName = data["firstName"] as? String ?? ""
-              let email = data["uscEmail"] as? String ?? ""
-              print(firstName)
-              print(email)
-        }
-        
-        print("Checked into Building1 at \(Date())")
-    }
+//    func displayUserData() {
+//
+//        let db = Firestore.firestore()
+//        let user = Auth.auth().currentUser
+//        var email = ""
+//
+//        if let emailWrapped = user?.email {
+//            email = emailWrapped
+//            print(email)
+//
+//        }
+//
+//        db.collection("students").document("\(email)").addSnapshotListener { documentSnapshot, error in
+//              guard let document = documentSnapshot else {
+//                print("Error fetching document: \(error!)")
+//                return
+//              }
+//              guard let data = document.data() else {
+//                print("Document data was empty.")
+//                return
+//              }
+//              print("Current data: \(data)")
+//              let firstName = data["firstName"] as? String ?? ""
+//              let email = data["uscEmail"] as? String ?? ""
+//              print(firstName)
+//              print(email)
+//        }
+//
+//        print("Checked into Building1 at \(Date())")
+//    }
     
     @IBAction func checkInTapped(_ sender: Any) {
         let db = Firestore.firestore()
@@ -142,20 +139,20 @@ extension StudentVisitHistoryViewController: UITableViewDelegate, UITableViewDat
         var buildingTime = ""
         var checkIn = false
         
-        if tempBuildingHistory[indexPath.row].count == 7 { // check in
+        if tempBuildingHistory[indexPath.row].contains("into") { // check in
             
             let list = tempBuildingHistory[indexPath.row].split(separator: " ")
             
             buildingName = String(list[2])
-            buildingTime = String(list[3] + ", " + list[4])
+            buildingTime = String(list[4] + ", " + list[5])
             checkIn = true
         }
         else { // check out
             
             let list = tempBuildingHistory[indexPath.row].split(separator: " ")
             
-            buildingName = String(list[2])
-            buildingTime = String(list[4] + ", " + list[5])
+            buildingName = String(list[3])
+            buildingTime = String(list[5] + ", " + list[6])
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "BuildingCell") as! BuildingManageTableViewCell

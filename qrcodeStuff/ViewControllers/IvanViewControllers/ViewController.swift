@@ -62,6 +62,10 @@ class ViewController: UIViewController {
             
             return "Please fill in all fields."
         }
+        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).range(of: "@usc.edu") == nil {
+            
+            return "You must sign in with a USC email."
+        }
         
         // Check password strength -- TODO
         
