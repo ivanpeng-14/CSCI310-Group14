@@ -16,6 +16,73 @@ class StudentVisitHistoryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var numStudentsLabel: UITextField!
     
+    @IBAction func checkoutButton(_ sender: Any) {
+        let userID = userEmail
+        print(userID)
+        let db = Firestore.firestore()
+        db.collection("students").document(userID).getDocument { (document, error) in
+            if error == nil {
+                let studentBuildingName = document!.data()!["currbuilding"] as? String ?? ""
+                if (studentBuildingName == "")
+                {
+                    let alert = UIAlertController(title: "Check Out", message: "You are not checked to any building.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (action) in
+                        self.viewDidLoad()
+                    }))
+                    self.present(alert, animated: true)
+                }
+                else
+                {
+                    let alert = UIAlertController(title: "Check Out", message: "Check out of \(studentBuildingName)?", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action) in
+                        self.viewDidLoad()
+                    }))
+                    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                        
+                        //get building id
+                        db.collection("buildings").whereField("buildingName", isEqualTo: studentBuildingName).getDocuments { (querySnapshot, error) in
+                            if error == nil {
+                                for document in querySnapshot!.documents {
+                                    let buildingID = document.documentID
+                                    let ref = db.collection("buildings").document(buildingID)
+                                     //get capacity
+                                    db.collection("buildings").document(buildingID).getDocument { (document, error) in
+                                        if error == nil {
+                                            let documentData = document!.data()
+                                            
+                                            //update capacity
+                                            let capacity = documentData!["currentCapacity"] as? Int ?? -1
+                                            let newCapacity = capacity - 1
+                                            ref.updateData(["currentCapacity": newCapacity])
+                                            
+                                            //update building history
+                                            ref.updateData(["currentStudents": FieldValue.arrayRemove([userID])])
+                                            
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+                
+                        //update students currBuilding
+                        let studentDoc = db.collection("students").document(userID)
+                        studentDoc.updateData(["currbuilding": ""])
+                        
+                        //update student history
+                        let studentHistory = db.collection("students").document(userID)
+                        studentHistory.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked out of \(studentBuildingName) at \(Date())"])])
+                    }))
+                    self.present(alert, animated: true)
+                }
+            }
+        }
+        
+        
+       
+        
+        
+    }
     private var service: BuildingService?
     private var allbuildings = [appBuilding]() {
         didSet {
