@@ -1872,7 +1872,6 @@
                     <connections>
                         <segue destination="V6i-3M-bkO" kind="relationship" relationship="viewControllers" id="Y0x-uE-Bd7"/>
                         <segue destination="any-O9-vTW" kind="relationship" relationship="viewControllers" id="2O2-1e-ZTV"/>
-                        <segue destination="hJc-di-VuW" kind="relationship" relationship="viewControllers" id="6x9-5O-VT7"/>
                         <segue destination="E8S-Kp-RNY" kind="relationship" relationship="viewControllers" id="6oA-y8-Q9g"/>
                     </connections>
                 </tabBarController>
@@ -2221,6 +2220,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RF-bH-f8H">
                                 <rect key="frame" x="45" y="24" width="66" height="30"/>
                                 <state key="normal" title="Checkout"/>
+                                <connections>
+                                    <action selector="checkoutButton:" destination="qy8-5E-Au4" eventType="touchUpInside" id="d80-W6-oim"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Visit Feed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce0-i3-0gD">
                                 <rect key="frame" x="87" y="79" width="240" height="29"/>
@@ -2278,14 +2280,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXy-28-7yb">
-                                <rect key="frame" x="287" y="68" width="60" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Check In"/>
-                                <connections>
-                                    <action selector="checkInTapped:" destination="qy8-5E-Au4" eventType="touchUpInside" id="c7U-UT-RLp"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfy-d8-bra">
                                 <rect key="frame" x="267" y="171" width="28" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2323,21 +2317,17 @@
             <objects>
                 <viewController storyboardIdentifier="ManagerFeedVC" title="Buildings Manage" id="hJc-di-VuW" customClass="ManagerFeedViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qEz-nJ-SO2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6m-fC-bqr">
-                                <rect key="frame" x="45" y="24" width="66" height="30"/>
-                                <state key="normal" title="Checkout"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Manager Visit Feed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tN-zc-h1i">
-                                <rect key="frame" x="87" y="79" width="240" height="29"/>
+                                <rect key="frame" x="87" y="123" width="240" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="leP-xx-HdB">
-                                <rect key="frame" x="0.0" y="151" width="414" height="608"/>
+                                <rect key="frame" x="0.0" y="195" width="414" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BuildingCell" rowHeight="43.5" id="0xS-GT-HzM" customClass="BuildingManageTableViewCell" customModule="qrcodeStuff" customModuleProvider="target">
@@ -2380,20 +2370,13 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JcI-Uu-oIH">
-                                <rect key="frame" x="20" y="128" width="82" height="15"/>
+                                <rect key="frame" x="20" y="172" width="82" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17o-jF-9no">
-                                <rect key="frame" x="287" y="24" width="60" height="30"/>
-                                <state key="normal" title="Check In"/>
-                                <connections>
-                                    <action selector="managerCheckIn:" destination="hJc-di-VuW" eventType="touchUpInside" id="IA2-dq-VSO"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhR-us-rax">
-                                <rect key="frame" x="267" y="127" width="28" height="15"/>
+                                <rect key="frame" x="267" y="171" width="28" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2405,19 +2388,14 @@
                             <constraint firstItem="OhR-us-rax" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JcI-Uu-oIH" secondAttribute="trailing" constant="8" symbolic="YES" id="115-aI-b5X"/>
                             <constraint firstItem="leP-xx-HdB" firstAttribute="leading" secondItem="qEz-nJ-SO2" secondAttribute="leading" id="AzI-zn-TML"/>
                             <constraint firstItem="s5A-J0-wXe" firstAttribute="trailing" secondItem="OhR-us-rax" secondAttribute="trailing" constant="119" id="Fcq-ch-fYm"/>
-                            <constraint firstItem="d6m-fC-bqr" firstAttribute="top" secondItem="s5A-J0-wXe" secondAttribute="top" constant="24" id="HT2-KX-Vq2"/>
                             <constraint firstAttribute="trailing" secondItem="leP-xx-HdB" secondAttribute="trailing" id="JNC-T2-A0g"/>
                             <constraint firstItem="leP-xx-HdB" firstAttribute="top" secondItem="JcI-Uu-oIH" secondAttribute="bottom" constant="8" symbolic="YES" id="JRI-8l-vu8"/>
                             <constraint firstItem="leP-xx-HdB" firstAttribute="bottom" secondItem="s5A-J0-wXe" secondAttribute="bottom" id="NeS-0m-zkn"/>
-                            <constraint firstItem="s5A-J0-wXe" firstAttribute="trailing" secondItem="17o-jF-9no" secondAttribute="trailing" constant="67" id="On7-ZG-LH9"/>
                             <constraint firstItem="2tN-zc-h1i" firstAttribute="top" secondItem="s5A-J0-wXe" secondAttribute="top" constant="79" id="PBv-Q8-qQu"/>
                             <constraint firstItem="2tN-zc-h1i" firstAttribute="leading" secondItem="s5A-J0-wXe" secondAttribute="leading" constant="87" id="SU2-EH-q6g"/>
-                            <constraint firstItem="17o-jF-9no" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="d6m-fC-bqr" secondAttribute="trailing" constant="8" symbolic="YES" id="ex6-7a-6s5"/>
                             <constraint firstItem="leP-xx-HdB" firstAttribute="top" secondItem="2tN-zc-h1i" secondAttribute="bottom" constant="43" id="fk5-VH-uLU"/>
-                            <constraint firstItem="17o-jF-9no" firstAttribute="baseline" secondItem="d6m-fC-bqr" secondAttribute="baseline" id="gHk-u6-uUO"/>
                             <constraint firstItem="JcI-Uu-oIH" firstAttribute="leading" secondItem="qEz-nJ-SO2" secondAttribute="leadingMargin" id="jil-gu-nGr"/>
                             <constraint firstItem="2tN-zc-h1i" firstAttribute="centerX" secondItem="leP-xx-HdB" secondAttribute="centerX" id="mWo-Xx-WOt"/>
-                            <constraint firstItem="d6m-fC-bqr" firstAttribute="leading" secondItem="s5A-J0-wXe" secondAttribute="leading" constant="45" id="pUe-XR-3iA"/>
                             <constraint firstItem="leP-xx-HdB" firstAttribute="top" secondItem="OhR-us-rax" secondAttribute="bottom" constant="9" id="sYZ-S2-2mT"/>
                         </constraints>
                     </view>
@@ -2429,7 +2407,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpy-Dx-9F5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3930" y="1183"/>
+            <point key="canvasLocation" x="-4326" y="1226"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
