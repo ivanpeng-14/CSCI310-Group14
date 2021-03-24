@@ -111,6 +111,7 @@ class ViewController: UIViewController {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
+<<<<<<< HEAD
     
     func transitionToStudentView(user: User) {
         
@@ -136,5 +137,7 @@ class ViewController: UIViewController {
         
     }
     
+=======
+>>>>>>> 020c64f0f73930310e867d740ec4d52753eea9fa
 }
 
