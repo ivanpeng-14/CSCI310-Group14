@@ -18,8 +18,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
-    var studentID = "DXUd2IZFa0gC9O1RVHumJSNGhkk2"
-    // var studentID = ""
+    // var studentID = "DXUd2IZFa0gC9O1RVHumJSNGhkk2"
+    var studentID = ""
     var buildingID = ""
 
     override func viewDidLoad() {
@@ -27,16 +27,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         
         // plz workkkkk
-//        let db = Firestore.firestore()
-//        let userID = Auth.auth().currentUser?.uid
-//        db.collection("students").whereField("uid", isEqualTo: userID!).getDocuments { (querySnapshot, error) in
-//            if error == nil {
-//                for document in querySnapshot!.documents{
-//                    self.studentID = document.documentID
-//                }
-//            }
-//        }
-        
+        self.studentID = (Auth.auth().currentUser?.email)!
+        print("current student \(self.studentID)")
         
         
         // Do any additional setup after loading the view.
