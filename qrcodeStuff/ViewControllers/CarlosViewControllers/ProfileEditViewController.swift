@@ -94,6 +94,8 @@ class ProfileEditViewController: UIPhotoDelegate, UITextFieldDelegate {
             self.user?.updatePassword(to: newPassword.text!) { (error) in
                 if error != nil {
                     print("An error occured while updating the password")
+                } else {
+                    self.userData?.updateData(key: "password", val: self.newPassword.text!)
                 }
             }
         }
