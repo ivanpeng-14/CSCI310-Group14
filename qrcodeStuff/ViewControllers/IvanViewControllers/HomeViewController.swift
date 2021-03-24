@@ -11,12 +11,40 @@ import FirebaseFirestore
 
 // Welcome screen after successful login/signup
 class HomeViewController: UIViewController {
+    
+    var user = Auth.auth().currentUser
+    var userEmail = ""
+    var userIsManager = false;
+    var userData : UserData?
 
     override func viewDidLoad() {
+        if let email = self.user?.email {
+            userEmail = email
+            self.userData = UserData(email)
+        }
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.modalPresentationStyle = .fullScreen
+        print("userIsManager is " + String(userIsManager))
+//        displayUserData()
+    }
+    
+    func loadData() {
+//        let db = Firestore.firestore()
         
+    }
+    
+    
+    func setUserIsManager() {
+        let db = Firestore.firestore()
+        if userEmail != "" {
+            // search database for user and check if user is manager
+            db.collection("manager").document(userEmail).getDocument { (document, error) in
+                if let document = document, document.exists {
+                    self.userIsManager =  true;
+                }
+            }
+            
+        }
     }
     
     @IBAction func returnTapped(_ sender: Any) {
@@ -24,8 +52,13 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
-            print("going to student feed")
-            self.transitionToStudentVisitHistory()
+        if (!(userData?.isStudent())!) {
+            print("transitioning to manager view");
+            self.transitionToManagerView();
+        } else{
+            print("transitioning to student view");
+            self.transitionToStudentView();
+        }
     }
     
     
@@ -42,6 +75,30 @@ class HomeViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func transitionToStudentView() {
+        
+        let studentTabController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.studentTabController) as! StudentTabBarController
+        
+        studentTabController.user = self.user
+        studentTabController.userData = self.userData
+        
+        view.window?.rootViewController = studentTabController
+        view.window?.makeKeyAndVisible()
+        
+    }
+    
+    func transitionToManagerView() {
+        
+        let managerTabController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.managerTabController) as! ManagerTabBarController
+        
+        managerTabController.user = self.user
+        managerTabController.userData = self.userData
+        
+        view.window?.rootViewController = managerTabController
+        view.window?.makeKeyAndVisible()
+        
+    }
     
     func transitionToLogin() {
         

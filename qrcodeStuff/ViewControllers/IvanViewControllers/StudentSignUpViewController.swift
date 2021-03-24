@@ -188,17 +188,18 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
                     let uid = result!.user.uid
                     
                     let studentData: [String: Any] = [
-                        "firstName": firstName,
-                        "lastName": lastName,
-                        "uscEmail": email,
+                        "firstname": firstName,
+                        "lastname": lastName,
+                        "email": email,
                         "password": password,
-                        "uscID": uscID,
+                        "uscid": uscID,
                         "major": major,
-                        "isManager": isManager,
-                        "deleteStatus": deleteStatus,
-                        "currBuilding": currBuilding,
-                        "lastCheckIn": lastCheckIn,
-                        "uid": uid
+                        "ismanager": isManager,
+                        "deleted": deleteStatus,
+                        "currbuilding": currBuilding,
+                        "lastcheckin": lastCheckIn,
+                        "uid": uid,
+                        "photo": "F29248B7-72C2-47C6-AE85-7F687071373F"
                     ]
                     db.collection("students").document(email).setData(studentData) { err in
                         if let err = err {

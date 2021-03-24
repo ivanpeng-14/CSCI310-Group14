@@ -269,12 +269,12 @@
 		BFDF6F032609AAA30019D52C /* CarlosViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BF2BC6BE2609AE0500E01139 /* StudentTabBarController.swift */,
+				BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */,
 				BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */,
 				BF2BC6BC2609AE0500E01139 /* DeleteAccountViewController.swift */,
-				BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */,
 				BF2BC6BB2609AE0500E01139 /* ProfileEditViewController.swift */,
 				BF2BC6BD2609AE0500E01139 /* ProfilePageViewController.swift */,
-				BF2BC6BE2609AE0500E01139 /* StudentTabBarController.swift */,
 			);
 			path = CarlosViewControllers;
 			sourceTree = "<group>";
