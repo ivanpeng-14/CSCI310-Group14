@@ -117,12 +117,12 @@ class ManagerSignUpViewController: UIViewController {
                     let uid = result!.user.uid
                     
                     let studentData: [String: Any] = [
-                        "firstName": firstName,
-                        "lastName": lastName,
-                        "uscEmail": email,
+                        "firstname": firstName,
+                        "lastname": lastName,
+                        "email": email,
                         "password": password,
-                        "isManager": isManager,
-                        "deleteStatus": deleteStatus,
+                        "ismanager": isManager,
+                        "deleted": deleteStatus,
                         "buildingList": buildingList,
                         "uid": uid
                     ]
