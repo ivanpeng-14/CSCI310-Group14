@@ -51,7 +51,7 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
     var majorList = [
         "Aerospace Engineering",
         "Mechanical Engineering",
-        "Astronatuical Engineering",
+        "Astronautical Engineering",
         "Biomedical Engineering",
         "Chemical Engineering",
         "Civil Engineering",

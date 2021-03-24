@@ -103,15 +103,16 @@ class FilterStudentsTableViewController: UITableViewController, UISearchBarDeleg
             else {
                 for document in (snapshot?.documents)! {
                     let data = document.data()
-                    let buildingID = data["currBuilding"] as? String ?? ""
+                    let buildingID = data["currbuilding"] as? String ?? ""
                     if (buildingID != "") {
-                        let name = data["name"] as? String ?? "Anonymous"
+                        let firstName = data["firstname"] as? String ?? "Anonymous"
+                        let lastName = data["lastname"] as? String ?? "Anonymous"
+                        let name = firstName + " " + lastName
                         let major = data["major"] as? String ?? "None"
-                        let id = data["studentID"] as? Int ?? 0
+                        let id = (data["uscid"] as! NSString).integerValue
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
-                        let time = data["lastCheckIn"] as? String ?? dateFormatter.string(from: Date())
-                        
+                        let time = data["lastcheckin"] as? String ?? dateFormatter.string(from: Date())
                         self.getBuildingName(buildingID: buildingID) { buildingName, error in
                             let newStudent = Student(name: name, major: major, id: id, building:
                                                         buildingName ?? "", time: time)
