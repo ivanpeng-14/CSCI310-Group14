@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     
     var userData : UserData?
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,20 +87,23 @@ class ViewController: UIViewController {
                     
                     print("Successful login")
                     
-//                    var user = Auth.auth().currentUser
+                    self.transitionToHome()
+//                    self.user = Auth.auth().currentUser
 //                    // Setting current userData
-//                    if let email = user?.email {
+//                    if let email = self.user?.email {
 //                        self.userData = UserData(email)
+//                        if let userData = self.userData {
+//                            // Directing to respective views
+//                            if (!(userData.isStudent())) {
+//                                print("transitioning to manager view");
+//                                self.transitionToManagerView();
+//                            } else{
+//                                print("transitioning to student view");
+//                                self.transitionToStudentView();
+//                            }
+//                        }
 //                    }
                     
-                    // Directing to respective views
-//                    if (!(self.userData?.isStudent())!) {
-//                        print("transitioning to manager view");
-//                        self.transitionToManagerView(user: user?);
-//                    } else{
-//                        print("transitioning to student view");
-//                        self.transitionToStudentView(user: user?);
-//                    }
                 }
             }
         }
@@ -111,13 +115,12 @@ class ViewController: UIViewController {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
-<<<<<<< HEAD
     
-    func transitionToStudentView(user: User) {
+    func transitionToStudentView() {
         
         let studentTabController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.studentTabController) as! StudentTabBarController
         
-        studentTabController.user = user
+        studentTabController.user = self.user
         studentTabController.userData = self.userData
         
         view.window?.rootViewController = studentTabController
@@ -125,7 +128,7 @@ class ViewController: UIViewController {
         
     }
     
-    func transitionToManagerView(user: User) {
+    func transitionToManagerView() {
         
         let managerTabController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.managerTabController) as! ManagerTabBarController
         
@@ -137,7 +140,14 @@ class ViewController: UIViewController {
         
     }
     
-=======
->>>>>>> 020c64f0f73930310e867d740ec4d52753eea9fa
+    func transitionToHome() {
+        
+        let homeViewController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.homeViewController) as? HomeViewController
+
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
+        
+    }
+    
 }
 
