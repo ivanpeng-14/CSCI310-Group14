@@ -133,7 +133,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                     //check if document exists
                     if document != nil && document!.exists {
                         let documentData = document!.data()
-                        let currentBuilding = documentData!["currBuilding"] as? String ?? "-1"
+                        let currentBuilding = documentData!["currbuilding"] as? String ?? "-1"
                         self.displayAlert(studentBuilding: currentBuilding, curr: curr, total: total, buildingID: buildingID, buildingName: buildingName)
                       
                     }
@@ -169,7 +169,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 
                 //update students currBuilding
                 let studentDoc = db.collection("students").document(self.studentID)
-                studentDoc.updateData(["currBuilding": ""])
+                studentDoc.updateData(["currbuilding": ""])
                 
                 //update student history
                 let studentHistory = db.collection("students").document(self.studentID)
@@ -204,7 +204,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 
                 //update students currBuilding
                 let studentDoc = db.collection("students").document(self.studentID)
-                studentDoc.updateData(["currBuilding": buildingID])
+                studentDoc.updateData(["currbuilding": buildingID])
                 studentDoc.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked into \(buildingName) at \(Date())"])])
                 studentDoc.updateData(["lastCheckIn": "\(Date())"])
                 

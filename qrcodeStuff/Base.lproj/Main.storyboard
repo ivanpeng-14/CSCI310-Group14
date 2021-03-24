@@ -399,7 +399,7 @@
             <objects>
                 <viewController title="Add Building" id="E8S-Kp-RNY" customClass="AddBuildingViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3xZ-1x-jSB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Manual Add" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guM-7v-Rbv">
@@ -467,16 +467,11 @@
                                     <action selector="uploadCSVButton:" destination="E8S-Kp-RNY" eventType="touchUpInside" id="0sS-lY-Zhn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIL-q3-4KM">
-                                <rect key="frame" x="322" y="44" width="52" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Back"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zzI-KE-r69"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Add Building" image="plus" catalog="system" id="jVM-KG-ZAO"/>
                     <connections>
                         <outlet property="buildingNameTextField" destination="Dks-Yd-510" id="ZfU-Zz-Itf"/>
                         <outlet property="capacityTextField" destination="0ta-ZB-wEV" id="FXc-JN-qy6"/>
@@ -484,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQk-x4-2mJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2962" y="2366"/>
+            <point key="canvasLocation" x="-3745" y="1905"/>
         </scene>
         <!--Filter Students Table View Controller-->
         <scene sceneID="y1b-yn-Wvp">
@@ -1857,6 +1852,7 @@
                     <connections>
                         <segue destination="V6i-3M-bkO" kind="relationship" relationship="viewControllers" id="4cg-zW-O8H"/>
                         <segue destination="alf-2P-tzm" kind="relationship" relationship="viewControllers" id="kcG-ty-rzL"/>
+                        <segue destination="qy8-5E-Au4" kind="relationship" relationship="viewControllers" id="aEd-jM-X7s"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HEA-T9-8fU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1866,7 +1862,7 @@
         <!--Manager Tab Bar Controller-->
         <scene sceneID="S24-zQ-PIl">
             <objects>
-                <tabBarController storyboardIdentifier="ManagerTC" id="LZ8-IV-dyW" customClass="ManagerTabBarController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="ManagerTC" modalPresentationStyle="fullScreen" id="LZ8-IV-dyW" customClass="ManagerTabBarController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="dWN-Go-JVL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6iz-v6-P3Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -1876,11 +1872,13 @@
                     <connections>
                         <segue destination="V6i-3M-bkO" kind="relationship" relationship="viewControllers" id="Y0x-uE-Bd7"/>
                         <segue destination="any-O9-vTW" kind="relationship" relationship="viewControllers" id="2O2-1e-ZTV"/>
+                        <segue destination="hJc-di-VuW" kind="relationship" relationship="viewControllers" id="6x9-5O-VT7"/>
+                        <segue destination="E8S-Kp-RNY" kind="relationship" relationship="viewControllers" id="6oA-y8-Q9g"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwu-Bp-ZC3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3930" y="400"/>
+            <point key="canvasLocation" x="-3813" y="468"/>
         </scene>
         <!--Profile-->
         <scene sceneID="9Dn-wU-Jfw">
@@ -2215,23 +2213,23 @@
         <!--Buildings Manage-->
         <scene sceneID="j3B-T5-tsD">
             <objects>
-                <viewController storyboardIdentifier="StudentVisitHistoryVC" title="Buildings Manage" id="qy8-5E-Au4" customClass="StudentVisitHistoryViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StudentVisitHistoryVC" title="Buildings Manage" modalPresentationStyle="fullScreen" id="qy8-5E-Au4" customClass="StudentVisitHistoryViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tek-Pb-FDs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RF-bH-f8H">
-                                <rect key="frame" x="45" y="68" width="66" height="30"/>
+                                <rect key="frame" x="45" y="24" width="66" height="30"/>
                                 <state key="normal" title="Checkout"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Visit Feed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce0-i3-0gD">
-                                <rect key="frame" x="87" y="123" width="240" height="29"/>
+                                <rect key="frame" x="87" y="79" width="240" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qu0-Ar-nzf">
-                                <rect key="frame" x="0.0" y="195" width="414" height="667"/>
+                                <rect key="frame" x="0.0" y="151" width="414" height="608"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BuildingCell" rowHeight="43.5" id="WGj-Fy-rcJ" customClass="BuildingManageTableViewCell" customModule="qrcodeStuff" customModuleProvider="target">
@@ -2310,7 +2308,7 @@
                             <constraint firstItem="ce0-i3-0gD" firstAttribute="centerX" secondItem="qu0-Ar-nzf" secondAttribute="centerX" id="w3F-x5-Jo2"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Buildings" image="building" catalog="system" selectedImage="building" id="nTc-lm-Vp2"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="list.bullet" catalog="system" selectedImage="building" id="nTc-lm-Vp2"/>
                     <navigationItem key="navigationItem" id="T6c-ho-dVA"/>
                     <connections>
                         <outlet property="tableView" destination="qu0-Ar-nzf" id="PrL-2p-2YF"/>
@@ -2318,28 +2316,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gk0-rX-mpA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4639" y="-1438"/>
+            <point key="canvasLocation" x="-3471" y="-1232"/>
         </scene>
         <!--Buildings Manage-->
         <scene sceneID="iL7-NU-q64">
             <objects>
                 <viewController storyboardIdentifier="ManagerFeedVC" title="Buildings Manage" id="hJc-di-VuW" customClass="ManagerFeedViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qEz-nJ-SO2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6m-fC-bqr">
-                                <rect key="frame" x="45" y="68" width="66" height="30"/>
+                                <rect key="frame" x="45" y="24" width="66" height="30"/>
                                 <state key="normal" title="Checkout"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Manager Visit Feed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tN-zc-h1i">
-                                <rect key="frame" x="87" y="123" width="240" height="29"/>
+                                <rect key="frame" x="87" y="79" width="240" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="leP-xx-HdB">
-                                <rect key="frame" x="0.0" y="195" width="414" height="667"/>
+                                <rect key="frame" x="0.0" y="151" width="414" height="608"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BuildingCell" rowHeight="43.5" id="0xS-GT-HzM" customClass="BuildingManageTableViewCell" customModule="qrcodeStuff" customModuleProvider="target">
@@ -2382,20 +2380,20 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JcI-Uu-oIH">
-                                <rect key="frame" x="20" y="172" width="82" height="15"/>
+                                <rect key="frame" x="20" y="128" width="82" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17o-jF-9no">
-                                <rect key="frame" x="287" y="68" width="60" height="30"/>
+                                <rect key="frame" x="287" y="24" width="60" height="30"/>
                                 <state key="normal" title="Check In"/>
                                 <connections>
                                     <action selector="managerCheckIn:" destination="hJc-di-VuW" eventType="touchUpInside" id="IA2-dq-VSO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhR-us-rax">
-                                <rect key="frame" x="267" y="171" width="28" height="15"/>
+                                <rect key="frame" x="267" y="127" width="28" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2423,7 +2421,7 @@
                             <constraint firstItem="leP-xx-HdB" firstAttribute="top" secondItem="OhR-us-rax" secondAttribute="bottom" constant="9" id="sYZ-S2-2mT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Buildings" image="building" catalog="system" selectedImage="building" id="x9R-gq-Ip2"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="list.bullet" catalog="system" selectedImage="building" id="x9R-gq-Ip2"/>
                     <navigationItem key="navigationItem" id="ZdZ-dG-w6I"/>
                     <connections>
                         <outlet property="tableView" destination="leP-xx-HdB" id="mAx-ui-lUk"/>
@@ -2431,18 +2429,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpy-Dx-9F5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3817" y="-1438"/>
+            <point key="canvasLocation" x="-3930" y="1183"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4cg-zW-O8H"/>
+        <segue reference="Y0x-uE-Bd7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="building" catalog="system" width="112" height="128"/>
         <image name="camera.viewfinder" catalog="system" width="128" height="115"/>
         <image name="checked" width="512" height="512"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square" width="276" height="276"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
