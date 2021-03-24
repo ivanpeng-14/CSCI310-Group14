@@ -37,6 +37,14 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
         setUpElements()
         createPickerView()
         dismissPickerView()
+        
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        uscEmailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+        uscStudentIDTextField.delegate = self
+        majorTextField.delegate = self
     }
     
     var selectedMajor = String()
@@ -97,6 +105,12 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     @objc func action() {
           view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("pressed return")
+        textField.resignFirstResponder()
+        return false
     }
     
     // Returns nil if correct, otherwise returns error label as String message
@@ -220,7 +234,7 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
                     
                     // Transition to the home screen
                     print("Student successfully signed up!")
-                    self.transitionToHome()
+                    self.performSegue(withIdentifier: "UploadPhoto", sender: self)
                 }
                 
             }
@@ -235,15 +249,4 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
         errorLabel.text = message
         errorLabel.alpha = 1
     }
-    
-    func transitionToHome() {
-        
-        let homeViewController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.homeViewController) as? HomeViewController
-
-        view.window?.rootViewController = homeViewController
-        view.window?.makeKeyAndVisible()
-        
-    }
-    
-    
 }

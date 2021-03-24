@@ -20,12 +20,9 @@ class PhotoUploadViewController: UIPhotoDelegate {
     @IBOutlet weak var createAccountButton: UIButton!
     
     override func viewDidLoad() {
-        if self.user == nil {
-            self.user = Auth.auth().currentUser
-            if let email = self.user?.email {
-                self.userData = UserData(email)
-            }
-        }
+        self.user = Auth.auth().currentUser
+        let email = self.user!.email
+        self.userData = UserData(email!)
         
         super.viewDidLoad()
         

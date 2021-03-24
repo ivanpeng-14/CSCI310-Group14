@@ -32,6 +32,17 @@ class ManagerSignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
         setUpElements()
         
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        uscEmailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("pressed return")
+        textField.resignFirstResponder()
+        return false
     }
     
     // Returns nil if correct, otherwise returns error label as String message
@@ -137,7 +148,7 @@ class ManagerSignUpViewController: UIViewController {
                     
                     // Transition to the home screen
                     print("Successfully created Manager!")
-                    self.transitionToHome()
+                    self.performSegue(withIdentifier: "UploadPhoto", sender: self)
                 }
                 
             }
@@ -152,14 +163,4 @@ class ManagerSignUpViewController: UIViewController {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
-    
-    func transitionToHome() {
-        
-        let homeViewController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.homeViewController) as? HomeViewController
-
-        view.window?.rootViewController = homeViewController
-        view.window?.makeKeyAndVisible()
-        
-    }
-    
 }

@@ -122,6 +122,5 @@ class ViewController: UIViewController {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
-    
 }
 
