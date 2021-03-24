@@ -93,6 +93,19 @@ class ProfilePageViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToProfile(unwindSegue: UIStoryboardSegue) {
+    @IBAction func logOutPressed(_ sender: UIButton) {
+        do {
+            try Auth.auth().signOut()
+            returnToLogin()
+        } catch let e as NSError {
+            print("Error signing out: \(e)")
+        }
+    }
+    
+    func returnToLogin() {
+        let loginViewController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.loginViewController) as! ViewController
+        
+        view.window?.rootViewController = loginViewController
+        view.window?.makeKeyAndVisible()
     }
 }
