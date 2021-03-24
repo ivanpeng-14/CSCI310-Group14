@@ -118,7 +118,7 @@ extension ManagerFeedViewController: UITableViewDelegate, UITableViewDataSource 
         if tempBuildingHistory[indexPath.row].count == 7 { // check in
             
             let list = tempBuildingHistory[indexPath.row].split(separator: " ")
-            
+            print(list)
             buildingName = String(list[2])
             buildingTime = String(list[3] + ", " + list[4])
             checkIn = true
@@ -126,7 +126,7 @@ extension ManagerFeedViewController: UITableViewDelegate, UITableViewDataSource 
         else { // check out
             
             let list = tempBuildingHistory[indexPath.row].split(separator: " ")
-            
+            print(list)
             buildingName = String(list[3])
             buildingTime = String(list[5] + ", " + list[6])
         }

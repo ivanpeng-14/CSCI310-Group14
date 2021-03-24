@@ -209,17 +209,17 @@ extension StudentVisitHistoryViewController: UITableViewDelegate, UITableViewDat
         if tempBuildingHistory[indexPath.row].contains("into") { // check in
             
             let list = tempBuildingHistory[indexPath.row].split(separator: " ")
-            
-            buildingName = String(list[2])
-            buildingTime = String(list[4] + ", " + list[5])
+            print(list)
+            buildingName = String(list[2] + " " + list[3] + " " + list[4])
+            buildingTime = String(list[6] + ", " + list[7])
             checkIn = true
         }
         else { // check out
             
             let list = tempBuildingHistory[indexPath.row].split(separator: " ")
-            
-            buildingName = String(list[3])
-            buildingTime = String(list[5] + ", " + list[6])
+            print(list)
+            buildingName = String(list[3] + " " + list[4] + " " + list[5])
+            buildingTime = String(list[7] + ", " + list[8])
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "BuildingCell") as! BuildingManageTableViewCell
