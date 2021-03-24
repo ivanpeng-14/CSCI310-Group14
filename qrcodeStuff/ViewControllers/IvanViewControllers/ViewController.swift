@@ -19,33 +19,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
+    var userData : UserData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpElements()
-//        // this is our array of arrays
-//        var groups = [[String]]()
-//
-//        // we create three simple string arrays for testing
-//        var groupA = ["England", "Ireland", "Scotland", "Wales"]
-//        var groupB = ["Canada", "Mexico", "United States"]
-//        var groupC = ["China", "Japan", "South Korea"]
-//
-//        // then add them all to the "groups" array
-//        groups.append(groupA)
-//        groups.append(groupB)
-//        groups.append(groupC)
-//
-//        // this will print out the array of arays
-//        print("The groups are:", groups)
-//
-//        // we now append an item to one of the arrays
-//        groups[1].append("Costa Rica")
-//        print("\nAfter adding Costa Rica, the groups are:", groups)
-//
-//        // and now print out groupB's contents again
-//        print("\nGroup B still contains:", groupB)
     }
 
     func setUpElements() {
@@ -107,10 +86,20 @@ class ViewController: UIViewController {
                     
                     print("Successful login")
                     
-                    let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+//                    var user = Auth.auth().currentUser
+//                    // Setting current userData
+//                    if let email = user?.email {
+//                        self.userData = UserData(email)
+//                    }
                     
-                    self.view.window?.rootViewController = homeViewController
-                    self.view.window?.makeKeyAndVisible()
+                    // Directing to respective views
+//                    if (!(self.userData?.isStudent())!) {
+//                        print("transitioning to manager view");
+//                        self.transitionToManagerView(user: user?);
+//                    } else{
+//                        print("transitioning to student view");
+//                        self.transitionToStudentView(user: user?);
+//                    }
                 }
             }
         }
@@ -121,6 +110,30 @@ class ViewController: UIViewController {
         
         errorLabel.text = message
         errorLabel.alpha = 1
+    }
+    
+    func transitionToStudentView(user: User) {
+        
+        let studentTabController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.studentTabController) as! StudentTabBarController
+        
+        studentTabController.user = user
+        studentTabController.userData = self.userData
+        
+        view.window?.rootViewController = studentTabController
+        view.window?.makeKeyAndVisible()
+        
+    }
+    
+    func transitionToManagerView(user: User) {
+        
+        let managerTabController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.managerTabController) as! ManagerTabBarController
+        
+        managerTabController.user = user
+        managerTabController.userData = self.userData
+        
+        view.window?.rootViewController = managerTabController
+        view.window?.makeKeyAndVisible()
+        
     }
     
 }

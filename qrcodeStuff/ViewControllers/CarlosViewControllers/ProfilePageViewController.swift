@@ -49,8 +49,8 @@ class ProfilePageViewController: UIViewController {
         logOutButton.layer.cornerRadius = 5
         
         if let userData = self.userData {
-            let firstName = userData.getInfo("firstname") as! String
-            let lastName = userData.getInfo("lastname") as! String
+            let firstName = userData.getInfo("firstname") as? String ?? ""
+            let lastName = userData.getInfo("lastname") as? String ?? ""
             
             self.fullName.text = firstName + " " + lastName
             self.email.text = user?.email
