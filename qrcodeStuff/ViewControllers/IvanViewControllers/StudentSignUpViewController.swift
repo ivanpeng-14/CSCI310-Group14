@@ -101,28 +101,36 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     // Returns nil if correct, otherwise returns error label as String message
     func validateFields() -> String? {
-        
+        let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = uscEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let confirm = confirmPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let uscID = uscStudentIDTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let major = majorTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         
         // Check all fields are filled
-        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            uscEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            confirmPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            uscStudentIDTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            majorTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        if firstName == "" ||
+            lastName == "" ||
+            email == "" ||
+            password == "" ||
+            confirm == "" ||
+            uscID == "" ||
+            major == "" {
             
             return "Please fill in all fields."
         }
-        if uscEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).range(of: "@usc.edu") == nil {
+        
+        // Check that email is @usc.edu
+        if email?.range(of: "@usc.edu") == nil {
             
             return "You must sign up with a USC email."
         }
         
-        // Check password strength -- TODO
-        
-        
-        
+        // Check password == confirmPassword
+        if password != confirm {
+            return "Passwords must match."
+        }
         
         return nil
     }
