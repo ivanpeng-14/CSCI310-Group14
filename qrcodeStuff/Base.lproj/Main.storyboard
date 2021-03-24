@@ -1560,14 +1560,6 @@
                                     <action selector="buttonTapped:" destination="izR-g0-zA6" eventType="touchUpInside" id="8qi-aZ-783"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCh-z1-B8P">
-                                <rect key="frame" x="137" y="682" width="140" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Go to Manager Feed"/>
-                                <connections>
-                                    <action selector="goToManagerFeed:" destination="izR-g0-zA6" eventType="touchUpInside" id="iGa-BY-3vk"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U2k-Nr-6TU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
