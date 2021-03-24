@@ -399,7 +399,7 @@
             <objects>
                 <viewController title="Add Building" id="E8S-Kp-RNY" customClass="AddBuildingViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3xZ-1x-jSB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Manual Add" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guM-7v-Rbv">
@@ -467,16 +467,11 @@
                                     <action selector="uploadCSVButton:" destination="E8S-Kp-RNY" eventType="touchUpInside" id="0sS-lY-Zhn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIL-q3-4KM">
-                                <rect key="frame" x="322" y="44" width="52" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Back"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zzI-KE-r69"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Add Building" image="plus" catalog="system" id="jVM-KG-ZAO"/>
                     <connections>
                         <outlet property="buildingNameTextField" destination="Dks-Yd-510" id="ZfU-Zz-Itf"/>
                         <outlet property="capacityTextField" destination="0ta-ZB-wEV" id="FXc-JN-qy6"/>
@@ -484,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQk-x4-2mJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2962" y="2366"/>
+            <point key="canvasLocation" x="-3745" y="1905"/>
         </scene>
         <!--Filter Students Table View Controller-->
         <scene sceneID="y1b-yn-Wvp">
@@ -1878,11 +1873,12 @@
                         <segue destination="V6i-3M-bkO" kind="relationship" relationship="viewControllers" id="Y0x-uE-Bd7"/>
                         <segue destination="any-O9-vTW" kind="relationship" relationship="viewControllers" id="2O2-1e-ZTV"/>
                         <segue destination="hJc-di-VuW" kind="relationship" relationship="viewControllers" id="6x9-5O-VT7"/>
+                        <segue destination="E8S-Kp-RNY" kind="relationship" relationship="viewControllers" id="6oA-y8-Q9g"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwu-Bp-ZC3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3930" y="400"/>
+            <point key="canvasLocation" x="-3813" y="468"/>
         </scene>
         <!--Profile-->
         <scene sceneID="9Dn-wU-Jfw">
@@ -2320,7 +2316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gk0-rX-mpA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3397" y="-1197"/>
+            <point key="canvasLocation" x="-3471" y="-1232"/>
         </scene>
         <!--Buildings Manage-->
         <scene sceneID="iL7-NU-q64">
@@ -2446,6 +2442,7 @@
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square" width="276" height="276"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
