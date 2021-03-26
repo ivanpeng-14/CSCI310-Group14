@@ -2363,11 +2363,11 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Y0x-uE-Bd7"/>
-        <segue reference="Sv0-DI-NGx"/>
+        <segue reference="KAh-SN-545"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="building" catalog="system" width="112" height="128"/>
-        <image name="camera.viewfinder" catalog="system" width="128" height="115"/>
+        <image name="camera.viewfinder" catalog="system" width="32" height="32"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
