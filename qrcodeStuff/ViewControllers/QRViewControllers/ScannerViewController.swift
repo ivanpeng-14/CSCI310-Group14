@@ -318,3 +318,4 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         return .portrait
     }
 }
+
