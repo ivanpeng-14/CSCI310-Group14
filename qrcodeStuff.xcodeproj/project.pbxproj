@@ -29,7 +29,6 @@
 		B17C6E7D2607D7DD00C8E964 /* BuildingsManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6E7C2607D7DD00C8E964 /* BuildingsManageTableViewCell.swift */; };
 		B17C6E9426081E7200C8E964 /* AddBuildingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6E9326081E7200C8E964 /* AddBuildingViewController.swift */; };
 		B1C703FF26004A5B00313817 /* GenerateQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */; };
-		B1F536F62609C7D0001FFA2B /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F536F52609C7D0001FFA2B /* SuccessViewController.swift */; };
 		B1F53717260A4F34001FFA2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F53710260A4F34001FFA2B /* ViewController.swift */; };
 		B1F53718260A4F34001FFA2B /* ManagerSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F53711260A4F34001FFA2B /* ManagerSignUpViewController.swift */; };
 		B1F53719260A4F34001FFA2B /* StudentVisitHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F53712260A4F34001FFA2B /* StudentVisitHistoryViewController.swift */; };
@@ -79,7 +78,6 @@
 		B17C6E7C2607D7DD00C8E964 /* BuildingsManageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingsManageTableViewCell.swift; sourceTree = "<group>"; };
 		B17C6E9326081E7200C8E964 /* AddBuildingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBuildingViewController.swift; sourceTree = "<group>"; };
 		B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQRViewController.swift; sourceTree = "<group>"; };
-		B1F536F52609C7D0001FFA2B /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		B1F53710260A4F34001FFA2B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B1F53711260A4F34001FFA2B /* ManagerSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerSignUpViewController.swift; sourceTree = "<group>"; };
 		B1F53712260A4F34001FFA2B /* StudentVisitHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentVisitHistoryViewController.swift; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 			children = (
 				B12EA22026000C6A0082CA9C /* ScannerViewController.swift */,
 				B1C703FE26004A5B00313817 /* GenerateQRViewController.swift */,
-				B1F536F52609C7D0001FFA2B /* SuccessViewController.swift */,
 			);
 			path = QRViewControllers;
 			sourceTree = "<group>";
@@ -428,7 +425,6 @@
 				B1F53729260A4F85001FFA2B /* UIViewController+Extensions.swift in Sources */,
 				B1F5371C260A4F34001FFA2B /* ManagerFeedViewController.swift in Sources */,
 				BF2BC6C02609AE0500E01139 /* ProfileEditViewController.swift in Sources */,
-				B1F536F62609C7D0001FFA2B /* SuccessViewController.swift in Sources */,
 				B1C703FF26004A5B00313817 /* GenerateQRViewController.swift in Sources */,
 				B1F53717260A4F34001FFA2B /* ViewController.swift in Sources */,
 				B17C6E792607D7BF00C8E964 /* BuildingsManageViewControllerViewController.swift in Sources */,
