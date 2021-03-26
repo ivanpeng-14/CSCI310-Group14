@@ -18,10 +18,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
-    // var studentID = "DXUd2IZFa0gC9O1RVHumJSNGhkk2"
+
     var studentID = ""
     var buildingID = ""
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -176,11 +175,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 let studentHistory = db.collection("students").document(self.studentID)
                 studentHistory.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked out of \(buildingName) at \(Date())"])])
                 
+
+                let alert2 = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+                alert2.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                    self.viewDidLoad()
+                }))
+                self.present(alert2, animated: true)
                 
-                //go to next screen
-                let nextView = self.storyboard?.instantiateViewController(identifier: "CheckedVC")
-                nextView?.modalPresentationStyle = .fullScreen
-                self.present(nextView!, animated: true, completion: nil)
                 
             }))
             self.present(alert, animated: true)
@@ -209,10 +210,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 studentDoc.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked into \(buildingName) at \(Date())"])])
                 studentDoc.updateData(["lastcheckin": "\(Date())"])
                 
-                //go to next screen
-                let nextView = self.storyboard?.instantiateViewController(identifier: "CheckedVC")
-                nextView?.modalPresentationStyle = .fullScreen
-                self.present(nextView!, animated: true, completion: nil)
+                let alert2 = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+                alert2.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                    self.viewDidLoad()
+                }))
+                self.present(alert2, animated: true)
             }))
             self.present(alert, animated: true)
         }
@@ -254,9 +256,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                         if error == nil {
                             //check if document exists
                             if document != nil && document!.exists {
-//                                let documentData = document!.data()
-//                                let buildingName = documentData!["buildingName"] as? String ?? ""
-//                                print(buildingName)
                                 self.getCapacity(buildingID: self.buildingID, buildingName: buildingName)
                             }
                             else
@@ -318,4 +317,3 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         return .portrait
     }
 }
-
