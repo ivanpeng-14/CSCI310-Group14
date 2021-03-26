@@ -21,6 +21,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     // var studentID = "DXUd2IZFa0gC9O1RVHumJSNGhkk2"
     var studentID = ""
     var buildingID = ""
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
