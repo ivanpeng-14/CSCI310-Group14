@@ -18,12 +18,6 @@ class BuildingXXXViewController: UIViewController {
     var studentsArray: [String] = []
     var IDArray: [String] = []
 
-    @IBAction func backButton(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "ManagerTC") as! ManagerTabBarController
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

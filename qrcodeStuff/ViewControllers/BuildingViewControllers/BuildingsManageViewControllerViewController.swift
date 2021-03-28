@@ -79,12 +79,12 @@ extension BuildingManageiewController: UITableViewDelegate, UITableViewDataSourc
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? GenerateQRViewController {
-            destination.modalPresentationStyle = .fullScreen
+            // destination.modalPresentationStyle = .fullScreen
             let index = tableView.indexPathForSelectedRow?.row
             destination.buildingName = buildings[index!].buildingName
         }
         if let destination2 = segue.destination as? BuildingXXXViewController {
-            destination2.modalPresentationStyle = .fullScreen
+            // destination2.modalPresentationStyle = .fullScreen
             let index = tableView.indexPathForSelectedRow?.row
             destination2.buildingName = buildings[index!].buildingName
             

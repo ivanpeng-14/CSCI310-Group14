@@ -13,12 +13,7 @@ class GenerateQRViewController: UIViewController {
     @IBOutlet weak var qrImage: UIImageView!
     
     
-    @IBAction func backButton(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "ManagerTC") as! ManagerTabBarController
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-    }
-    
+
     var buildingName: String?
     
     override func viewDidLoad() {
