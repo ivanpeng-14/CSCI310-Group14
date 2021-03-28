@@ -12,4 +12,8 @@ target 'qrcodeStuff' do
   pod 'Firebase/Storage'
 	pod 'FirebaseUI/Auth'
 
+target 'appTests' do
+use_frameworks!
+end
+
 end
