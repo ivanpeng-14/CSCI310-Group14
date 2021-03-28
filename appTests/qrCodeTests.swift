@@ -32,33 +32,73 @@ var vc = ScannerViewController()
         {
             throw MyError.qrError(result)
         }
-      
-        
-    }
-    
-    func test_buildingNotAtCapacity() throws {
-        let result = vc.found(curr: 3, total: 20, buildingID: "testBuilding", buildingName: "testBuilding")
-        if(result != "NOT AT CAPACITY")
+        let result2: String = vc.found(curr: 30, total: 20, buildingID: "testBuilding", buildingName: "testBuilding")
+        if(result2 != "AT CAPACITY")
         {
             throw MyError.qrError(result)
         }
         
     }
     
+    
     // correctly displays alert tests
+    func test_displaysAlreadyCheckedInAlert() throws {
+        let result = vc.displayAlert(studentBuilding: "currentBuilding", curr: 3, total: 20, buildingID: "currentBuilding", buildingName: "currentBuilding")
+        if(result != "Already checked in, can check out now.")
+        {
+            throw MyError.qrError("Error")
+        }
+        let result2 = vc.displayAlert(studentBuilding: "", curr: 3, total: 20, buildingID: "newBuilding", buildingName: "newBuilding")
+        if(result2 == "Already checked in, can check out now.")
+        {
+            throw MyError.qrError("Error")
+        }
+        let result3 = vc.displayAlert(studentBuilding: "currentBuilding", curr: 3, total: 20, buildingID: "someOtherBuilding", buildingName: "someOtherBuilding")
+        if(result3 == "Already checked in, can check out now.")
+        {
+            throw MyError.qrError("Error")
+        }
+    }
+    
+    
     func test_displaysCheckInAlert() throws {
-        //set up test building and student
-        let db = Firestore.firestore()
+        let result = vc.displayAlert(studentBuilding: "", curr: 3, total: 20, buildingID: "newBuilding", buildingName: "newBuilding")
+        if(result != "Not checked in anywhere, can check in now")
+        {
+            throw MyError.qrError(result)
+        }
+        let result2 = vc.displayAlert(studentBuilding: "currBuilding", curr: 3, total: 20, buildingID: "currBuilding", buildingName: "currBuilding")
+        if(result2 == "Not checked in anywhere, can check in now")
+        {
+            throw MyError.qrError("Error")
+        }
+        let result3 = vc.displayAlert(studentBuilding: "currentBuilding", curr: 3, total: 20, buildingID: "someOtherBuilding", buildingName: "someOtherBuilding")
+        if(result3 == "Not checked in anywhere, can check in now")
+        {
+            throw MyError.qrError("Error")
+        }
+        
+        
     }
     
     func test_displaysCheckOutAlert() throws {
-        
+        let result = vc.displayAlert(studentBuilding: "currentBuilding", curr: 3, total: 20, buildingID: "someOtherBuilding", buildingName: "someOtherBuilding")
+        if(result != "Needs to check out first.")
+        {
+            throw MyError.qrError(result)
+        }
+        let result2 = vc.displayAlert(studentBuilding: "", curr: 3, total: 20, buildingID: "newBuilding", buildingName: "newBuilding")
+        if(result2 == "Needs to check out first.")
+        {
+            throw MyError.qrError("Error")
+        }
+        let result3 = vc.displayAlert(studentBuilding: "currentBuilding", curr: 3, total: 20, buildingID: "currentBuilding", buildingName: "currentBuilding")
+        if(result3 == "Needs to check out first.")
+        {
+            throw MyError.qrError("Error")
+        }
     }
     
-    func test_displaysAlreadyCheckedInAlert() throws {
-        
-    }
-   
     
     enum MyError: Error {
         case qrError(String)

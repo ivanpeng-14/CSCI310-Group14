@@ -131,7 +131,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         {
             message = "NOT AT CAPACITY"
             let db = Firestore.firestore()
-            
+
             db.collection("students").document(studentID).getDocument { (document, error) in //change to actual student later!!!
                 if error == nil {
                     //check if document exists
@@ -139,17 +139,19 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                         let documentData = document!.data()
                         let currentBuilding = documentData!["currbuilding"] as? String ?? "-1"
                         self.displayAlert(studentBuilding: currentBuilding, curr: curr, total: total, buildingID: buildingID, buildingName: buildingName)
-                      
+
                     }
                 }
                 else {
                     print("found() error")
                 }
             }
+       
         }
         return message
       
     }
+    
     func displayAlert(studentBuilding: String, curr: Int, total:Int, buildingID: String, buildingName: String) -> String
     {
         var message: String
@@ -165,20 +167,20 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (action) in
                 //update database
                 let db = Firestore.firestore()
-            
+
                 //update building history
                 let buildingHistory = db.collection("buildings").document(buildingID)
-                //buildingHistory.updateData(["currentStudents" : FieldValue.arrayUnion(["studentIDTest checked out at \(Date())"])])
+
                 buildingHistory.updateData(["currentStudents" : FieldValue.arrayRemove([self.studentID])])
-                
+
                 //update capacity
                 let newCapacity = curr - 1
                 buildingHistory.updateData(["currentCapacity": newCapacity])
-                
+
                 //update students currBuilding
                 let studentDoc = db.collection("students").document(self.studentID)
                 studentDoc.updateData(["currbuilding": ""])
-                
+
                 //update student history
                 let studentHistory = db.collection("students").document(self.studentID)
                 studentHistory.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked out of \(buildingName) at \(Date())"])])
