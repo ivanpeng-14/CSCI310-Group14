@@ -37,7 +37,6 @@ var vc = ScannerViewController()
         {
             throw MyError.qrError(result)
         }
-        
     }
     
     

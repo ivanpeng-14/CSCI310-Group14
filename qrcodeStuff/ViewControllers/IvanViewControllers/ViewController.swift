@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(Auth.auth().currentUser?.email ?? "no user logged in")
         setUpElements()
     }
 

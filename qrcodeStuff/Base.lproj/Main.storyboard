@@ -124,20 +124,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentCell" id="7q3-dL-k0z" customClass="BuildingXXXTableViewCell" customModule="qrcodeStuff" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7q3-dL-k0z" id="wL5-bB-IW3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWW-Zb-s3v">
-                                                    <rect key="frame" x="25" y="11" width="45" height="21"/>
+                                                    <rect key="frame" x="25" y="11" width="45" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfA-bq-GJk">
-                                                    <rect key="frame" x="377.5" y="11" width="16.5" height="21"/>
+                                                    <rect key="frame" x="377.5" y="11" width="16.5" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1912,10 +1912,26 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weQ-Vj-1sJ">
+                                                <rect key="frame" x="13" y="8" width="44" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Back"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uzj-fN-pTi">
+                                                <rect key="frame" x="13" y="8" width="44" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <action selector="backButtonPressed:" destination="uyn-BO-6mD" eventType="touchUpInside" id="hhW-mW-dpn"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="weQ-Vj-1sJ" firstAttribute="top" secondItem="AJx-rM-tDH" secondAttribute="top" constant="8" id="1ce-mF-xO3"/>
                                             <constraint firstItem="yFe-cm-InZ" firstAttribute="centerX" secondItem="AJx-rM-tDH" secondAttribute="centerX" id="HJD-pe-N3V"/>
                                             <constraint firstItem="yFe-cm-InZ" firstAttribute="centerY" secondItem="AJx-rM-tDH" secondAttribute="centerY" id="PGg-0D-ySj"/>
+                                            <constraint firstItem="weQ-Vj-1sJ" firstAttribute="leading" secondItem="AJx-rM-tDH" secondAttribute="leading" constant="13" id="xyW-C3-L2k"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nhp-jb-myS" userLabel="Photo Update View">
@@ -1995,11 +2011,19 @@
                                                     <constraint firstItem="hcA-on-fEz" firstAttribute="height" secondItem="RqW-6A-ZdU" secondAttribute="height" multiplier="0.2" id="tFd-Dh-z2n"/>
                                                 </constraints>
                                             </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Error" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdH-uD-iCr">
+                                                <rect key="frame" x="83" y="-13" width="248" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.6045826674" green="0.11044944080000001" blue="0.1215291396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="RqW-6A-ZdU" firstAttribute="height" secondItem="Yra-CV-VZv" secondAttribute="height" multiplier="0.9" id="7XC-Rv-ao7"/>
+                                            <constraint firstItem="hdH-uD-iCr" firstAttribute="top" secondItem="Yra-CV-VZv" secondAttribute="top" constant="-13" id="Bbd-fH-bLd"/>
                                             <constraint firstItem="RqW-6A-ZdU" firstAttribute="width" secondItem="Yra-CV-VZv" secondAttribute="width" multiplier="0.6" id="CiS-yg-VjI"/>
                                             <constraint firstItem="RqW-6A-ZdU" firstAttribute="top" secondItem="Yra-CV-VZv" secondAttribute="top" constant="10" id="PMF-jA-Is0"/>
+                                            <constraint firstItem="hdH-uD-iCr" firstAttribute="centerX" secondItem="Yra-CV-VZv" secondAttribute="centerX" id="Uku-PB-mbQ"/>
                                             <constraint firstItem="RqW-6A-ZdU" firstAttribute="centerX" secondItem="Yra-CV-VZv" secondAttribute="centerX" id="asu-rK-Gdz"/>
                                         </constraints>
                                     </view>
@@ -2053,6 +2077,7 @@
                     <connections>
                         <outlet property="confirmNewPassword" destination="hcA-on-fEz" id="LhV-t9-jXk"/>
                         <outlet property="deleteButton" destination="iQN-u8-UXG" id="eUu-C0-7O0"/>
+                        <outlet property="errorText" destination="hdH-uD-iCr" id="dPT-hm-QRa"/>
                         <outlet property="newPassword" destination="XAv-pa-TiM" id="Zx9-MX-Elh"/>
                         <outlet property="oldPassword" destination="z3l-Zi-ZzW" id="WHP-as-dhi"/>
                         <outlet property="photoView" destination="3df-WJ-yPW" id="9xd-xX-5Uj"/>
@@ -2063,7 +2088,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LhY-c0-45n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1949" y="96"/>
+            <point key="canvasLocation" x="-1949.2753623188407" y="95.758928571428569"/>
         </scene>
         <!--Buildings Manage-->
         <scene sceneID="j3B-T5-tsD">
@@ -2362,8 +2387,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Y0x-uE-Bd7"/>
-        <segue reference="KAh-SN-545"/>
+        <segue reference="4cg-zW-O8H"/>
+        <segue reference="Sv0-DI-NGx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="building" catalog="system" width="112" height="128"/>

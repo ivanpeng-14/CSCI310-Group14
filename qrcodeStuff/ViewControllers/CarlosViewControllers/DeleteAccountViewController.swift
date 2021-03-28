@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
     
@@ -38,16 +39,51 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
     
     // Required by Protocol
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return false
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return textField.text != ""
     }
     
     // IB Actions
     @IBAction func deleteConfirmed(_ sender: UIButton) {
-        self.userData?.updateData(key: "deleted", val: true)
+        let passwordCorrect = self.password.text == userData?.getInfo("password") as? String ?? ""
+        let passwordsMatch = self.password.text == self.confirmPassword.text
+        
+        let alert = UIAlertController(title: "Delete Account?", message: "Are you sure you want to delete your account? This action is permanent and cannot be undone. You will not be able to create a new account with this email.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: {action in
+            if passwordCorrect && passwordsMatch {
+                // add checkout here
+                
+                self.userData?.updateData(key: "deleted", val: true)
+                
+                do {
+                    try Auth.auth().signOut()
+                    self.returnToLogin()
+                } catch let e as NSError {
+                    print("Error signing out: \(e)")
+                }
+            } else {
+                let errors = UIAlertController(title: "Error", message: "Could not delete account due to the following error(s):\(passwordCorrect ? "" : "\nIncorrect password entered.")\(passwordsMatch ? "" : "\nPasswords did not match.")", preferredStyle: .alert)
+                errors.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: {_ in
+                    self.password.text = ""
+                    self.confirmPassword.text = ""
+                }))
+                self.present(errors, animated: true)
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: {_ in
+            self.password.text = ""
+            self.confirmPassword.text = ""
+        }))
+        
+        self.present(alert, animated: true)
     }
-
+    
+    func returnToLogin() {
+        let loginViewController = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.loginViewController) as! ViewController
+        
+        view.window?.rootViewController = loginViewController
+        view.window?.makeKeyAndVisible()
+    }
 }
