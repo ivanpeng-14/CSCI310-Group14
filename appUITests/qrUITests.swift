@@ -199,6 +199,38 @@ class qrUITests: XCTestCase {
         XCTAssertFalse(app.alerts["Error"].exists)
         XCTAssertFalse(app.alerts["Check In"].exists)
     }
+    
+    func test_buildingInfo() throws {
+        
+        let managerUser = "manager1@usc.edu"
+        let password = "password"
+
+
+        let app = XCUIApplication()
+        let emailField = app.textFields["Email"]
+        emailField.tap()
+        emailField.typeText(managerUser)
+
+        let passwordSecureTextField = app.secureTextFields["Password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.tap()
+        passwordSecureTextField.tap()
+
+
+        app/*@START_MENU_TOKEN@*/.staticTexts["Paste"]/*[[".menus",".menuItems[\"Paste\"].staticTexts[\"Paste\"]",".staticTexts[\"Paste\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+
+        passwordSecureTextField.setText(text: password, application: app)
+        
+     
+        app/*@START_MENU_TOKEN@*/.staticTexts["Continue"]/*[[".buttons[\"Continue\"].staticTexts[\"Continue\"]",".staticTexts[\"Continue\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.staticTexts["Continue to Profile"]/*[[".buttons[\"Continue to Profile\"].staticTexts[\"Continue to Profile\"]",".staticTexts[\"Continue to Profile\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.tabBars["Tab Bar"].buttons["My Buildings"].tap()
+        app.tables.cells.containing(.staticText, identifier:"Tutor Hall (RTH)").staticTexts["2"].tap()
+        app.alerts["Building Info"].scrollViews.otherElements.buttons["Get Building Info"].tap()
+        XCTAssertTrue(app.staticTexts["Tutor Hall (RTH)"].exists)
+                
+    }
+    
 
 }
 
