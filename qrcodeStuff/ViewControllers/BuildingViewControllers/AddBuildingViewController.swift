@@ -37,6 +37,21 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     @IBAction func addBuildingButton(_ sender: Any) {
+        // check if building name not supplied
+        if (buildingNameTextField.text == "") {
+            errorLabel1.text = "Invalid building name";
+            errorLabel1.textColor = UIColor.red;
+            errorLabel1.alpha = 1;
+            return;
+        }
+        // check if capacity not a number or if capacity is less than 1
+        if ((Int(capacityTextField.text ?? "-1") ?? -1) < 1) {
+            errorLabel1.text = "Invalid capacity";
+            errorLabel1.textColor = UIColor.red;
+            errorLabel1.alpha = 1;
+            return;
+        }
+        
         let db = Firestore.firestore()
         var alreadyExists = false;
         db.collection("buildings").whereField("buildingName", isEqualTo: buildingNameTextField.text).getDocuments(){(querySnapshot, err) in
