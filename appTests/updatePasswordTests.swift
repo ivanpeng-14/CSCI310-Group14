@@ -16,6 +16,7 @@ class updatePasswordTests: XCTestCase {
     let db = Firestore.firestore()
     var docRef : DocumentReference!
     var vc: qrcodeStuff.ProfileEditViewController!
+    var userData : UserData?
     
     override func setUpWithError() throws {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -35,7 +36,11 @@ class updatePasswordTests: XCTestCase {
                 if let user = Auth.auth().currentUser {
                     self.vc.user = user
                     let email = user.email!
+<<<<<<< HEAD
                     self.vc.userData = qrcodeStuff.UserData(email) {
+=======
+                    self.userData = qrcodeStuff.UserData(email) {
+>>>>>>> 12214c80ee8ad2aa574732515b2ac79c6533ad9d
                         super.setUp()
                     }
                 }
