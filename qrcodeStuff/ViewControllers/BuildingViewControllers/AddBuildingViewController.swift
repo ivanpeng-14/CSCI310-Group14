@@ -57,7 +57,7 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
         db.collection("buildings").whereField("buildingName", isEqualTo: buildingNameTextField.text).getDocuments(){(querySnapshot, err) in
             if ((querySnapshot?.isEmpty) == false) {
                 // building already exist
-                self.errorLabel1.text = "Building Already Exists";
+                self.errorLabel1.text = "Building already exists";
                 self.errorLabel1.textColor = UIColor.red;
                 self.errorLabel1.alpha = 1;
             } else {
