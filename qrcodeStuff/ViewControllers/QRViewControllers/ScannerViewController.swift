@@ -21,6 +21,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
     var studentID = ""
     var buildingID = ""
+    var currBuilding = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,25 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         // plz workkkkk
         self.studentID = (Auth.auth().currentUser?.email)!
         print("current student \(self.studentID)")
+        
+        
+        
+        let db = Firestore.firestore()
+
+        db.collection("students").document(studentID).getDocument { (document, error) in
+            if error == nil {
+                //check if document exists
+                if document != nil && document!.exists {
+                    let documentData = document!.data()
+                    self.currBuilding = documentData!["currbuilding"] as? String ?? "-1"
+                }
+            }
+            else {
+                print("found() error")
+            }
+        }
+        
+        
         
         
         // Do any additional setup after loading the view.
@@ -117,8 +137,16 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     func found(curr: Int, total:Int, buildingID: String, buildingName: String) -> String {
         var message: String
         message = ""
+        
+        var skipCapacity = false;
+        //check if student can check out
+        if(self.currBuilding == buildingID)
+        {
+            skipCapacity = true
+        }
+        
        // building is at capacity
-        if curr >= total
+        if curr >= total && !skipCapacity
         {
             message = "AT CAPACITY"
             let alert = UIAlertController(title: "Building at Capacity", message: "There are currently \(curr) out of \(total) students in \(buildingName). Sorry lol", preferredStyle: .alert)
@@ -132,7 +160,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             message = "NOT AT CAPACITY"
             let db = Firestore.firestore()
 
-            db.collection("students").document(studentID).getDocument { (document, error) in //change to actual student later!!!
+            db.collection("students").document(studentID).getDocument { (document, error) in
                 if error == nil {
                     //check if document exists
                     if document != nil && document!.exists {

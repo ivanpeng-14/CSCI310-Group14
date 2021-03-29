@@ -37,6 +37,21 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     @IBAction func addBuildingButton(_ sender: Any) {
+        // check if building name not supplied
+        if (buildingNameTextField.text == "") {
+            errorLabel1.text = "Invalid building name";
+            errorLabel1.textColor = UIColor.red;
+            errorLabel1.alpha = 1;
+            return;
+        }
+        // check if capacity not a number or if capacity is less than 1
+        if ((Int(capacityTextField.text ?? "-1") ?? -1) < 1) {
+            errorLabel1.text = "Invalid capacity";
+            errorLabel1.textColor = UIColor.red;
+            errorLabel1.alpha = 1;
+            return;
+        }
+        
         let db = Firestore.firestore()
         var alreadyExists = false;
         db.collection("buildings").whereField("buildingName", isEqualTo: buildingNameTextField.text).getDocuments(){(querySnapshot, err) in
@@ -89,30 +104,75 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt docurl: URL) {
         print("a file was selected")
         print("path: \(docurl.absoluteString)")
+        errorLabel2.alpha = 0;
         do {
             // From a file (with errors)
             let csvFile: CSV = try CSV(url: docurl)
             print(csvFile.header)
             print(csvFile.namedRows)
             print(csvFile.namedColumns)
-                        
-            // update Buildings in firestore
-            let db = Firestore.firestore()
+            
+            var properlyFormatted = true;
+            // validate CSV format
+            // check if more than 2 columns
+            if (csvFile.namedColumns.count != 2 ) {
+                properlyFormatted = false;
+                errorLabel2.text = "Invalid format: more than 2 columns";
+            }
+            // check if second column not all numbers or less than 0
             for arrItem in csvFile.namedRows {
                 print(arrItem);
-                db.collection("buildings").addDocument(data: [
-                    "buildingName": arrItem["buildingName"]! , "totalCapacity": Int(arrItem["totalCapacity"]!) ?? 0,
-                    "currentCapacity": 0,
-                    "currentStudents" : []
-                    
-                ]) { err in
-                    if let err = err {
-                        print("Error writing document: \(err)")
-                    } else {
-                        print("Document successfully written!")
-                    }
+                let totalCapacity = Int(arrItem["totalCapacity"] ?? "-1")
+                if ( totalCapacity == -1) {
+                    properlyFormatted = false;
+                    errorLabel2.text = "Invalid format: NaN provided for capacity";
+                    break;
+                }
+                else if (totalCapacity ?? -1 < 0) {
+                    properlyFormatted = false;
+                    errorLabel2.text = "Invalid format: capacity less than 0 provided";
+                    break;
                 }
             }
+            
+            if (properlyFormatted) {
+                
+                // update Buildings in firestore
+                let db = Firestore.firestore()
+                for arrItem in csvFile.namedRows {
+                    print(arrItem);
+                    db.collection("buildings").whereField("buildingName", isEqualTo: buildingNameTextField.text).getDocuments(){(querySnapshot, err) in
+                        if ((querySnapshot?.isEmpty) == false) {
+                            // building already exist
+                            db.collection("buildings").document((querySnapshot?.documents.first!.documentID)!).updateData(["totalCapacity" :Int(arrItem["totalCapacity"]!) ?? 0 ]);
+                        } else {
+                            // building doesn't already exist
+                            db.collection("buildings").addDocument(data: [
+                                "buildingName": arrItem["buildingName"]! , "totalCapacity": Int(arrItem["totalCapacity"]!) ?? 0,
+                                "currentCapacity": 0,
+                                "currentStudents" : []
+                                
+                            ]) { err in
+                                if let err = err {
+                                    print("Error writing document: \(err)")
+                                    self.errorLabel2.text = "Invalidly formatted CSV";
+                                    self.errorLabel2.textColor = UIColor.red;
+                                    self.errorLabel2.alpha = 1;
+                                } else {
+                                    print("Document successfully written!")
+                                }
+                            }
+                        }
+                    }
+                }
+                if (errorLabel2.alpha == 0) {
+                    errorLabel2.textColor = UIColor.green;
+                    errorLabel2.text = "Buildings successfully added"
+                }
+            } else {
+                self.errorLabel2.textColor = UIColor.red;
+            }
+            errorLabel2.alpha = 1;
             
         } catch {
             // Catch errors from trying to load files
