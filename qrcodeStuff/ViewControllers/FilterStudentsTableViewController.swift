@@ -44,39 +44,42 @@ class FilterStudentsTableViewController: UITableViewController, UISearchBarDeleg
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchBar.autocapitalizationType = UITextAutocapitalizationType.none;
         if searchText.isEmpty {
-            students = initialStudents
+            self.students = self.initialStudents
             self.tableView.reloadData()
         }
         else {
-            filterTableView(ind: searchBar.selectedScopeButtonIndex, text: searchText)
+            self.students = filterTableView(ind: searchBar.selectedScopeButtonIndex, text: searchText,  initialStudents:self.initialStudents, students:self.students)
+            self.tableView.reloadData()
         }
     }
     
-    func filterTableView(ind:Int,text:String) {
+    func filterTableView(ind:Int,text:String,initialStudents:[Student],students:[Student]) -> [Student] {
+        var students = students
         switch ind {
             case selectedScope.building.rawValue:
                 students = initialStudents.filter({ (student) -> Bool in
                     return student.building.lowercased().contains(text.lowercased())
                 })
-                self.tableView.reloadData()
+//                self.tableView.reloadData()
             case selectedScope.time.rawValue:
                 students = initialStudents.filter({ (student) -> Bool in
                     return student.time.lowercased().contains(text.lowercased())
                 })
-                self.tableView.reloadData()
+//                self.tableView.reloadData()
             case selectedScope.major.rawValue:
                 students = initialStudents.filter({ (student) -> Bool in
                     return student.major.lowercased().contains(text.lowercased())
                 })
-                self.tableView.reloadData()
+//                self.tableView.reloadData()
             case selectedScope.id.rawValue:
                 students = initialStudents.filter({ (student) -> Bool in
                     return String(student.id).contains(text)
                 })
-                self.tableView.reloadData()
+//                self.tableView.reloadData()
             default:
                 print("no type")
         }
+        return students
     }
     
     
@@ -116,6 +119,7 @@ class FilterStudentsTableViewController: UITableViewController, UISearchBarDeleg
                         self.getBuildingName(buildingID: buildingID) { buildingName, error in
                             let newStudent = Student(name: name, major: major, id: id, building:
                                                         buildingName ?? "", time: time)
+                            
                             self.initialStudents.append(newStudent)
                             self.students.append(newStudent)
                             self.tableView.reloadData()
@@ -143,8 +147,8 @@ class FilterStudentsTableViewController: UITableViewController, UISearchBarDeleg
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FilterStudentsTableViewCell
-        
         let student = self.students[indexPath.row]
+        
         
         cell.nameLabel.text = student.name
         cell.majorLabel.text = "(" + student.major + ")"

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1429F29CCB1D4F665DB8FA74 /* Pods_qrcodeStuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D509E9B7950F2730DF164C /* Pods_qrcodeStuff.framework */; };
 		4F391DCDEFD22514619996BE /* Pods_qrcodeStuff_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9ABC153630151697F232D06 /* Pods_qrcodeStuff_appTests.framework */; };
+		8F10D3EF26113458006DAF19 /* filterStudentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10D3EE26113458006DAF19 /* filterStudentsTests.swift */; };
+		8F10D4222611AA8D006DAF19 /* filterStudentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10D3FF2611A4EC006DAF19 /* filterStudentsUITests.swift */; };
 		8F814C8226086B0C008FF4E2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8126086B0C008FF4E2 /* Student.swift */; };
 		8F814C8526086B15008FF4E2 /* FilterStudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8426086B15008FF4E2 /* FilterStudentsTableViewCell.swift */; };
 		8F814C8826086B1F008FF4E2 /* FilterStudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8726086B1F008FF4E2 /* FilterStudentsTableViewController.swift */; };
@@ -55,6 +57,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8F10D4022611A4EC006DAF19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B12EA1E1260008550082CA9C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B12EA1E8260008550082CA9C;
+			remoteInfo = qrcodeStuff;
+		};
 		B176E277261004B70065D18B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B12EA1E1260008550082CA9C /* Project object */;
@@ -70,6 +79,10 @@
 		5B25DAB09A0535079427E1C6 /* Pods-qrcodeStuff-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff-appTests.debug.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff-appTests/Pods-qrcodeStuff-appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F5411DF78407C9EFAD2E868 /* Pods-qrcodeStuff-appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff-appTests.release.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff-appTests/Pods-qrcodeStuff-appTests.release.xcconfig"; sourceTree = "<group>"; };
 		8D303D2235D2187906F4C5F7 /* Pods-qrcodeStuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff.release.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff/Pods-qrcodeStuff.release.xcconfig"; sourceTree = "<group>"; };
+		8F10D3EE26113458006DAF19 /* filterStudentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filterStudentsTests.swift; sourceTree = "<group>"; };
+		8F10D3FD2611A4EC006DAF19 /* appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F10D3FF2611A4EC006DAF19 /* filterStudentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filterStudentsUITests.swift; sourceTree = "<group>"; };
+		8F10D4012611A4EC006DAF19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F814C8126086B0C008FF4E2 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		8F814C8426086B15008FF4E2 /* FilterStudentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterStudentsTableViewCell.swift; sourceTree = "<group>"; };
 		8F814C8726086B1F008FF4E2 /* FilterStudentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterStudentsTableViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +134,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8F10D3FA2611A4EC006DAF19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B12EA1E6260008550082CA9C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -160,6 +180,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8F10D3FE2611A4EC006DAF19 /* appUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8F10D3FF2611A4EC006DAF19 /* filterStudentsUITests.swift */,
+				8F10D4012611A4EC006DAF19 /* Info.plist */,
+			);
+			path = appUITests;
+			sourceTree = "<group>";
+		};
 		8F814C8A26086B32008FF4E2 /* Student */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +202,7 @@
 			children = (
 				B12EA1EB260008550082CA9C /* qrcodeStuff */,
 				B176E273261004B70065D18B /* appTests */,
+				8F10D3FE2611A4EC006DAF19 /* appUITests */,
 				B12EA1EA260008550082CA9C /* Products */,
 				77B1C62DD80B335D0D92DCB3 /* Pods */,
 				88DD897644DA2225946116F5 /* Frameworks */,
@@ -184,6 +214,7 @@
 			children = (
 				B12EA1E9260008550082CA9C /* qrcodeStuff.app */,
 				B176E272261004B70065D18B /* appTests.xctest */,
+				8F10D3FD2611A4EC006DAF19 /* appUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,6 +267,7 @@
 				B176E274261004B70065D18B /* appTests.swift */,
 				B14E729226100667003370E1 /* qrCodeTests.swift */,
 				B176E276261004B70065D18B /* Info.plist */,
+				8F10D3EE26113458006DAF19 /* filterStudentsTests.swift */,
 			);
 			path = appTests;
 			sourceTree = "<group>";
@@ -322,6 +354,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8F10D3FC2611A4EC006DAF19 /* appUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F10D4042611A4EC006DAF19 /* Build configuration list for PBXNativeTarget "appUITests" */;
+			buildPhases = (
+				8F10D3F92611A4EC006DAF19 /* Sources */,
+				8F10D3FA2611A4EC006DAF19 /* Frameworks */,
+				8F10D3FB2611A4EC006DAF19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F10D4032611A4EC006DAF19 /* PBXTargetDependency */,
+			);
+			name = appUITests;
+			productName = appUITests;
+			productReference = 8F10D3FD2611A4EC006DAF19 /* appUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		B12EA1E8260008550082CA9C /* qrcodeStuff */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B12EA1FD260008560082CA9C /* Build configuration list for PBXNativeTarget "qrcodeStuff" */;
@@ -372,6 +422,10 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					8F10D3FC2611A4EC006DAF19 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = B12EA1E8260008550082CA9C;
+					};
 					B12EA1E8260008550082CA9C = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -396,11 +450,19 @@
 			targets = (
 				B12EA1E8260008550082CA9C /* qrcodeStuff */,
 				B176E271261004B70065D18B /* appTests */,
+				8F10D3FC2611A4EC006DAF19 /* appUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8F10D3FB2611A4EC006DAF19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B12EA1E7260008550082CA9C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -537,6 +599,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8F10D3F92611A4EC006DAF19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F10D4222611AA8D006DAF19 /* filterStudentsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B12EA1E5260008550082CA9C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -586,6 +656,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B176E275261004B70065D18B /* appTests.swift in Sources */,
+				8F10D3EF26113458006DAF19 /* filterStudentsTests.swift in Sources */,
 				B14E729326100667003370E1 /* qrCodeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,6 +664,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8F10D4032611A4EC006DAF19 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B12EA1E8260008550082CA9C /* qrcodeStuff */;
+			targetProxy = 8F10D4022611A4EC006DAF19 /* PBXContainerItemProxy */;
+		};
 		B176E278261004B70065D18B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B12EA1E8260008550082CA9C /* qrcodeStuff */;
@@ -620,6 +696,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8F10D4052611A4EC006DAF19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = appUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.team14.appUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = qrcodeStuff;
+			};
+			name = Debug;
+		};
+		8F10D4062611A4EC006DAF19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = appUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.team14.appUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = qrcodeStuff;
+			};
+			name = Release;
+		};
 		B12EA1FB260008560082CA9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -821,6 +933,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8F10D4042611A4EC006DAF19 /* Build configuration list for PBXNativeTarget "appUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F10D4052611A4EC006DAF19 /* Debug */,
+				8F10D4062611A4EC006DAF19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B12EA1E4260008550082CA9C /* Build configuration list for PBXProject "qrcodeStuff" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
