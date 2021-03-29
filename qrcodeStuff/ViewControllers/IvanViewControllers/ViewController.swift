@@ -55,6 +55,8 @@ class ViewController: UIViewController {
         return nil
     }
         
+    var userEmail = ""
+    
     @IBAction func continueTapped(_ sender: Any) {
         
         // Validate fields
@@ -73,6 +75,22 @@ class ViewController: UIViewController {
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
+//            db.collection("students").document(userEmail).addSnapshotListener { documentSnapshot, error in
+//                  guard let document = documentSnapshot else {
+//                    print("Error fetching document: \(error!)")
+//                    return
+//                  }
+//                  guard let data = document.data() else {
+//                    print("Document data was empty.")
+//                    return
+//                  }
+//    //              print("Current data: \(data)")
+//                self.tempBuildingHistory = data["buildingHistory"] as? [String] ?? []
+//                self.tempBuildingHistory.reverse()
+//                print("buildingHistory: \(self.tempBuildingHistory)")
+//                
+//            }
+            
             // Signing in the user
             Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 
@@ -84,26 +102,87 @@ class ViewController: UIViewController {
                     self.errorLabel.alpha = 1
                 }
                 else {
+                    var deleted : Bool?
                     
-                    print("Successful login")
+                    let currentUser = Auth.auth().currentUser
+                    if let email = currentUser?.email {
+                        self.userEmail = email
+                        self.userData = UserData(email) {
+                            deleted = self.userData?.getInfo("deleted") as! Bool
+                            print(deleted!)
+                        }
+                        
+                    }
+//                    print(self.userData?.isStudent())
                     
-                    self.transitionToHome()
-//                    self.user = Auth.auth().currentUser
-//                    // Setting current userData
-//                    if let email = self.user?.email {
-//                        self.userData = UserData(email)
-//                        if let userData = self.userData {
-//                            // Directing to respective views
-//                            if (!(userData.isStudent())) {
-//                                print("transitioning to manager view");
-//                                self.transitionToManagerView();
-//                            } else{
-//                                print("transitioning to student view");
-//                                self.transitionToStudentView();
+//                    if ((self.userData?.isStudent())! == true) {
+//                        db.collection("students").document(self.userEmail).addSnapshotListener { documentSnapshot, error in
+//                            if (error != nil) {
+//                                  guard let document = documentSnapshot else {
+//                                    print("Error fetching document: \(error!)")
+//                                    return
+//                                  }
+//                                  guard let data = document.data() else {
+//                                    print("Document data was empty.")
+//                                    return
+//                                  }
+//                                isDeleted = data["deleted"] as? String ?? ""
+//                                print(isDeleted)
+//    //                            isDeleted = document.value!["deleted"] as? Any ?? ""
+//    //                            isDeleted = data["deleted"]
+//    //                            print(delete)
 //                            }
 //                        }
 //                    }
+//                    db.collection("students").document(self.userEmail).addSnapshotListener { documentSnapshot, error in
+//                        if (error != nil) {
+//                              guard let document = documentSnapshot else {
+//                                print("Error fetching document: \(error!)")
+//                                return
+//                              }
+//                              guard let data = document.data() else {
+//                                print("Document data was empty.")
+//                                return
+//                              }
+//                            deleted = data["deleted"] as! Bool
+//                            print(isDeleted)
+////                            isDeleted = document.value!["deleted"] as? Any ?? ""
+////                            isDeleted = data["deleted"]
+////                            print(delete)
+//                        }
+//                        else {
+//                            db.collection("manager").document(self.userEmail).addSnapshotListener { documentSnapshot, error in
+//                                if (error != nil) {
+//                                      guard let document = documentSnapshot else {
+//                                        print("Error fetching document: \(error!)")
+//                                        return
+//                                      }
+//                                      guard let data = document.data() else {
+//                                        print("Document data was empty.")
+//                                        return
+//                                      }
+////                                    isDeleted = data["deleted"]
+////                                    print(isDeleted)
+//                                }
+//
+//                            }
+//                        }
+//
+//                    }
                     
+
+                    
+//                    deleted = self.userData?.getInfo("deleted") as! Bool
+//                    print(deleted!)
+//                    if (deleted != nil) {
+//                        print(deleted!)
+//                        print("Error signing in")
+//                    }
+//                    else {
+//                        print("Successful login")
+//
+//                        self.transitionToHome()
+//                    }
                 }
             }
         }

@@ -16,7 +16,7 @@ class UserData {
     
     var ref : DocumentReference?
     
-    init(_ email: String, completion: (_ err: Error) -> Void = {_ in}) {
+    init(_ email: String, completion: @escaping () -> Void = {}) {
         db.getDocument(collection: "students", email) { doc, err in
             if let doc = doc {
                 self.student = true
@@ -31,6 +31,7 @@ class UserData {
                     }
                 }
             }
+            completion()
         }
     }
     

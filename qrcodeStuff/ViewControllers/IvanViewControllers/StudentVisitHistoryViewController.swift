@@ -147,37 +147,6 @@ class StudentVisitHistoryViewController: UIViewController {
 
     }
     
-//    func displayUserData() {
-//
-//        let db = Firestore.firestore()
-//        let user = Auth.auth().currentUser
-//        var email = ""
-//
-//        if let emailWrapped = user?.email {
-//            email = emailWrapped
-//            print(email)
-//
-//        }
-//
-//        db.collection("students").document("\(email)").addSnapshotListener { documentSnapshot, error in
-//              guard let document = documentSnapshot else {
-//                print("Error fetching document: \(error!)")
-//                return
-//              }
-//              guard let data = document.data() else {
-//                print("Document data was empty.")
-//                return
-//              }
-//              print("Current data: \(data)")
-//              let firstName = data["firstName"] as? String ?? ""
-//              let email = data["uscEmail"] as? String ?? ""
-//              print(firstName)
-//              print(email)
-//        }
-//
-//        print("Checked into Building1 at \(Date())")
-//    }
-    
     @IBAction func checkInTapped(_ sender: Any) {
         let db = Firestore.firestore()
         let studentHistory = db.collection("students").document(userEmail)
@@ -216,33 +185,6 @@ extension StudentVisitHistoryViewController: UITableViewDelegate, UITableViewDat
         cell.setBuildingViewFeed(buildingName: buildingName, lastCheckInTime: buildingTime, checkIn: checkIn)
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        let alert = UIAlertController(title: "Building Info", message: "Choose an option.", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "Get QR Code", style: .default, handler: { (action) in
-//            self.performSegue(withIdentifier: "QRCodeVC", sender: self)
-//        }))
-//        alert.addAction(UIAlertAction(title: "Get Building Info", style: .default, handler: { (action) in
-//            self.performSegue(withIdentifier: "buildingInfoVC", sender: self)
-//        }))
-//        self.present(alert, animated: true)
-//
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destination = segue.destination as? GenerateQRViewController {
-//            destination.modalPresentationStyle = .fullScreen
-//            let index = tableView.indexPathForSelectedRow?.row
-//            destination.buildingName = buildings[index!].buildingName
-//        }
-//        if let destination2 = segue.destination as? BuildingXXXViewController {
-//            destination2.modalPresentationStyle = .fullScreen
-//            let index = tableView.indexPathForSelectedRow?.row
-//            destination2.buildingName = buildings[index!].buildingName
-//
-//        }
-//    }
     
 }
 
