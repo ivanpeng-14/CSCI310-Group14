@@ -63,6 +63,8 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
                     self.confirmPassword.text = ""
                 }))
                 self.present(errors, animated: true)
+            } else {
+                self.deleteUser()
             }
         }))
         
@@ -75,25 +77,31 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     func attemptDelete(_ passwordCorrect: Bool, _ passwordsMatch: Bool) -> Bool {
-        if passwordCorrect && passwordsMatch {
-            Firestore.firestore().document(user?.email ?? "").updateData(["deleted" : true])
-            
+        let deleteSuccess = passwordCorrect && passwordsMatch
+        
+        return deleteSuccess
+    }
+    
+    func deleteUser() {
+        userData?.updateData(key: "deleted", val: true)
+        
+        if willCheckOut(userData?.getInfo("currbuilding") as! String){
             checkOutUser()
-            
-            do {
-                try Auth.auth().signOut()
-                self.returnToLogin()
-            } catch let e as NSError {
-                print("Error signing out: \(e)")
-            }
         }
         
-        return passwordCorrect && passwordsMatch
+        do {
+            try Auth.auth().signOut()
+            self.returnToLogin()
+        } catch let e as NSError {
+            print("Error signing out: \(e)")
+        }
+    }
+    
+    func willCheckOut(_ currbuilding: String) -> Bool {
+        return !(!(userData?.isStudent())! || currbuilding == "")
     }
     
     func checkOutUser() {
-        if !(userData?.isStudent())! || userData?.getInfo("currbuilding") as! String == "" { return }
-        
         let db = Firestore.firestore()
         let ref = db.collection("buildings").document(self.userData?.getInfo("currbuilding") as? String ?? "")
         db.collection("buildings").document(self.userData?.getInfo("currbuilding") as? String ?? "").getDocument { (document, error) in
@@ -112,9 +120,7 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
                 //update students currBuilding
                 let studentDoc = db.collection("students").document(self.user?.email ?? "")
                 studentDoc.updateData(["currbuilding": ""])
-                //update student history
-                let studentHistory = db.collection("students").document(self.user?.email ?? "")
-                studentHistory.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked out of \(actualName) at \(Date())"])])
+                studentDoc.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked out of \(actualName) at \(Date())"])])
                 
             }
         }
