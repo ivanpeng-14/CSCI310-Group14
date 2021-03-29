@@ -90,49 +90,60 @@ class ProfileEditViewController: UIPhotoDelegate, UITextFieldDelegate {
     }
     
     @IBAction func updatePassword(_ sender: Any) {
-        let allFieldsEntered = newPassword.text != "" && confirmNewPassword.text != "" && oldPassword.text != ""
-        let oldPasswordCorrect = self.userData?.getInfo("password") as? String == oldPassword.text
-        let newPasswordMatch = self.confirmNewPassword.text == self.newPassword.text
-        let newPasswordLong = self.newPassword.text?.count ?? 0 >= 6
-        let newPasswordNew = self.newPassword.text != self.oldPassword.text
         
-        if allFieldsEntered && oldPasswordCorrect && newPasswordMatch && newPasswordLong && newPasswordNew {
-            errorText.isHidden = true
-            
+        let err_index = updatePasswordHelper()
+        
+        errorText.isHidden = err_index == -1
+        
+        switch err_index {
+        case -1:
+            let alert = UIAlertController(title: "Success", message: "Password was successfully updated.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
+                self.oldPassword.text = ""
+                self.newPassword.text = ""
+                self.confirmNewPassword.text = ""
+            }))
+            self.present(alert, animated: true)
+        case 0:
+            errorText.text = "You did not fill all fields"
+        case 1:
+            errorText.text = "Old password is not correct"
+        case 2:
+            errorText.text = "New password must match confirmation"
+        case 3:
+            errorText.text = "New password must be at least 6 characters long"
+        case 4:
+            errorText.text = "New password cannot be the same as old password"
+        default:
+            errorText.text = "Unknown error. Try again."
+        }
+    }
+    
+    // returns a number based on the input error found
+    // -1 = no errors found
+    // 0 = blank fields
+    // 1 = incorrect old password
+    // 2 = new password fields do not match
+    // 3 = the new password <6 characters in length
+    // 4 = the new password is the same as the old one
+    func updatePasswordHelper() -> Int {
+        let errors = [
+            newPassword.text == "" || confirmNewPassword.text == "" || oldPassword.text == "",
+            self.userData?.getInfo("password") as? String ?? "" != oldPassword.text,
+            self.confirmNewPassword.text != self.newPassword.text,
+            self.newPassword.text?.count ?? 0 < 6,
+            self.newPassword.text == self.oldPassword.text
+        ]
+        
+        if errors.firstIndex(of: true) == nil {
             self.user?.updatePassword(to: newPassword.text!) { (error) in
-                let dismiss = UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
-                    self.oldPassword.text = ""
-                    self.newPassword.text = ""
-                    self.confirmNewPassword.text = ""
-                })
-                
-                if error != nil {
-                    let alert = UIAlertController(title: "Uh oh!", message: "An unknown error occured. Your password could not be updated", preferredStyle: .alert)
-                    alert.addAction(dismiss)
-                    print("An error occured while updating the password")
-                    self.present(alert, animated: true)
-                } else {
-                    let alert = UIAlertController(title: "Success", message: "Password was successfully updated.", preferredStyle: .alert)
-                    alert.addAction(dismiss)
+                if error == nil {
                     self.userData?.updateData(key: "password", val: self.newPassword.text!)
-                    self.present(alert, animated: true)
                 }
             }
-        } else {
-            errorText.isHidden = false
-            if !allFieldsEntered {
-                errorText.text = "You did not fill all fields"
-            } else if !oldPasswordCorrect {
-                errorText.text = "Old password is not correct"
-            } else if !newPasswordMatch {
-                errorText.text = "New password must match confirmation"
-            } else if !newPasswordLong {
-                errorText.text = "New password must be at least 6 characters long"
-            } else {
-                errorText.text = "New password cannot be the same as old password"
-
-            }
         }
+        
+        return errors.firstIndex(of: true) ?? -1
     }
     
     @IBAction func deleteAccountPressed(_ sender: UIButton) {

@@ -76,11 +76,12 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
     
     func attemptDelete(_ passwordCorrect: Bool, _ passwordsMatch: Bool) -> Bool {
         if passwordCorrect && passwordsMatch {
+            Firestore.firestore().document(user?.email ?? "").updateData(["deleted" : true])
+            
             checkOutUser()
             
             do {
                 try Auth.auth().signOut()
-                self.userData?.updateData(key: "deleted", val: true)
                 self.returnToLogin()
             } catch let e as NSError {
                 print("Error signing out: \(e)")

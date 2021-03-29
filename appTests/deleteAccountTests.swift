@@ -47,115 +47,197 @@ class deleteAccountTests: XCTestCase {
     }
     
     func testDelete1() throws {
-        self.vc.userData?.updateData(key: "currbuilding", val: initialBuilding)
+        docRef?.updateData(["currbuilding": initialBuilding])
+        
+        let expectation = self.expectation(description: "Data Acquired")
+        
+        self.passwordHelper("1234567", "1234567", "123456")
+        
+        var deleted : Bool!
+        var currbuilding : String!
         
         docRef?.getDocument() { doc, err in
             if let data = doc?.data() {
-                let correct_password = (data["password"] as! String)
-                self.passwordHelper("1234567", "12345678", correct_password)
- 
-                XCTAssertFalse(data["deleted"] as! Bool)
-                XCTAssertEqual(data["currbuilding"] as! String, self.initialBuilding)
+                deleted = (data["deleted"] as! Bool)
+                currbuilding = (data["currbuilding"] as! String)
+                expectation.fulfill()
             }
         }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssertFalse(deleted)
+        XCTAssertEqual(currbuilding, self.initialBuilding)
     }
     
     func testDelete2() throws {
-        self.vc.userData?.updateData(key: "currbuilding", val: "")
+        docRef?.updateData(["currbuilding": ""])
+        
+        let expectation = self.expectation(description: "Data Acquired")
+        
+        self.passwordHelper("1234567", "1234567", "123456")
+        
+        var deleted : Bool!
+        var currbuilding : String!
         
         docRef?.getDocument() { doc, err in
             if let data = doc?.data() {
-                let correct_password = (data["password"] as! String)
-                self.passwordHelper("1234567", "12345678", correct_password)
-                
-                XCTAssertFalse(data["deleted"] as! Bool)
-                XCTAssertEqual(data["currbuilding"] as! String, "")
+                deleted = (data["deleted"] as! Bool)
+                currbuilding = (data["currbuilding"] as! String)
+                expectation.fulfill()
             }
         }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssertFalse(deleted)
+        XCTAssertEqual(currbuilding, "")
     }
     
     func testDelete3() throws {
-        self.vc.userData?.updateData(key: "currbuilding", val: initialBuilding)
+        docRef?.updateData(["currbuilding": initialBuilding])
+        
+        let expectation = self.expectation(description: "Data Acquired")
+        
+        self.passwordHelper("1234567", "1234567", "123456")
+        
+        var deleted : Bool!
+        var currbuilding : String!
         
         docRef?.getDocument() { doc, err in
             if let data = doc?.data() {
-                let correct_password = (data["password"] as! String)
-                self.passwordHelper("1234567", "1234567", correct_password)
-                
-                XCTAssertFalse(data["deleted"] as! Bool)
-                XCTAssertEqual(data["currbuilding"] as! String, self.initialBuilding)
+                deleted = (data["deleted"] as! Bool)
+                currbuilding = (data["currbuilding"] as! String)
+                expectation.fulfill()
             }
         }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssertFalse(deleted)
+        XCTAssertEqual(currbuilding, self.initialBuilding)
     }
     
     func testDelete4() throws {
-        self.vc.userData?.updateData(key: "currbuilding", val: "")
+        docRef?.updateData(["currbuilding": ""])
+        
+        let expectation = self.expectation(description: "Data Acquired")
+        
+        self.passwordHelper("1234567", "1234567", "123456")
+        
+        var deleted : Bool!
+        var currbuilding : String!
         
         docRef?.getDocument() { doc, err in
             if let data = doc?.data() {
-                let correct_password = (data["password"] as! String)
-                self.passwordHelper("1234567", "1234567", correct_password)
-                
-                XCTAssertFalse(data["deleted"] as! Bool)
-                XCTAssertEqual(data["currbuilding"] as! String, "")
+                deleted = (data["deleted"] as! Bool)
+                currbuilding = (data["currbuilding"] as! String)
+                expectation.fulfill()
             }
         }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssertFalse(deleted)
+        XCTAssertEqual(currbuilding, "")
     }
     
     func testDelete5() throws {
-        self.vc.userData?.updateData(key: "currbuilding", val: initialBuilding)
+        docRef?.updateData(["currbuilding": initialBuilding])
+        
+        let expectation = self.expectation(description: "Data Acquired")
+        
+        self.passwordHelper("1234567", "1234567", "123456")
+        
+        var deleted : Bool!
+        var currbuilding : String!
         
         docRef?.getDocument() { doc, err in
             if let data = doc?.data() {
-                let correct_password = (data["password"] as! String)
-                self.passwordHelper("123456", "1234567", correct_password)
-                
-                XCTAssertFalse(data["deleted"] as! Bool)
-                XCTAssertEqual(data["currbuilding"] as! String, self.initialBuilding)
+                deleted = (data["deleted"] as! Bool)
+                currbuilding = (data["currbuilding"] as! String)
+                expectation.fulfill()
             }
         }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssertFalse(deleted)
+        XCTAssertEqual(currbuilding, self.initialBuilding)
     }
     
     func testDelete6() throws {
-        self.vc.userData?.updateData(key: "currbuilding", val: "")
+        docRef?.updateData(["currbuilding": ""])
+        
+        let expectation = self.expectation(description: "Data Acquired")
+        
+        self.passwordHelper("1234567", "1234567", "123456")
+        
+        var deleted : Bool!
+        var currbuilding : String!
         
         docRef?.getDocument() { doc, err in
             if let data = doc?.data() {
-                let correct_password = (data["password"] as! String)
-                self.passwordHelper("123456", "1234567", correct_password)
-                
-                XCTAssertFalse(data["deleted"] as! Bool)
-                XCTAssertEqual(data["currbuilding"] as! String, "")
+                deleted = (data["deleted"] as! Bool)
+                currbuilding = (data["currbuilding"] as! String)
+                expectation.fulfill()
             }
         }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssertFalse(deleted)
+        XCTAssertEqual(currbuilding, "")
     }
     
     func testDelete7() throws {
-        self.vc.userData?.updateData(key: "currbuilding", val: initialBuilding)
+        docRef?.updateData(["currbuilding": initialBuilding])
         
-        docRef?.getDocument() { doc, err in
-            if let data = doc?.data() {
-                let correct_password = (data["password"] as! String)
-                self.passwordHelper("123456", "123456", correct_password)
-                
-                XCTAssertTrue(data["deleted"] as! Bool)
-                XCTAssertEqual(data["currbuilding"] as! String, "")
+        let expectation = self.expectation(description: "Data Acquired")
+        
+        self.passwordHelper("1234567", "1234567", "123456")
+        
+        var deleted : Bool!
+        var currbuilding : String!
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.docRef?.getDocument() { doc, err in
+                if let data = doc?.data() {
+                    deleted = (data["deleted"] as! Bool)
+                    currbuilding = (data["currbuilding"] as! String)
+                    expectation.fulfill()
+                }
             }
         }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssertTrue(deleted)
+        XCTAssertEqual(currbuilding, "")
     }
     
     func testDelete8() throws {
-        self.vc.userData?.updateData(key: "currbuilding", val: "")
+        docRef?.updateData(["currbuilding": ""])
+        
+        let expectation = self.expectation(description: "Data Acquired")
+        
+        self.passwordHelper("1234567", "1234567", "123456")
+        
+        var deleted : Bool!
+        var currbuilding : String!
         
         docRef?.getDocument() { doc, err in
             if let data = doc?.data() {
-                let correct_password = (data["password"] as! String)
-                self.passwordHelper("123456", "123456", correct_password)
-                
-                XCTAssertTrue(data["deleted"] as! Bool)
-                XCTAssertEqual(data["currbuilding"] as! String, "")
+                deleted = (data["deleted"] as! Bool)
+                currbuilding = (data["currbuilding"] as! String)
+                expectation.fulfill()
             }
         }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssertTrue(deleted)
+        XCTAssertEqual(currbuilding, "")
     }
     
     func testDelete9() throws {
@@ -183,6 +265,9 @@ class deleteAccountTests: XCTestCase {
     }
     
     func passwordHelper(_ password: String, _ confirmation: String, _ correct: String){
+        self.vc.password.text = password
+        self.vc.confirmPassword.text = confirmation
+        
         let passwordCorrect = password == correct
         let passwordsMatch = password == confirmation
         
