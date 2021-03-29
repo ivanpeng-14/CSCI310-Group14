@@ -22,6 +22,8 @@
 		B144A21D26040B060011FB9C /* BuildingXXXTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B144A21C26040B060011FB9C /* BuildingXXXTableViewCell.swift */; };
 		B144A22126040DF10011FB9C /* BuildingXXXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B144A22026040DF10011FB9C /* BuildingXXXViewController.swift */; };
 		B14E729326100667003370E1 /* qrCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14E729226100667003370E1 /* qrCodeTests.swift */; };
+		B14E72A126114919003370E1 /* appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14E72A026114919003370E1 /* appUITests.swift */; };
+		B14E72AC261149B2003370E1 /* qrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14E72AB261149B2003370E1 /* qrUITests.swift */; };
 		B176E275261004B70065D18B /* appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B176E274261004B70065D18B /* appTests.swift */; };
 		B17C6E6D2607D74B00C8E964 /* building.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6E6A2607D74B00C8E964 /* building.swift */; };
 		B17C6E6E2607D74B00C8E964 /* buildingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C6E6B2607D74B00C8E964 /* buildingService.swift */; };
@@ -55,6 +57,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B14E72A326114919003370E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B12EA1E1260008550082CA9C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B12EA1E8260008550082CA9C;
+			remoteInfo = qrcodeStuff;
+		};
 		B176E277261004B70065D18B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B12EA1E1260008550082CA9C /* Project object */;
@@ -85,6 +94,10 @@
 		B144A21C26040B060011FB9C /* BuildingXXXTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingXXXTableViewCell.swift; sourceTree = "<group>"; };
 		B144A22026040DF10011FB9C /* BuildingXXXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingXXXViewController.swift; sourceTree = "<group>"; };
 		B14E729226100667003370E1 /* qrCodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = qrCodeTests.swift; sourceTree = "<group>"; };
+		B14E729E26114919003370E1 /* appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B14E72A026114919003370E1 /* appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appUITests.swift; sourceTree = "<group>"; };
+		B14E72A226114919003370E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B14E72AB261149B2003370E1 /* qrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrUITests.swift; sourceTree = "<group>"; };
 		B176E272261004B70065D18B /* appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B176E274261004B70065D18B /* appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appTests.swift; sourceTree = "<group>"; };
 		B176E276261004B70065D18B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -126,6 +139,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1429F29CCB1D4F665DB8FA74 /* Pods_qrcodeStuff.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B14E729B26114919003370E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +193,7 @@
 			children = (
 				B12EA1EB260008550082CA9C /* qrcodeStuff */,
 				B176E273261004B70065D18B /* appTests */,
+				B14E729F26114919003370E1 /* appUITests */,
 				B12EA1EA260008550082CA9C /* Products */,
 				77B1C62DD80B335D0D92DCB3 /* Pods */,
 				88DD897644DA2225946116F5 /* Frameworks */,
@@ -184,6 +205,7 @@
 			children = (
 				B12EA1E9260008550082CA9C /* qrcodeStuff.app */,
 				B176E272261004B70065D18B /* appTests.xctest */,
+				B14E729E26114919003370E1 /* appUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,6 +250,16 @@
 				B144A21C26040B060011FB9C /* BuildingXXXTableViewCell.swift */,
 			);
 			path = TableViewCellControllers;
+			sourceTree = "<group>";
+		};
+		B14E729F26114919003370E1 /* appUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B14E72A026114919003370E1 /* appUITests.swift */,
+				B14E72A226114919003370E1 /* Info.plist */,
+				B14E72AB261149B2003370E1 /* qrUITests.swift */,
+			);
+			path = appUITests;
 			sourceTree = "<group>";
 		};
 		B176E273261004B70065D18B /* appTests */ = {
@@ -342,6 +374,24 @@
 			productReference = B12EA1E9260008550082CA9C /* qrcodeStuff.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B14E729D26114919003370E1 /* appUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B14E72A526114919003370E1 /* Build configuration list for PBXNativeTarget "appUITests" */;
+			buildPhases = (
+				B14E729A26114919003370E1 /* Sources */,
+				B14E729B26114919003370E1 /* Frameworks */,
+				B14E729C26114919003370E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B14E72A426114919003370E1 /* PBXTargetDependency */,
+			);
+			name = appUITests;
+			productName = appUITests;
+			productReference = B14E729E26114919003370E1 /* appUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		B176E271261004B70065D18B /* appTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B176E279261004B70065D18B /* Build configuration list for PBXNativeTarget "appTests" */;
@@ -375,6 +425,10 @@
 					B12EA1E8260008550082CA9C = {
 						CreatedOnToolsVersion = 12.4;
 					};
+					B14E729D26114919003370E1 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = B12EA1E8260008550082CA9C;
+					};
 					B176E271261004B70065D18B = {
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = B12EA1E8260008550082CA9C;
@@ -396,6 +450,7 @@
 			targets = (
 				B12EA1E8260008550082CA9C /* qrcodeStuff */,
 				B176E271261004B70065D18B /* appTests */,
+				B14E729D26114919003370E1 /* appUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -409,6 +464,13 @@
 				B12EA206260009030082CA9C /* GoogleService-Info.plist in Resources */,
 				B12EA1F6260008560082CA9C /* Assets.xcassets in Resources */,
 				B12EA1F4260008550082CA9C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B14E729C26114919003370E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +643,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B14E729A26114919003370E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B14E72AC261149B2003370E1 /* qrUITests.swift in Sources */,
+				B14E72A126114919003370E1 /* appUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B176E26E261004B70065D18B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -593,6 +664,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B14E72A426114919003370E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B12EA1E8260008550082CA9C /* qrcodeStuff */;
+			targetProxy = B14E72A326114919003370E1 /* PBXContainerItemProxy */;
+		};
 		B176E278261004B70065D18B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B12EA1E8260008550082CA9C /* qrcodeStuff */;
@@ -776,6 +852,44 @@
 			};
 			name = Release;
 		};
+		B14E72A626114919003370E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 986XWR8X97;
+				INFOPLIST_FILE = appUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jenny8465.appUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = qrcodeStuff;
+			};
+			name = Debug;
+		};
+		B14E72A726114919003370E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 986XWR8X97;
+				INFOPLIST_FILE = appUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jenny8465.appUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = qrcodeStuff;
+			};
+			name = Release;
+		};
 		B176E27A261004B70065D18B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B25DAB09A0535079427E1C6 /* Pods-qrcodeStuff-appTests.debug.xcconfig */;
@@ -835,6 +949,15 @@
 			buildConfigurations = (
 				B12EA1FE260008560082CA9C /* Debug */,
 				B12EA1FF260008560082CA9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B14E72A526114919003370E1 /* Build configuration list for PBXNativeTarget "appUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B14E72A626114919003370E1 /* Debug */,
+				B14E72A726114919003370E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
