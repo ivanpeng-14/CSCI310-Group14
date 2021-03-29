@@ -36,11 +36,11 @@ class updatePasswordTests: XCTestCase {
                 if let user = Auth.auth().currentUser {
                     self.vc.user = user
                     let email = user.email!
-<<<<<<< HEAD
+//<<<<<<< HEAD
                     self.vc.userData = qrcodeStuff.UserData(email) {
-=======
-                    self.userData = qrcodeStuff.UserData(email) {
->>>>>>> 12214c80ee8ad2aa574732515b2ac79c6533ad9d
+//=======
+//                    self.userData = qrcodeStuff.UserData(email) {
+//>>>>>>> 12214c80ee8ad2aa574732515b2ac79c6533ad9d
                         super.setUp()
                     }
                 }
