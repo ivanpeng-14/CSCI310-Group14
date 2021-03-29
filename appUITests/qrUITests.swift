@@ -162,6 +162,43 @@ class qrUITests: XCTestCase {
         XCTAssertFalse(app.alerts["Check In"].exists)
         XCTAssertFalse(app.alerts["Check Out"].exists)
     }
+    
+    func test_atCapacity() throws {
+        let studentUser = "qruser1@usc.edu"
+        let app = XCUIApplication()
+        
+        let emailField = app.textFields["Email"]
+        emailField.tap()
+        emailField.typeText(studentUser)
+
+        let passwordSecureTextField = app.secureTextFields["Password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.tap()
+        passwordSecureTextField.tap()
+
+        app/*@START_MENU_TOKEN@*/.keys["p"]/*[[".keyboards.keys[\"p\"]",".keys[\"p\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.keys["a"]/*[[".keyboards.keys[\"a\"]",".keys[\"a\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let sKey = app/*@START_MENU_TOKEN@*/.keys["s"]/*[[".keyboards.keys[\"s\"]",".keys[\"s\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        sKey.tap()
+        sKey.tap()
+        app/*@START_MENU_TOKEN@*/.keys["w"]/*[[".keyboards.keys[\"w\"]",".keys[\"w\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.keys["o"]/*[[".keyboards.keys[\"o\"]",".keys[\"o\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.keys["r"]/*[[".keyboards.keys[\"r\"]",".keys[\"r\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.keys["d"]/*[[".keyboards.keys[\"d\"]",".keys[\"d\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+      
+    
+        
+        app.buttons["Continue"].tap()
+        app.buttons["Continue to Profile"].tap()
+        app.tabBars["Tab Bar"].buttons["Scanner"].tap()
+        sleep(10)
+        
+        XCTAssertTrue(app.alerts["Building at Capacity"].exists)
+        XCTAssertFalse(app.alerts["Check Out"].exists)
+        XCTAssertFalse(app.alerts["Error"].exists)
+        XCTAssertFalse(app.alerts["Check In"].exists)
+    }
 
 }
 
