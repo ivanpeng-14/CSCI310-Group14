@@ -86,7 +86,7 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     func checkOutUser() {
-        if !(userData?.isStudent())! { return }
+        if !(userData?.isStudent())! || userData?.getInfo("currbuilding") as! String == "" { return }
         
         let db = Firestore.firestore()
         let ref = db.collection("buildings").document(self.userData?.getInfo("currbuilding") as? String ?? "")
