@@ -8,14 +8,14 @@
 import UIKit
 import FirebaseFirestore
 
-class BuildingManageiewController: UIViewController {
+class BuildingsManageViewController: UIViewController {
 
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var numStudentsLabel: UITextField!
+//    @IBOutlet weak var numStudentsLabel: UITextField!
     
-    private var service: BuildingService?
-    private var allbuildings = [appBuilding]() {
+    var service: BuildingService?
+    var allbuildings = [appBuilding]() {
         didSet {
             DispatchQueue.main.async {
                 self.buildings = self.allbuildings
@@ -40,17 +40,15 @@ class BuildingManageiewController: UIViewController {
     }
     
     func loadData() {
-//        let db = Firestore.firestore()
         service = BuildingService()
               service?.get(collectionID: "buildings") { buildings in
              self.allbuildings = buildings
          }
-        
     }
     
     
 }
-extension BuildingManageiewController: UITableViewDelegate, UITableViewDataSource {
+extension BuildingsManageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return buildings.count
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0891BD2C261180D300FC384F /* buildingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0891BD2B261180D300FC384F /* buildingsTests.swift */; };
 		1429F29CCB1D4F665DB8FA74 /* Pods_qrcodeStuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D509E9B7950F2730DF164C /* Pods_qrcodeStuff.framework */; };
 		4F391DCDEFD22514619996BE /* Pods_qrcodeStuff_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9ABC153630151697F232D06 /* Pods_qrcodeStuff_appTests.framework */; };
 		8F814C8226086B0C008FF4E2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8126086B0C008FF4E2 /* Student.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0891BD2B261180D300FC384F /* buildingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buildingsTests.swift; sourceTree = "<group>"; };
 		2093DCFD0E3CB7330B73A258 /* Pods-qrcodeStuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff.debug.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff/Pods-qrcodeStuff.debug.xcconfig"; sourceTree = "<group>"; };
 		22D509E9B7950F2730DF164C /* Pods_qrcodeStuff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qrcodeStuff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B25DAB09A0535079427E1C6 /* Pods-qrcodeStuff-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff-appTests.debug.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff-appTests/Pods-qrcodeStuff-appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 		B176E273261004B70065D18B /* appTests */ = {
 			isa = PBXGroup;
 			children = (
+				0891BD2B261180D300FC384F /* buildingsTests.swift */,
 				B176E274261004B70065D18B /* appTests.swift */,
 				B14E729226100667003370E1 /* qrCodeTests.swift */,
 				B176E276261004B70065D18B /* Info.plist */,
@@ -656,6 +659,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0891BD2C261180D300FC384F /* buildingsTests.swift in Sources */,
 				B176E275261004B70065D18B /* appTests.swift in Sources */,
 				B14E729326100667003370E1 /* qrCodeTests.swift in Sources */,
 			);

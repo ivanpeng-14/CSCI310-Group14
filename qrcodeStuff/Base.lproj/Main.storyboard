@@ -182,7 +182,7 @@
         <!--Buildings Manage-->
         <scene sceneID="USc-U7-QEK">
             <objects>
-                <viewController storyboardIdentifier="BuildingsIManageVC" title="Buildings Manage" id="any-O9-vTW" customClass="BuildingManageiewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BuildingsIManageVC" title="Buildings Manage" id="any-O9-vTW" customClass="BuildingsManageViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NNk-Kc-GMy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
