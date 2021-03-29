@@ -44,6 +44,11 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     // IB Actions
+    @IBAction func returnToProfileTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "returnToProfile", sender: self)
+    }
+    
+    
     @IBAction func deleteConfirmed(_ sender: UIButton) {
         let alert = UIAlertController(title: "Delete Account?", message: "Are you sure you want to delete your account? This action is permanent and cannot be undone. You will not be able to create a new account with this email.", preferredStyle: .alert)
         

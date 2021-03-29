@@ -108,4 +108,10 @@ class ProfilePageViewController: UIViewController {
         view.window?.rootViewController = loginViewController
         view.window?.makeKeyAndVisible()
     }
+    
+    @IBAction func unwindToProfile( _ seg: UIStoryboardSegue) {
+        let src = seg.source as! DeleteAccountViewController
+        self.user = src.user
+        self.userData = src.userData
+    }
 }

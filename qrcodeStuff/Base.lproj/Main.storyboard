@@ -1519,8 +1519,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="returnPressed:" destination="jxs-21-HKq" eventType="touchUpInside" id="zvT-kd-OLn"/>
-                                                    <segue destination="Ibx-gt-F8p" kind="unwind" unwindAction="prepareForUnwindActionWithUnwindSegue:" id="YRS-88-jZj"/>
+                                                    <action selector="returnToProfileTapped:" destination="jxs-21-HKq" eventType="touchUpInside" id="2Hw-4Y-mjv"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1554,6 +1553,7 @@
                         <outlet property="confirmPassword" destination="XHZ-G7-AZf" id="uzf-Ud-6sQ"/>
                         <outlet property="deleteButton" destination="1Nk-Uc-ODO" id="IVO-Zm-v00"/>
                         <outlet property="password" destination="4N8-n6-j2u" id="RSb-Kl-OUU"/>
+                        <segue destination="Ibx-gt-F8p" kind="unwind" identifier="returnToProfile" unwindAction="unwindToProfile:" id="Y1E-cg-Fy6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tL4-Qs-QdK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
