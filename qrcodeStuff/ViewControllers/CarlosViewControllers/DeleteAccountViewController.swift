@@ -45,24 +45,13 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
     
     // IB Actions
     @IBAction func deleteConfirmed(_ sender: UIButton) {
-        let passwordCorrect = self.password.text == userData?.getInfo("password") as? String ?? ""
-        let passwordsMatch = self.password.text == self.confirmPassword.text
-        
         let alert = UIAlertController(title: "Delete Account?", message: "Are you sure you want to delete your account? This action is permanent and cannot be undone. You will not be able to create a new account with this email.", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: {action in
-            if passwordCorrect && passwordsMatch {
-                // add checkout here
-                
-                self.userData?.updateData(key: "deleted", val: true)
-                
-                do {
-                    try Auth.auth().signOut()
-                    self.returnToLogin()
-                } catch let e as NSError {
-                    print("Error signing out: \(e)")
-                }
-            } else {
+            let passwordCorrect = self.password.text == self.userData?.getInfo("password") as? String ?? ""
+            let passwordsMatch = self.password.text == self.confirmPassword.text
+            
+            if !self.attemptDelete(passwordCorrect, passwordsMatch) {
                 let errors = UIAlertController(title: "Error", message: "Could not delete account due to the following error(s):\(passwordCorrect ? "" : "\nIncorrect password entered.")\(passwordsMatch ? "" : "\nPasswords did not match.")", preferredStyle: .alert)
                 errors.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: {_ in
                     self.password.text = ""
@@ -78,6 +67,51 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
         }))
         
         self.present(alert, animated: true)
+    }
+    
+    func attemptDelete(_ passwordCorrect: Bool, _ passwordsMatch: Bool) -> Bool {
+        if passwordCorrect && passwordsMatch {
+            checkOutUser()
+            
+            do {
+                try Auth.auth().signOut()
+                self.userData?.updateData(key: "deleted", val: true)
+                self.returnToLogin()
+            } catch let e as NSError {
+                print("Error signing out: \(e)")
+            }
+        }
+        
+        return passwordCorrect && passwordsMatch
+    }
+    
+    func checkOutUser() {
+        if !(userData?.isStudent())! { return }
+        
+        let db = Firestore.firestore()
+        let ref = db.collection("buildings").document(self.userData?.getInfo("currbuilding") as? String ?? "")
+        db.collection("buildings").document(self.userData?.getInfo("currbuilding") as? String ?? "").getDocument { (document, error) in
+            if error == nil {
+                let documentData = document!.data()
+                let actualName = documentData!["buildingName"] as? String ?? ""
+                //update capacity
+                let capacity = documentData!["currentCapacity"] as? Int ?? -1
+                let newCapacity = capacity - 1
+                ref.updateData(["currentCapacity": newCapacity])
+                
+                //update building history
+                ref.updateData(["currentStudents": FieldValue.arrayRemove([self.user?.email ?? ""])])
+                
+        
+                //update students currBuilding
+                let studentDoc = db.collection("students").document(self.user?.email ?? "")
+                studentDoc.updateData(["currbuilding": ""])
+                //update student history
+                let studentHistory = db.collection("students").document(self.user?.email ?? "")
+                studentHistory.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked out of \(actualName) at \(Date())"])])
+                
+            }
+        }
     }
     
     func returnToLogin() {
