@@ -55,7 +55,6 @@
 		B1F53736260A4FD7001FFA2B /* UIPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F53731260A4FD7001FFA2B /* UIPhotoDelegate.swift */; };
 		B1F53737260A4FD7001FFA2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F53732260A4FD7001FFA2B /* UserData.swift */; };
 		B1F53738260A4FD7001FFA2B /* FirestoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F53733260A4FD7001FFA2B /* FirestoreAccessor.swift */; };
-		BF2176E526119CEE002BFE83 /* updatePasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2176E426119CEE002BFE83 /* updatePasswordTests.swift */; };
 		BF2176EA26119D39002BFE83 /* deleteAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2176E926119D39002BFE83 /* deleteAccountTests.swift */; };
 		BF2BC6B72609ADB900E01139 /* PhotoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */; };
 		BF2BC6BF2609AE0500E01139 /* ManagerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */; };
@@ -141,7 +140,6 @@
 		B1F53732260A4FD7001FFA2B /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		B1F53733260A4FD7001FFA2B /* FirestoreAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreAccessor.swift; sourceTree = "<group>"; };
 		B9ABC153630151697F232D06 /* Pods_qrcodeStuff_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qrcodeStuff_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF2176E426119CEE002BFE83 /* updatePasswordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updatePasswordTests.swift; sourceTree = "<group>"; };
 		BF2176E926119D39002BFE83 /* deleteAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteAccountTests.swift; sourceTree = "<group>"; };
 		BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoUploadViewController.swift; path = qrcodeStuff/ViewControllers/CarlosViewControllers/PhotoUploadViewController.swift; sourceTree = SOURCE_ROOT; };
 		BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTabBarController.swift; path = qrcodeStuff/ViewControllers/CarlosViewControllers/ManagerTabBarController.swift; sourceTree = SOURCE_ROOT; };
@@ -293,7 +291,6 @@
 				B14E729226100667003370E1 /* qrCodeTests.swift */,
 				8F10D4C62611CCD5006DAF19 /* filterStudentsTests.swift */,
 				B176E276261004B70065D18B /* Info.plist */,
-				BF2176E426119CEE002BFE83 /* updatePasswordTests.swift */,
 				BF2176E926119D39002BFE83 /* deleteAccountTests.swift */,
 			);
 			path = appTests;
@@ -690,7 +687,6 @@
 			files = (
 				0891BD2C261180D300FC384F /* buildingsTests.swift in Sources */,
 				8F10D4C72611CCD5006DAF19 /* filterStudentsTests.swift in Sources */,
-				BF2176E526119CEE002BFE83 /* updatePasswordTests.swift in Sources */,
 				BF2176EA26119D39002BFE83 /* deleteAccountTests.swift in Sources */,
 				B176E275261004B70065D18B /* appTests.swift in Sources */,
 				B14E729326100667003370E1 /* qrCodeTests.swift in Sources */,

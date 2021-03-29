@@ -30,7 +30,7 @@ class deleteAccountTests: XCTestCase {
         
         let expectation = self.expectation(description: "Loaded User Data")
         
-        var userData = qrcodeStuff.UserData("crlao@usc.edu") {
+        let userData = qrcodeStuff.UserData("crlao@usc.edu") {
             expectation.fulfill()
         }
         
@@ -52,6 +52,12 @@ class deleteAccountTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
+        do {
+            try Auth.auth().signOut()
+        } catch let e as NSError {
+            print("Error signing out: \(e)")
+        }
+        
         super.tearDown()
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
