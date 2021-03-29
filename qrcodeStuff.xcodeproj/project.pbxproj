@@ -10,6 +10,7 @@
 		04C653CA2611BE3F00B72A4D /* addBuildingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C653C92611BE3F00B72A4D /* addBuildingUITests.swift */; };
 		0891BD2C261180D300FC384F /* buildingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0891BD2B261180D300FC384F /* buildingsTests.swift */; };
 		1429F29CCB1D4F665DB8FA74 /* Pods_qrcodeStuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D509E9B7950F2730DF164C /* Pods_qrcodeStuff.framework */; };
+		1F53B48B2611D77900AFB2AE /* Login_Registration_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53B48A2611D77900AFB2AE /* Login_Registration_UITests.swift */; };
 		4F391DCDEFD22514619996BE /* Pods_qrcodeStuff_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9ABC153630151697F232D06 /* Pods_qrcodeStuff_appTests.framework */; };
 		8F10D4C72611CCD5006DAF19 /* filterStudentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10D4C62611CCD5006DAF19 /* filterStudentsTests.swift */; };
 		8F10D4D62611D00F006DAF19 /* filterStudentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10D4CE2611CCF6006DAF19 /* filterStudentsUITests.swift */; };
@@ -82,6 +83,7 @@
 /* Begin PBXFileReference section */
 		04C653C92611BE3F00B72A4D /* addBuildingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBuildingUITests.swift; sourceTree = "<group>"; };
 		0891BD2B261180D300FC384F /* buildingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buildingsTests.swift; sourceTree = "<group>"; };
+		1F53B48A2611D77900AFB2AE /* Login_Registration_UITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login_Registration_UITests.swift; sourceTree = "<group>"; };
 		2093DCFD0E3CB7330B73A258 /* Pods-qrcodeStuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff.debug.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff/Pods-qrcodeStuff.debug.xcconfig"; sourceTree = "<group>"; };
 		22D509E9B7950F2730DF164C /* Pods_qrcodeStuff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qrcodeStuff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B25DAB09A0535079427E1C6 /* Pods-qrcodeStuff-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff-appTests.debug.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff-appTests/Pods-qrcodeStuff-appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 		B14E729F26114919003370E1 /* appUITests */ = {
 			isa = PBXGroup;
 			children = (
+				1F53B48A2611D77900AFB2AE /* Login_Registration_UITests.swift */,
 				8F10D4CE2611CCF6006DAF19 /* filterStudentsUITests.swift */,
 				B14E72A026114919003370E1 /* appUITests.swift */,
 				B14E72A226114919003370E1 /* Info.plist */,
@@ -668,6 +671,7 @@
 				B14E72AC261149B2003370E1 /* qrUITests.swift in Sources */,
 				B14E72A126114919003370E1 /* appUITests.swift in Sources */,
 				04C653CA2611BE3F00B72A4D /* addBuildingUITests.swift in Sources */,
+				1F53B48B2611D77900AFB2AE /* Login_Registration_UITests.swift in Sources */,
 				8F10D4D62611D00F006DAF19 /* filterStudentsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
