@@ -11,6 +11,8 @@
 		0891BD2C261180D300FC384F /* buildingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0891BD2B261180D300FC384F /* buildingsTests.swift */; };
 		1429F29CCB1D4F665DB8FA74 /* Pods_qrcodeStuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D509E9B7950F2730DF164C /* Pods_qrcodeStuff.framework */; };
 		4F391DCDEFD22514619996BE /* Pods_qrcodeStuff_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9ABC153630151697F232D06 /* Pods_qrcodeStuff_appTests.framework */; };
+		8F10D4C72611CCD5006DAF19 /* filterStudentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10D4C62611CCD5006DAF19 /* filterStudentsTests.swift */; };
+		8F10D4D62611D00F006DAF19 /* filterStudentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10D4CE2611CCF6006DAF19 /* filterStudentsUITests.swift */; };
 		8F814C8226086B0C008FF4E2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8126086B0C008FF4E2 /* Student.swift */; };
 		8F814C8526086B15008FF4E2 /* FilterStudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8426086B15008FF4E2 /* FilterStudentsTableViewCell.swift */; };
 		8F814C8826086B1F008FF4E2 /* FilterStudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8726086B1F008FF4E2 /* FilterStudentsTableViewController.swift */; };
@@ -85,6 +87,8 @@
 		5B25DAB09A0535079427E1C6 /* Pods-qrcodeStuff-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff-appTests.debug.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff-appTests/Pods-qrcodeStuff-appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F5411DF78407C9EFAD2E868 /* Pods-qrcodeStuff-appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff-appTests.release.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff-appTests/Pods-qrcodeStuff-appTests.release.xcconfig"; sourceTree = "<group>"; };
 		8D303D2235D2187906F4C5F7 /* Pods-qrcodeStuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qrcodeStuff.release.xcconfig"; path = "Target Support Files/Pods-qrcodeStuff/Pods-qrcodeStuff.release.xcconfig"; sourceTree = "<group>"; };
+		8F10D4C62611CCD5006DAF19 /* filterStudentsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = filterStudentsTests.swift; sourceTree = "<group>"; };
+		8F10D4CE2611CCF6006DAF19 /* filterStudentsUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = filterStudentsUITests.swift; sourceTree = "<group>"; };
 		8F814C8126086B0C008FF4E2 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		8F814C8426086B15008FF4E2 /* FilterStudentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterStudentsTableViewCell.swift; sourceTree = "<group>"; };
 		8F814C8726086B1F008FF4E2 /* FilterStudentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterStudentsTableViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 		B14E729F26114919003370E1 /* appUITests */ = {
 			isa = PBXGroup;
 			children = (
+				8F10D4CE2611CCF6006DAF19 /* filterStudentsUITests.swift */,
 				B14E72A026114919003370E1 /* appUITests.swift */,
 				B14E72A226114919003370E1 /* Info.plist */,
 				B14E72AB261149B2003370E1 /* qrUITests.swift */,
@@ -277,6 +282,7 @@
 				0891BD2B261180D300FC384F /* buildingsTests.swift */,
 				B176E274261004B70065D18B /* appTests.swift */,
 				B14E729226100667003370E1 /* qrCodeTests.swift */,
+				8F10D4C62611CCD5006DAF19 /* filterStudentsTests.swift */,
 				B176E276261004B70065D18B /* Info.plist */,
 				BF2176E426119CEE002BFE83 /* updatePasswordTests.swift */,
 				BF2176E926119D39002BFE83 /* deleteAccountTests.swift */,
@@ -662,6 +668,7 @@
 				B14E72AC261149B2003370E1 /* qrUITests.swift in Sources */,
 				B14E72A126114919003370E1 /* appUITests.swift in Sources */,
 				04C653CA2611BE3F00B72A4D /* addBuildingUITests.swift in Sources */,
+				8F10D4D62611D00F006DAF19 /* filterStudentsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +677,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0891BD2C261180D300FC384F /* buildingsTests.swift in Sources */,
+				8F10D4C72611CCD5006DAF19 /* filterStudentsTests.swift in Sources */,
 				BF2176E526119CEE002BFE83 /* updatePasswordTests.swift in Sources */,
 				BF2176EA26119D39002BFE83 /* deleteAccountTests.swift in Sources */,
 				B176E275261004B70065D18B /* appTests.swift in Sources */,

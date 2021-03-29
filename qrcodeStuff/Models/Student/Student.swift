@@ -24,6 +24,12 @@ class Student: NSObject {
         self.building = building
         self.time = time
     }
+     
+    override func isEqual(_ object: Any?) -> Bool {
+        return (self.name == (object as? Student)?.name && self.major == (object as? Student)?.major
+                    && self.id == (object as? Student)?.id && self.building == (object as? Student)?.building
+                    && self.time == (object as? Student)?.time)
+    }
     
     class func getStudents() -> [Student]{
         var students = [Student]()
