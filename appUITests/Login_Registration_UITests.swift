@@ -22,6 +22,58 @@ class Login_Registration_UITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    func testDeletedUserLogin() {
+        
+    }
+    
+    func testInvalidLogin_InvalidPasswordErrorLabelShow() {
+        let emptyEmail = "newstudent@usc.edu"
+        let emptyPassword = "newstudent"
+        
+        let app = XCUIApplication()
+        app.launch()
+        
+        let emailTextField = app.textFields["Email"]
+        XCTAssertTrue(emailTextField.exists)
+        emailTextField.tap()
+        emailTextField.typeText(emptyEmail)
+        
+        let passwordTextField = app.secureTextFields["Password"]
+        XCTAssertTrue(passwordTextField.exists)
+        passwordTextField.tap()
+        passwordTextField.typeText(emptyPassword)
+        
+        let continueStaticText = app/*@START_MENU_TOKEN@*/.staticTexts["Continue"]/*[[".buttons[\"Continue\"].staticTexts[\"Continue\"]",".staticTexts[\"Continue\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        continueStaticText.tap()
+        let errorLabel = app.staticTexts["The password is invalid or the user does not have a password."]
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: errorLabel, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+//        XCTAssertTrue(errorLabel.exists)
+    }
+    
+    func testInvalidLogin_InvalidEmailErrorLabelShow() {
+        let emptyEmail = "newstudent@gmail.com"
+        let emptyPassword = "newstudent12345"
+        
+        let app = XCUIApplication()
+        app.launch()
+        
+        let emailTextField = app.textFields["Email"]
+        XCTAssertTrue(emailTextField.exists)
+        emailTextField.tap()
+        emailTextField.typeText(emptyEmail)
+        
+        let passwordTextField = app.secureTextFields["Password"]
+        XCTAssertTrue(passwordTextField.exists)
+        passwordTextField.tap()
+        passwordTextField.typeText(emptyPassword)
+        
+        let continueStaticText = app/*@START_MENU_TOKEN@*/.staticTexts["Continue"]/*[[".buttons[\"Continue\"].staticTexts[\"Continue\"]",".staticTexts[\"Continue\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        continueStaticText.tap()
+        let errorLabel = app.staticTexts["You must sign in with a USC email."]
+        XCTAssertTrue(errorLabel.exists)
+    }
+    
     func testInvalidLogin_MissingFieldsErrorLabelShow() {
         
         let emptyEmail = ""
