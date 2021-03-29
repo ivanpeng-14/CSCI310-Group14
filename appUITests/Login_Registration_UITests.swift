@@ -23,12 +23,8 @@ class Login_Registration_UITests: XCTestCase {
     }
     
     func testDeletedUserLogin() {
-        
-    }
-    
-    func testInvalidLogin_InvalidPasswordErrorLabelShow() {
-        let emptyEmail = "newstudent@usc.edu"
-        let emptyPassword = "newstudent"
+        let deletedEmail = "deleted@usc.edu"
+        let deletedPassword = "123456"
         
         let app = XCUIApplication()
         app.launch()
@@ -36,12 +32,36 @@ class Login_Registration_UITests: XCTestCase {
         let emailTextField = app.textFields["Email"]
         XCTAssertTrue(emailTextField.exists)
         emailTextField.tap()
-        emailTextField.typeText(emptyEmail)
+        emailTextField.typeText(deletedEmail)
         
-        let passwordTextField = app.secureTextFields["Password"]
+        let passwordTextField = app.secureTextFields["Password..."]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
-        passwordTextField.typeText(emptyPassword)
+        passwordTextField.typeText(deletedPassword)
+        
+        let continueStaticText = app/*@START_MENU_TOKEN@*/.staticTexts["Continue"]/*[[".buttons[\"Continue\"].staticTexts[\"Continue\"]",".staticTexts[\"Continue\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        continueStaticText.tap()
+        let errorLabel = app.staticTexts["This user account has been deleted. Please sign up with a new account!"]
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: errorLabel, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testInvalidLogin_InvalidPasswordErrorLabelShow() {
+        let validEmail = "newstudent@usc.edu"
+        let invalidPassword = "newstudent"
+        
+        let app = XCUIApplication()
+        app.launch()
+        
+        let emailTextField = app.textFields["Email"]
+        XCTAssertTrue(emailTextField.exists)
+        emailTextField.tap()
+        emailTextField.typeText(validEmail)
+        
+        let passwordTextField = app.secureTextFields["Password..."]
+        XCTAssertTrue(passwordTextField.exists)
+        passwordTextField.tap()
+        passwordTextField.typeText(invalidPassword)
         
         let continueStaticText = app/*@START_MENU_TOKEN@*/.staticTexts["Continue"]/*[[".buttons[\"Continue\"].staticTexts[\"Continue\"]",".staticTexts[\"Continue\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         continueStaticText.tap()
@@ -52,8 +72,8 @@ class Login_Registration_UITests: XCTestCase {
     }
     
     func testInvalidLogin_InvalidEmailErrorLabelShow() {
-        let emptyEmail = "newstudent@gmail.com"
-        let emptyPassword = "newstudent12345"
+        let invalidEmail = "newstudent@gmail.com"
+        let validPassword = "newstudent12345"
         
         let app = XCUIApplication()
         app.launch()
@@ -61,12 +81,12 @@ class Login_Registration_UITests: XCTestCase {
         let emailTextField = app.textFields["Email"]
         XCTAssertTrue(emailTextField.exists)
         emailTextField.tap()
-        emailTextField.typeText(emptyEmail)
+        emailTextField.typeText(invalidEmail)
         
-        let passwordTextField = app.secureTextFields["Password"]
+        let passwordTextField = app.secureTextFields["Password..."]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
-        passwordTextField.typeText(emptyPassword)
+        passwordTextField.typeText(validPassword)
         
         let continueStaticText = app/*@START_MENU_TOKEN@*/.staticTexts["Continue"]/*[[".buttons[\"Continue\"].staticTexts[\"Continue\"]",".staticTexts[\"Continue\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         continueStaticText.tap()
@@ -87,7 +107,7 @@ class Login_Registration_UITests: XCTestCase {
         emailTextField.tap()
         emailTextField.typeText(emptyEmail)
         
-        let passwordTextField = app.secureTextFields["Password"]
+        let passwordTextField = app.secureTextFields["Password..."]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(emptyPassword)
@@ -114,7 +134,7 @@ class Login_Registration_UITests: XCTestCase {
         emailTextField.tap()
         emailTextField.typeText(validEmail)
         
-        let passwordTextField = app.secureTextFields["Password"]
+        let passwordTextField = app.secureTextFields["Password..."]
         XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         passwordTextField.typeText(validPassword)

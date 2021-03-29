@@ -47,21 +47,27 @@ class ManagerSignUpViewController: UIViewController, UITextFieldDelegate {
     
     // Returns nil if correct, otherwise returns error label as String message
     func validateFields() -> String? {
-        
+        let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = uscEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let confirm = confirmPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         // Check all fields are filled
-        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            uscEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            confirmPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        if firstName == "" ||
+            lastName == "" ||
+            email == "" ||
+            password == "" ||
+            confirm == "" {
             
             return "Please fill in all fields."
         }
-        if uscEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).range(of: "@usc.edu") == nil {
+        if email?.range(of: "@usc.edu") == nil {
             
             return "You must sign up with a USC email."
         }
-        
+        if password != confirm {
+            return "Passwords must match."
+        }
         // Check password strength -- TODO
         
         

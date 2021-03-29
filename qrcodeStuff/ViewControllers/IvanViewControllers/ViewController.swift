@@ -108,81 +108,24 @@ class ViewController: UIViewController {
                     if let email = currentUser?.email {
                         self.userEmail = email
                         self.userData = UserData(email) {
-                            deleted = self.userData?.getInfo("deleted") as! Bool
-                            print(deleted!)
+                            deleted = self.userData?.getInfo("deleted") as? Bool
+                            if (deleted != nil) {
+                                if (deleted!) {
+                                    self.errorLabel.text = "This user account has been deleted. Please sign up with a new account!"
+                                }
+                                else {
+                                    print("Successful login")
+                                    self.transitionToHome()
+                                }
+                            }
+                            else {
+                                print("Error: deleted was found nil")
+                            }
                         }
                         
                     }
-//                    print(self.userData?.isStudent())
                     
-//                    if ((self.userData?.isStudent())! == true) {
-//                        db.collection("students").document(self.userEmail).addSnapshotListener { documentSnapshot, error in
-//                            if (error != nil) {
-//                                  guard let document = documentSnapshot else {
-//                                    print("Error fetching document: \(error!)")
-//                                    return
-//                                  }
-//                                  guard let data = document.data() else {
-//                                    print("Document data was empty.")
-//                                    return
-//                                  }
-//                                isDeleted = data["deleted"] as? String ?? ""
-//                                print(isDeleted)
-//    //                            isDeleted = document.value!["deleted"] as? Any ?? ""
-//    //                            isDeleted = data["deleted"]
-//    //                            print(delete)
-//                            }
-//                        }
-//                    }
-//                    db.collection("students").document(self.userEmail).addSnapshotListener { documentSnapshot, error in
-//                        if (error != nil) {
-//                              guard let document = documentSnapshot else {
-//                                print("Error fetching document: \(error!)")
-//                                return
-//                              }
-//                              guard let data = document.data() else {
-//                                print("Document data was empty.")
-//                                return
-//                              }
-//                            deleted = data["deleted"] as! Bool
-//                            print(isDeleted)
-////                            isDeleted = document.value!["deleted"] as? Any ?? ""
-////                            isDeleted = data["deleted"]
-////                            print(delete)
-//                        }
-//                        else {
-//                            db.collection("manager").document(self.userEmail).addSnapshotListener { documentSnapshot, error in
-//                                if (error != nil) {
-//                                      guard let document = documentSnapshot else {
-//                                        print("Error fetching document: \(error!)")
-//                                        return
-//                                      }
-//                                      guard let data = document.data() else {
-//                                        print("Document data was empty.")
-//                                        return
-//                                      }
-////                                    isDeleted = data["deleted"]
-////                                    print(isDeleted)
-//                                }
-//
-//                            }
-//                        }
-//
-//                    }
                     
-
-                    
-//                    deleted = self.userData?.getInfo("deleted") as! Bool
-//                    print(deleted!)
-//                    if (deleted != nil) {
-//                        print(deleted!)
-//                        print("Error signing in")
-//                    }
-//                    else {
-//                        print("Successful login")
-//
-//                        self.transitionToHome()
-//                    }
                 }
             }
         }
