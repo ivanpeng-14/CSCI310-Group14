@@ -42,7 +42,7 @@ class qrUITests: XCTestCase {
          passwordSecureTextField.typeText(password)
 
 
-        app/*@START_MENU_TOKEN@*/.staticTexts["Paste"]/*[[".menus",".menuItems[\"Paste\"].staticTexts[\"Paste\"]",".staticTexts[\"Paste\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        //app/*@START_MENU_TOKEN@*/.staticTexts["Paste"]/*[[".menus",".menuItems[\"Paste\"].staticTexts[\"Paste\"]",".staticTexts[\"Paste\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
 
         // passwordSecureTextField.setText(text: password, application: app)
 
