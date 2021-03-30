@@ -29,7 +29,7 @@ class filterStudentsUITests: XCTestCase {
         let emailTextField = app.textFields["Email"]
         emailTextField.tap()
         emailTextField.typeText("email@usc.edu")
-        let passwordTextField = app.secureTextFields["Password"]
+        let passwordTextField = app.secureTextFields["Password..."]
         passwordTextField.tap()
         passwordTextField.typeText("password")
      
@@ -59,7 +59,7 @@ class filterStudentsUITests: XCTestCase {
         let emailTextField = app.textFields["Email"]
         emailTextField.tap()
         emailTextField.typeText("email@usc.edu")
-        let passwordTextField = app.secureTextFields["Password"]
+        let passwordTextField = app.secureTextFields["Password..."]
         passwordTextField.tap()
         passwordTextField.typeText("password")
      
@@ -90,7 +90,7 @@ class filterStudentsUITests: XCTestCase {
         let emailTextField = app.textFields["Email"]
         emailTextField.tap()
         emailTextField.typeText("email@usc.edu")
-        let passwordTextField = app.secureTextFields["Password"]
+        let passwordTextField = app.secureTextFields["Password..."]
         passwordTextField.tap()
         passwordTextField.typeText("password")
      
@@ -119,7 +119,7 @@ class filterStudentsUITests: XCTestCase {
         let emailTextField = app.textFields["Email"]
         emailTextField.tap()
         emailTextField.typeText("email@usc.edu")
-        let passwordTextField = app.secureTextFields["Password"]
+        let passwordTextField = app.secureTextFields["Password..."]
         passwordTextField.tap()
         passwordTextField.typeText("password")
      

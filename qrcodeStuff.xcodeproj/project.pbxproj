@@ -15,7 +15,7 @@
 		1F53B498261289C800AFB2AE /* Manager_Registration_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53B497261289C800AFB2AE /* Manager_Registration_UITests.swift */; };
 		4F391DCDEFD22514619996BE /* Pods_qrcodeStuff_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9ABC153630151697F232D06 /* Pods_qrcodeStuff_appTests.framework */; };
 		8F10D4C72611CCD5006DAF19 /* filterStudentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10D4C62611CCD5006DAF19 /* filterStudentsTests.swift */; };
-		8F10D4D62611D00F006DAF19 /* filterStudentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10D4CE2611CCF6006DAF19 /* filterStudentsUITests.swift */; };
+		8F45EBAF2612AC0E0055CB81 /* filterStudentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10D4CE2611CCF6006DAF19 /* filterStudentsUITests.swift */; };
 		8F814C8226086B0C008FF4E2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8126086B0C008FF4E2 /* Student.swift */; };
 		8F814C8526086B15008FF4E2 /* FilterStudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8426086B15008FF4E2 /* FilterStudentsTableViewCell.swift */; };
 		8F814C8826086B1F008FF4E2 /* FilterStudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8726086B1F008FF4E2 /* FilterStudentsTableViewController.swift */; };
@@ -671,13 +671,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F45EBAF2612AC0E0055CB81 /* filterStudentsUITests.swift in Sources */,
 				1F53B498261289C800AFB2AE /* Manager_Registration_UITests.swift in Sources */,
 				1F53B4932612774200AFB2AE /* Student_Registration_UITests.swift in Sources */,
 				B14E72AC261149B2003370E1 /* qrUITests.swift in Sources */,
 				B14E72A126114919003370E1 /* appUITests.swift in Sources */,
 				04C653CA2611BE3F00B72A4D /* addBuildingUITests.swift in Sources */,
 				1F53B48B2611D77900AFB2AE /* Login_Registration_UITests.swift in Sources */,
-				8F10D4D62611D00F006DAF19 /* filterStudentsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

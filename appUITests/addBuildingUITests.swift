@@ -38,7 +38,7 @@ class addBuildingUITests: XCTestCase {
         emailField.tap()
         emailField.typeText(managerUser)
 
-        let passwordSecureTextField = app.secureTextFields["Password"]
+        let passwordSecureTextField = app.secureTextFields["Password..."]
         passwordSecureTextField.tap()
         passwordSecureTextField.typeText(password)
         passwordSecureTextField.setText(text: password, application: app)
@@ -71,7 +71,7 @@ class addBuildingUITests: XCTestCase {
         emailField.tap()
         emailField.typeText(managerUser)
 
-        let passwordSecureTextField = app.secureTextFields["Password"]
+        let passwordSecureTextField = app.secureTextFields["Password..."]
         passwordSecureTextField.tap()
         passwordSecureTextField.typeText(password)
         passwordSecureTextField.setText(text: password, application: app)
@@ -110,7 +110,7 @@ class addBuildingUITests: XCTestCase {
         emailField.tap()
         emailField.typeText(managerUser)
 
-        let passwordSecureTextField = app.secureTextFields["Password"]
+        let passwordSecureTextField = app.secureTextFields["Password..."]
         passwordSecureTextField.tap()
         passwordSecureTextField.typeText(password)
         passwordSecureTextField.setText(text: password, application: app)
