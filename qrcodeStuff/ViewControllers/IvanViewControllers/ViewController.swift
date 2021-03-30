@@ -95,6 +95,7 @@ class ViewController: UIViewController {
             Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 
                 if error != nil {
+                   
                     print("Error signing in")
                     
                     // Couldn't sign in
@@ -102,13 +103,17 @@ class ViewController: UIViewController {
                     self.errorLabel.alpha = 1
                 }
                 else {
+                   
                     var deleted : Bool?
                     
                     let currentUser = Auth.auth().currentUser
                     if let email = currentUser?.email {
+                        
                         self.userEmail = email
                         self.userData = UserData(email) {
+                            
                             deleted = self.userData?.getInfo("deleted") as? Bool
+                          
                             if (deleted != nil) {
                                 if (deleted!) {
                                     self.errorLabel.text = "This user account has been deleted. Please sign up with a new account!"
