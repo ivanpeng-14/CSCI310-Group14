@@ -37,15 +37,14 @@ class qrUITests: XCTestCase {
         emailField.tap()
         emailField.typeText(managerUser)
 
-        let passwordSecureTextField = app.secureTextFields["Password"]
-        passwordSecureTextField.tap()
-        passwordSecureTextField.tap()
-        passwordSecureTextField.tap()
+        let passwordSecureTextField = app.secureTextFields["Password..."]
+         passwordSecureTextField.tap()
+         passwordSecureTextField.typeText(password)
 
 
         app/*@START_MENU_TOKEN@*/.staticTexts["Paste"]/*[[".menus",".menuItems[\"Paste\"].staticTexts[\"Paste\"]",".staticTexts[\"Paste\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
 
-        passwordSecureTextField.setText(text: password, application: app)
+        // passwordSecureTextField.setText(text: password, application: app)
 
         app/*@START_MENU_TOKEN@*/.staticTexts["Continue"]/*[[".buttons[\"Continue\"].staticTexts[\"Continue\"]",".staticTexts[\"Continue\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app/*@START_MENU_TOKEN@*/.staticTexts["Continue to Profile"]/*[[".buttons[\"Continue to Profile\"].staticTexts[\"Continue to Profile\"]",".staticTexts[\"Continue to Profile\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
@@ -69,7 +68,7 @@ class qrUITests: XCTestCase {
         emailField.tap()
         emailField.typeText(studentUser)
 
-        let passwordSecureTextField = app.secureTextFields["Password"]
+        let passwordSecureTextField = app.secureTextFields["Password..."]
         passwordSecureTextField.tap()
         passwordSecureTextField.tap()
         passwordSecureTextField.tap()
@@ -106,7 +105,7 @@ class qrUITests: XCTestCase {
         emailField.tap()
         emailField.typeText(studentUser)
 
-        let passwordSecureTextField = app.secureTextFields["Password"]
+        let passwordSecureTextField = app.secureTextFields["Password..."]
         passwordSecureTextField.tap()
         passwordSecureTextField.tap()
         passwordSecureTextField.tap()
@@ -138,7 +137,7 @@ class qrUITests: XCTestCase {
         emailField.tap()
         emailField.typeText(studentUser)
 
-        let passwordSecureTextField = app.secureTextFields["Password"]
+        let passwordSecureTextField = app.secureTextFields["Password..."]
         passwordSecureTextField.tap()
         passwordSecureTextField.tap()
         passwordSecureTextField.tap()
@@ -171,7 +170,7 @@ class qrUITests: XCTestCase {
         emailField.tap()
         emailField.typeText(studentUser)
 
-        let passwordSecureTextField = app.secureTextFields["Password"]
+        let passwordSecureTextField = app.secureTextFields["Password..."]
         passwordSecureTextField.tap()
         passwordSecureTextField.tap()
         passwordSecureTextField.tap()
@@ -211,7 +210,7 @@ class qrUITests: XCTestCase {
         emailField.tap()
         emailField.typeText(managerUser)
 
-        let passwordSecureTextField = app.secureTextFields["Password"]
+        let passwordSecureTextField = app.secureTextFields["Password..."]
         passwordSecureTextField.tap()
         passwordSecureTextField.tap()
         passwordSecureTextField.tap()
