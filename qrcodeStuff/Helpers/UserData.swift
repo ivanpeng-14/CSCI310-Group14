@@ -18,20 +18,22 @@ class UserData {
     
     init(_ email: String, completion: @escaping () -> Void = {}) {
         db.getDocument(collection: "students", email) { doc, err in
-            if let doc = doc {
-                self.student = true
-                self.data = doc.data()!
-                self.ref = doc.reference
-            } else {
+            if err != nil{
                 self.db.getDocument(collection: "manager", email) { doc, err in
                     if let doc = doc {
                         self.student = false
                         self.data = doc.data()!
                         self.ref = doc.reference
+                        completion()
                     }
                 }
             }
-            completion()
+            if let doc = doc {
+                self.student = true
+                self.data = doc.data()!
+                self.ref = doc.reference
+                completion()
+            }
         }
     }
     
