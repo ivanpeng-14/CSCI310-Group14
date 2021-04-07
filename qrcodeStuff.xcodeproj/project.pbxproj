@@ -19,6 +19,8 @@
 		8F814C8226086B0C008FF4E2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8126086B0C008FF4E2 /* Student.swift */; };
 		8F814C8526086B15008FF4E2 /* FilterStudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8426086B15008FF4E2 /* FilterStudentsTableViewCell.swift */; };
 		8F814C8826086B1F008FF4E2 /* FilterStudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F814C8726086B1F008FF4E2 /* FilterStudentsTableViewController.swift */; };
+		B105AE71261D249B00B7029E /* StudentProfileTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105AE70261D249B00B7029E /* StudentProfileTwoViewController.swift */; };
+		B105AE76261D2F6B00B7029E /* StudentHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105AE75261D2F6B00B7029E /* StudentHistoryTableViewCell.swift */; };
 		B12EA1ED260008550082CA9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12EA1EC260008550082CA9C /* AppDelegate.swift */; };
 		B12EA1EF260008550082CA9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12EA1EE260008550082CA9C /* SceneDelegate.swift */; };
 		B12EA1F4260008550082CA9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12EA1F2260008550082CA9C /* Main.storyboard */; };
@@ -97,6 +99,8 @@
 		8F814C8126086B0C008FF4E2 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		8F814C8426086B15008FF4E2 /* FilterStudentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterStudentsTableViewCell.swift; sourceTree = "<group>"; };
 		8F814C8726086B1F008FF4E2 /* FilterStudentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterStudentsTableViewController.swift; sourceTree = "<group>"; };
+		B105AE70261D249B00B7029E /* StudentProfileTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileTwoViewController.swift; sourceTree = "<group>"; };
+		B105AE75261D2F6B00B7029E /* StudentHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		B12EA1E9260008550082CA9C /* qrcodeStuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qrcodeStuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B12EA1EC260008550082CA9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B12EA1EE260008550082CA9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 				8F814C8426086B15008FF4E2 /* FilterStudentsTableViewCell.swift */,
 				B17C6E7C2607D7DD00C8E964 /* BuildingsManageTableViewCell.swift */,
 				B144A21C26040B060011FB9C /* BuildingXXXTableViewCell.swift */,
+				B105AE75261D2F6B00B7029E /* StudentHistoryTableViewCell.swift */,
 			);
 			path = TableViewCellControllers;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 				B17C6E742607D7A300C8E964 /* BuildingViewController.swift */,
 				B17C6E9326081E7200C8E964 /* AddBuildingViewController.swift */,
 				B144A22026040DF10011FB9C /* BuildingXXXViewController.swift */,
+				B105AE70261D249B00B7029E /* StudentProfileTwoViewController.swift */,
 			);
 			path = BuildingViewControllers;
 			sourceTree = "<group>";
@@ -640,6 +646,7 @@
 				B17C6E6F2607D74B00C8E964 /* buildingFirebase.swift in Sources */,
 				BF2BC6B72609ADB900E01139 /* PhotoUploadViewController.swift in Sources */,
 				B17C6E7D2607D7DD00C8E964 /* BuildingsManageTableViewCell.swift in Sources */,
+				B105AE71261D249B00B7029E /* StudentProfileTwoViewController.swift in Sources */,
 				B1F53729260A4F85001FFA2B /* UIViewController+Extensions.swift in Sources */,
 				B1F5371C260A4F34001FFA2B /* ManagerFeedViewController.swift in Sources */,
 				BF2BC6C02609AE0500E01139 /* ProfileEditViewController.swift in Sources */,
@@ -647,6 +654,7 @@
 				B1F53717260A4F34001FFA2B /* ViewController.swift in Sources */,
 				B17C6E792607D7BF00C8E964 /* BuildingsManageViewControllerViewController.swift in Sources */,
 				B1F53721260A4F65001FFA2B /* DesignableView.swift in Sources */,
+				B105AE76261D2F6B00B7029E /* StudentHistoryTableViewCell.swift in Sources */,
 				B1F53718260A4F34001FFA2B /* ManagerSignUpViewController.swift in Sources */,
 				8F814C8826086B1F008FF4E2 /* FilterStudentsTableViewController.swift in Sources */,
 				8F814C8526086B15008FF4E2 /* FilterStudentsTableViewCell.swift in Sources */,
