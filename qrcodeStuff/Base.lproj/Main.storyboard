@@ -124,20 +124,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentCell" id="7q3-dL-k0z" customClass="BuildingXXXTableViewCell" customModule="qrcodeStuff" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7q3-dL-k0z" id="wL5-bB-IW3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWW-Zb-s3v">
-                                                    <rect key="frame" x="25" y="11" width="45" height="21.5"/>
+                                                    <rect key="frame" x="25" y="11" width="45" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfA-bq-GJk">
-                                                    <rect key="frame" x="377.5" y="11" width="16.5" height="21.5"/>
+                                                    <rect key="frame" x="377.5" y="11" width="16.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -355,8 +355,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Manual Add" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guM-7v-Rbv">
-                                <rect key="frame" x="128" y="132" width="159" height="37"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Building" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guM-7v-Rbv">
+                                <rect key="frame" x="123" y="132" width="170" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <nil key="textColor"/>
@@ -376,13 +376,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="files must be type .csv" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOD-I2-jfy">
-                                <rect key="frame" x="93" y="769" width="229" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dks-Yd-510">
                                 <rect key="frame" x="20" y="248" width="204" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -396,7 +389,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tI-Hj-APB">
-                                <rect key="frame" x="186" y="428" width="43" height="41"/>
+                                <rect key="frame" x="187" y="414" width="43" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Add"/>
@@ -404,15 +397,15 @@
                                     <action selector="addBuildingButton:" destination="E8S-Kp-RNY" eventType="touchUpInside" id="YWr-XG-TcN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Import CSV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iW-IB-j9x">
-                                <rect key="frame" x="130" y="539" width="155" height="37"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CSV Update" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iW-IB-j9x">
+                                <rect key="frame" x="125" y="503" width="166" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIR-0c-exd">
-                                <rect key="frame" x="170" y="649" width="75" height="41"/>
+                                <rect key="frame" x="171" y="570" width="75" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Upload"/>
@@ -420,19 +413,42 @@
                                     <action selector="uploadCSVButton:" destination="E8S-Kp-RNY" eventType="touchUpInside" id="0sS-lY-Zhn"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U89-kc-u1J">
+                                <rect key="frame" x="20" y="647" width="374" height="166"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="             files must be type .csv" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOD-I2-jfy">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="374" id="3Hp-Fo-fiA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="WOD-I2-jfy" firstAttribute="top" secondItem="89k-s4-zmc" secondAttribute="top" id="AiL-md-wPk"/>
+                                    <constraint firstItem="WOD-I2-jfy" firstAttribute="leading" secondItem="89k-s4-zmc" secondAttribute="leading" id="bFI-oN-gr4"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="TRL-PH-B0p"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="89k-s4-zmc"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zzI-KE-r69"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Add Building" image="plus" catalog="system" id="jVM-KG-ZAO"/>
+                    <tabBarItem key="tabBarItem" title="Manage" image="plus" catalog="system" id="jVM-KG-ZAO"/>
                     <connections>
                         <outlet property="buildingNameTextField" destination="Dks-Yd-510" id="ZfU-Zz-Itf"/>
                         <outlet property="capacityTextField" destination="0ta-ZB-wEV" id="FXc-JN-qy6"/>
+                        <outlet property="csvStatusLabel" destination="WOD-I2-jfy" id="8CG-Zv-dba"/>
+                        <outlet property="scrollView" destination="U89-kc-u1J" id="W2t-1T-IEw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQk-x4-2mJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3745" y="1905"/>
+            <point key="canvasLocation" x="-3746.376811594203" y="1904.4642857142856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="55a-TK-gkb">
@@ -2367,7 +2383,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="building" catalog="system" width="112" height="128"/>
-        <image name="camera.viewfinder" catalog="system" width="32" height="32"/>
+        <image name="camera.viewfinder" catalog="system" width="128" height="115"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>

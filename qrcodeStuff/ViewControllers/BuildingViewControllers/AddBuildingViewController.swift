@@ -14,12 +14,6 @@ import MobileCoreServices
 import UniformTypeIdentifiers
 
 class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
     //MARK: Properties
 
@@ -27,6 +21,15 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
     
     @IBOutlet weak var capacityTextField: UITextField!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var csvStatusLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        scrollView.contentLayoutGuide.bottomAnchor.constraint(equalTo: csvStatusLabel.bottomAnchor).isActive = true
+        // Do any additional setup after loading the view.
+    }
     
     @IBAction func addBuildingButton(_ sender: Any) {
         let db = Firestore.firestore()
