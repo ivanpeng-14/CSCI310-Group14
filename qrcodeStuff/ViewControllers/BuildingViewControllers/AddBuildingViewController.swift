@@ -15,11 +15,9 @@ import UniformTypeIdentifiers
 
 class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUpElements()
-        // Do any additional setup after loading the view.
-    }
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var csvStatusLabel: UILabel!
     
     @IBOutlet weak var errorLabel1: UILabel!
 
@@ -30,6 +28,15 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
     @IBOutlet weak var buildingNameTextField: UITextField!
     
     @IBOutlet weak var capacityTextField: UITextField!
+    
+    
+    
+    override func viewDidLoad() {
+        scrollView.contentLayoutGuide.bottomAnchor.constraint(equalTo: csvStatusLabel.bottomAnchor).isActive = true;
+        super.viewDidLoad()
+        setUpElements()
+        // Do any additional setup after loading the view.
+    }
     
     func setUpElements() {
         errorLabel1.alpha = 0;
