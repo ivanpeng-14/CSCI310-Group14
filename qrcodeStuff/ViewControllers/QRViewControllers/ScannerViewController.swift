@@ -200,7 +200,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 let buildingHistory = db.collection("buildings").document(buildingID)
 
                 buildingHistory.updateData(["currentStudents" : FieldValue.arrayRemove([self.studentID])])
-
+                sleep(3)
                 //update capacity
                 let newCapacity = curr - 1
                 buildingHistory.updateData(["currentCapacity": newCapacity])
@@ -238,6 +238,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 //update building history
                 let buildingHistory = db.collection("buildings").document(buildingID)
                 buildingHistory.updateData(["currentStudents" : FieldValue.arrayUnion([self.studentID])])
+                
+                //
+                sleep(3)
                 
                 //update capacity
                 let newCapacity = curr + 1

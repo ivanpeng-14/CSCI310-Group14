@@ -18,6 +18,7 @@ class BuildingXXXViewController: UIViewController {
     var studentsArray: [String] = []
     var IDArray: [String] = []
     var emailArray: [String] = []
+    var checker = true
     
     func loadData(buildingID: String) {
         let db = Firestore.firestore()
@@ -30,33 +31,36 @@ class BuildingXXXViewController: UIViewController {
               print("Document data was empty.")
               return
             }
+
             //print("Current data: \(data)")
             let currNum = data["currentCapacity"] as? Int ?? -1
             //let totalNum = data["totalCapacity"] as? Int ?? -1
             self.numStudentsLabel.text = "There are currently \(currNum) student(s) in this building"
-            
+
             let tempArray = data["currentStudents"] as? [String] ?? ["Building is empty"]
+            
+            print("TEMP ARRAY:  \(tempArray)")
             self.studentsArray.removeAll()
             self.IDArray.removeAll()
             self.emailArray.removeAll()
             for item in tempArray
             {
-                print(item)
                 db.collection("students").document(item).getDocument { (document, error) in
                     let documentData = document!.data()
                     let firstName = documentData!["firstname"] as? String ?? ""
                     let lastName = documentData!["lastname"] as? String ?? ""
                     let name = "\(firstName) \(lastName)"
-                    print(name)
                     self.studentsArray.append((name))
                     let id = documentData!["uscid"] as? String ?? ""
                     self.IDArray.append(String(id))
                     let email = documentData!["email"] as? String ?? ""
                     self.emailArray.append(email)
+                    print(self.studentsArray)
                     self.tableView.reloadData()
                 }
             }
-            
+
+
           }
     }
     
@@ -77,6 +81,7 @@ class BuildingXXXViewController: UIViewController {
                 for document in querySnapshot!.documents {
                     let buildingID = document.documentID
                     self.loadData(buildingID: buildingID)
+        
                 }
             }
         }
@@ -85,8 +90,10 @@ class BuildingXXXViewController: UIViewController {
 }
 extension BuildingXXXViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+//        print("COUNT")
+//        print(studentsArray.count)
         return studentsArray.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
