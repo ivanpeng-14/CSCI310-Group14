@@ -18,7 +18,47 @@ class BuildingXXXViewController: UIViewController {
     var studentsArray: [String] = []
     var IDArray: [String] = []
     var emailArray: [String] = []
-
+    
+    func loadData(buildingID: String) {
+        let db = Firestore.firestore()
+        db.collection("buildings").document(buildingID).addSnapshotListener { documentSnapshot, error in
+            guard let document = documentSnapshot else {
+              print("Error fetching document: \(error!)")
+              return
+            }
+            guard let data = document.data() else {
+              print("Document data was empty.")
+              return
+            }
+            //print("Current data: \(data)")
+            let currNum = data["currentCapacity"] as? Int ?? -1
+            //let totalNum = data["totalCapacity"] as? Int ?? -1
+            self.numStudentsLabel.text = "There are currently \(currNum) student(s) in this building"
+            
+            let tempArray = data["currentStudents"] as? [String] ?? ["Building is empty"]
+            self.studentsArray.removeAll()
+            self.IDArray.removeAll()
+            self.emailArray.removeAll()
+            for item in tempArray
+            {
+                print(item)
+                db.collection("students").document(item).getDocument { (document, error) in
+                    let documentData = document!.data()
+                    let firstName = documentData!["firstname"] as? String ?? ""
+                    let lastName = documentData!["lastname"] as? String ?? ""
+                    let name = "\(firstName) \(lastName)"
+                    print(name)
+                    self.studentsArray.append((name))
+                    let id = documentData!["uscid"] as? String ?? ""
+                    self.IDArray.append(String(id))
+                    let email = documentData!["email"] as? String ?? ""
+                    self.emailArray.append(email)
+                    self.tableView.reloadData()
+                }
+            }
+            
+          }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,57 +69,18 @@ class BuildingXXXViewController: UIViewController {
 
         buildingNameLabel.text = buildingName!
     
-        let db = Firestore.firestore()
         
-        db.collection("buildings").whereField("buildingName", isEqualTo: self.buildingName).getDocuments { (querySnapshot, error) in
+        let db = Firestore.firestore()
+
+        db.collection("buildings").whereField("buildingName", isEqualTo: self.buildingName!).getDocuments { (querySnapshot, error) in
             if error == nil {
                 for document in querySnapshot!.documents {
                     let buildingID = document.documentID
-                    db.collection("buildings").document(buildingID).getDocument { (document, error) in
-                        if error == nil {
-                            //check if document exists
-                            if document != nil && document!.exists {
-                                let documentData = document!.data()
-                                //fix label
-                                let currNum = documentData!["currentCapacity"] as? Int ?? -1
-                                //let totalNum = documentData!["totalCapacity"] as? Int ?? -1
-                                self.numStudentsLabel.text = "There are currently \(currNum) student(s) in this building"
-                                
-                                let tempArray = documentData!["currentStudents"] as? [String] ?? ["Building is empty"]
-                                for item in tempArray
-                                {
-                                    print(item)
-                                    db.collection("students").document(item).getDocument { (document, error) in
-                                        let documentData = document!.data()
-                                        let firstName = documentData!["firstname"] as? String ?? ""
-                                        let lastName = documentData!["lastname"] as? String ?? ""
-                                        let name = "\(firstName) \(lastName)"
-                                        print(name)
-                                        self.studentsArray.append((name))
-                                        let id = documentData!["uscid"] as? String ?? ""
-                                        self.IDArray.append(String(id))
-                                        let email = documentData!["email"] as? String ?? ""
-                                        self.emailArray.append(email)
-                                        self.tableView.reloadData()
-                                    }
-                                }
-                              
-                               
-                            }
-                         
-                        }
-                        else {
-                            print("Building does not exist")
-                        }
-                        
-                    }
+                    self.loadData(buildingID: buildingID)
                 }
             }
         }
-        
-        
     }
-  
 
 }
 extension BuildingXXXViewController: UITableViewDelegate, UITableViewDataSource {
