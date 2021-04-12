@@ -9,7 +9,7 @@ import UIKit
 import FirebaseFirestore
 
 class Student: NSObject {
-    weak var delegate: FilterStudentsTableViewController?
+    weak var delegate: FilterStudentsViewController?
     
     var name:String = ""
     var major:String = ""

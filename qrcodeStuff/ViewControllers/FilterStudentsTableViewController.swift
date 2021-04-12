@@ -16,20 +16,66 @@ enum selectedScope:Int {
     case id = 3
 }
 
-class FilterStudentsTableViewController: UITableViewController, UISearchBarDelegate {
+class FilterStudentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-//    let students:[Student] =
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var fromTime: UIDatePicker!
+    @IBOutlet weak var toTime: UIDatePicker!
+    
+    // let datePicker = UIDatePicker()
+    
     var initialStudents = [Student]()
     var students = [Student]()
+    var majorList = [
+        "Aerospace Engineering",
+        "Mechanical Engineering",
+        "Astronautical Engineering",
+        "Biomedical Engineering",
+        "Chemical Engineering",
+        "Civil Engineering",
+        "Environmental Engineering",
+        "Computer Science",
+        "Computer Science and Business Administration",
+        "Electrical Engineering",
+        "Computer Engineering",
+        "Industrial and Systems Engineering"
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.searchBarSetup()
+//        fromTime.datePickerMode = .dateAndTime
+//        fromTime.preferredDatePickerStyle = .compact
+        //self.searchBarSetup()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        sortMajors()
+        return majorList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        return majorList[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+//        selectedMajor = majorList[row] // selected item
+//        majorTextField.text = selectedMajor
+    }
+    
+    func sortMajors() {
+        majorList.sort()
     }
     
     func searchBarSetup() {
@@ -134,18 +180,18 @@ class FilterStudentsTableViewController: UITableViewController, UISearchBarDeleg
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.students.count
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FilterStudentsTableViewCell
         let student = self.students[indexPath.row]
         
