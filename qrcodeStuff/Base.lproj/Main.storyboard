@@ -1772,24 +1772,30 @@
                                         <rect key="frame" x="0.0" y="371" width="414" height="199"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="6On-Z1-Vig" userLabel="Info Stack">
-                                                <rect key="frame" x="150" y="37.5" width="114" height="124"/>
+                                                <rect key="frame" x="105" y="18.5" width="204.5" height="162.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USC Email" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a85-UF-ea6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="204.5" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USC ID" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmu-oX-tda">
-                                                        <rect key="frame" x="0.0" y="47" width="114" height="30"/>
+                                                        <rect key="frame" x="0.0" y="47" width="204.5" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMD-S8-ZNq">
-                                                        <rect key="frame" x="0.0" y="94" width="114" height="30"/>
+                                                        <rect key="frame" x="0.0" y="94" width="204.5" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading current building..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzf-iT-qTM">
+                                                        <rect key="frame" x="0.0" y="141" width="204.5" height="21.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1870,6 +1876,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="VNb-q3-BiH"/>
                     <navigationItem key="navigationItem" id="Dzu-0B-C7m"/>
                     <connections>
+                        <outlet property="currBuilding" destination="Hzf-iT-qTM" id="kBb-xd-Xxh"/>
                         <outlet property="editButton" destination="eLf-zh-58R" id="0UW-f6-9Qs"/>
                         <outlet property="email" destination="a85-UF-ea6" id="2dR-HT-I1B"/>
                         <outlet property="fullName" destination="sOD-jv-Aeq" id="o6M-Pe-25U"/>
@@ -2395,6 +2402,9 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
