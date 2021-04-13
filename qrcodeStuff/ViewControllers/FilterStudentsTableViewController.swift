@@ -11,18 +11,25 @@ import FirebaseFirestore
 
 enum selectedScope:Int {
     case building = 0
-    case time = 1
-    case major = 2
-    case id = 3
+    case major = 1
+    case id = 2
+    case name = 3
 }
 
-class FilterStudentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var idTextField: UITextField!
+    @IBOutlet weak var majorTextField: UITextField!
+    @IBOutlet weak var buildingTextField: UITextField!
     @IBOutlet weak var fromTime: UIDatePicker!
     @IBOutlet weak var toTime: UIDatePicker!
+    @IBOutlet weak var timeSwitch: UISwitch!
+    @IBOutlet weak var searchButton: UIButton!
     
-    // let datePicker = UIDatePicker()
+    var currentTextField = UITextField()
+    var pickerView = UIPickerView()
     
     var initialStudents = [Student]()
     var students = [Student]()
@@ -40,42 +47,202 @@ class FilterStudentsViewController: UIViewController, UITableViewDataSource, UIT
         "Computer Engineering",
         "Industrial and Systems Engineering"
     ]
+    
+    private var service: BuildingService?
+    private var allbuildings = [appBuilding]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.buildings = self.allbuildings
+            }
+        }
+    }
+    
+    var buildings = [appBuilding]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        fromTime.datePickerMode = .dateAndTime
-//        fromTime.preferredDatePickerStyle = .compact
-        //self.searchBarSetup()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        timeSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        timeSwitch.addTarget(self, action: #selector(self.switchChanged), for: UIControl.Event.valueChanged)
+        fromTime.datePickerMode = .dateAndTime
+        toTime.datePickerMode = .dateAndTime
+        let timeZone = TimeZone.init(identifier: "UTC")
+        guard let newTimeZone = timeZone else {return}
+        fromTime.timeZone = newTimeZone
+        toTime.timeZone = newTimeZone
+//        fromTime.timezone = TimeZone.init(identifier: "UTC")
+//        toTime.timezone = TimeZone.init(identifier: "UTC")
+        loadData()
+        nameTextField.delegate = self
+        idTextField.delegate = self
+    }
+    
+    
+    func loadData() {
+        service = BuildingService()
+        service?.get(collectionID: "buildings") { buildings in
+            self.allbuildings = buildings
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        sortMajors()
-        return majorList.count
+        if (currentTextField == majorTextField) {
+            sortMajors()
+            return majorList.count
+        } else if (currentTextField == buildingTextField) {
+            return buildings.count
+        } else {
+            return 0
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        return majorList[row]
+        if (currentTextField == majorTextField) {
+            return majorList[row]
+        } else if (currentTextField == buildingTextField) {
+            return buildings[row].buildingName
+        } else {
+            return ""
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-//        selectedMajor = majorList[row] // selected item
-//        majorTextField.text = selectedMajor
+        if (currentTextField == majorTextField) {
+            majorTextField.text = majorList[row] // selected item
+        } else if (currentTextField == buildingTextField) {
+            buildingTextField.text = buildings[row].buildingName // selected item
+        }
+    }
+    
+    @objc func switchChanged(mySwitch: UISwitch) {
+        if timeSwitch.isOn {
+            fromTime.isUserInteractionEnabled = true
+            toTime.isUserInteractionEnabled = true
+            fromTime.alpha = 1
+            toTime.alpha = 1
+            fromTime.date = Date()
+            toTime.date = Date()
+        } else {
+            fromTime.isUserInteractionEnabled = false
+            toTime.isUserInteractionEnabled = false
+            fromTime.date = Date.distantPast
+            toTime.date = Date.distantFuture
+            fromTime.alpha = 0
+            toTime.alpha = 0
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        if (textField == majorTextField || textField == buildingTextField) {
+            currentTextField = textField
+            currentTextField.inputView = pickerView
+            let toolBar = UIToolbar()
+            toolBar.sizeToFit()
+            let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+            toolBar.setItems([button], animated: true)
+            toolBar.isUserInteractionEnabled = true
+            currentTextField.inputAccessoryView = toolBar
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (textField == majorTextField || textField == buildingTextField) {
+            return false
+        }
+        else {
+            return true
+        }
+    }
+    
+    @objc func action() {
+          view.endEditing(true)
     }
     
     func sortMajors() {
         majorList.sort()
+    }
+    
+    
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let id = idTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let major = majorTextField.text ?? ""
+        let building = buildingTextField.text ?? ""
+        // format time
+        let timeFormatter = DateFormatter()
+        timeFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        timeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        let from = timeFormatter.string(from: fromTime.date)
+        let to = timeFormatter.string(from: toTime.date)
+        self.students = self.initialStudents.filter({ (student) -> Bool in
+            var filtered = true
+            if (name != "") {
+                filtered = student.name.lowercased().contains(name.lowercased())
+            }
+            if (building != "") {
+                filtered = filtered && student.building.lowercased().contains(building.lowercased())
+            }
+            if (major != "") {
+                filtered = filtered && student.major.lowercased().contains(major.lowercased())
+            }
+            if (id != "") {
+                filtered = filtered && String(student.id).contains(id)
+            }
+            timeFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            let time = student.time ?? ""
+            let date = timeFormatter.date(from:time)
+            let range = fromTime.date...toTime.date
+            filtered = filtered && range.contains(date ?? Date())
+            
+            return filtered
+        })
+    
+        self.students.sort(by: {$0.lastName.caseInsensitiveCompare($1.lastName) == .orderedAscending})
+        self.tableView.reloadData()
+    }
+    
+    func filterTableView(ind:Int,text:String,initialStudents:[Student]) -> [Student] {
+        var students = [Student]()
+        switch ind {
+            case selectedScope.building.rawValue:
+                students = initialStudents.filter({ (student) -> Bool in
+                    return student.building.lowercased().contains(text.lowercased())
+                })
+//            case selectedScope.time.rawValue:
+//                students = initialStudents.filter({ (student) -> Bool in
+//                    return student.time.lowercased().contains(text.lowercased())
+//                })
+            case selectedScope.major.rawValue:
+                students = initialStudents.filter({ (student) -> Bool in
+                    return student.major.lowercased().contains(text.lowercased())
+                })
+            case selectedScope.id.rawValue:
+                students = initialStudents.filter({ (student) -> Bool in
+                    return String(student.id).contains(text)
+                })
+            default:
+                print("no type")
+        }
+        return students
+    }
+    
+    @IBAction func clearButtonTapped(_ sender: Any) {
+        majorTextField.text = ""
+        buildingTextField.text = ""
+        nameTextField.text = ""
+        idTextField.text = ""
+        searchButtonTapped((Any).self)
     }
     
     func searchBarSetup() {
@@ -94,38 +261,9 @@ class FilterStudentsViewController: UIViewController, UITableViewDataSource, UIT
             self.tableView.reloadData()
         }
         else {
-            self.students = filterTableView(ind: searchBar.selectedScopeButtonIndex, text: searchText,  initialStudents:self.initialStudents, students:self.students)
+            self.students = filterTableView(ind: searchBar.selectedScopeButtonIndex, text:searchText, initialStudents:self.initialStudents)
             self.tableView.reloadData()
         }
-    }
-    
-    func filterTableView(ind:Int,text:String,initialStudents:[Student],students:[Student]) -> [Student] {
-        var students = students
-        switch ind {
-            case selectedScope.building.rawValue:
-                students = initialStudents.filter({ (student) -> Bool in
-                    return student.building.lowercased().contains(text.lowercased())
-                })
-//                self.tableView.reloadData()
-            case selectedScope.time.rawValue:
-                students = initialStudents.filter({ (student) -> Bool in
-                    return student.time.lowercased().contains(text.lowercased())
-                })
-//                self.tableView.reloadData()
-            case selectedScope.major.rawValue:
-                students = initialStudents.filter({ (student) -> Bool in
-                    return student.major.lowercased().contains(text.lowercased())
-                })
-//                self.tableView.reloadData()
-            case selectedScope.id.rawValue:
-                students = initialStudents.filter({ (student) -> Bool in
-                    return String(student.id).contains(text)
-                })
-//                self.tableView.reloadData()
-            default:
-                print("no type")
-        }
-        return students
     }
     
     
@@ -153,7 +291,8 @@ class FilterStudentsViewController: UIViewController, UITableViewDataSource, UIT
                 for document in (snapshot?.documents)! {
                     let data = document.data()
                     let buildingID = data["currbuilding"] as? String ?? ""
-                    if (buildingID != "") {
+                    let deleted = data["deleted"] as? Bool ?? true
+                    if (buildingID != "" && !deleted) {
                         let firstName = data["firstname"] as? String ?? "Anonymous"
                         let lastName = data["lastname"] as? String ?? "Anonymous"
                         let name = firstName + " " + lastName
@@ -163,7 +302,7 @@ class FilterStudentsViewController: UIViewController, UITableViewDataSource, UIT
                         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
                         let time = data["lastcheckin"] as? String ?? dateFormatter.string(from: Date())
                         self.getBuildingName(buildingID: buildingID) { buildingName, error in
-                            let newStudent = Student(name: name, major: major, id: id, building:
+                            let newStudent = Student(name: name, lastName:lastName, major: major, id: id, building:
                                                         buildingName ?? "", time: time)
                             
                             self.initialStudents.append(newStudent)
@@ -176,6 +315,12 @@ class FilterStudentsViewController: UIViewController, UITableViewDataSource, UIT
                 }
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.students = [Student]()
+        self.initialStudents = [Student]()
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
