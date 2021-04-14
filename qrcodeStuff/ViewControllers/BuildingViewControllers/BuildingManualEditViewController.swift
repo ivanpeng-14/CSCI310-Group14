@@ -9,6 +9,11 @@ import UIKit
 
 class BuildingManualEditViewController: UIViewController {
 
+    @IBOutlet weak var updateButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var newCapacityTextField: UITextField!
+    @IBOutlet weak var buildingCapacityContentLabel: UILabel!
+    @IBOutlet weak var buildingNameContentLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
