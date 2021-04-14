@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class ProfilePageViewController: UIViewController {
     
@@ -19,6 +20,7 @@ class ProfilePageViewController: UIViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var id: UILabel!
     @IBOutlet weak var major: UILabel!
+    @IBOutlet weak var currBuilding: UILabel!
     
     // Image Views
     @IBOutlet weak var profilePicture: UIImageView!
@@ -62,9 +64,18 @@ class ProfilePageViewController: UIViewController {
             if userData.isStudent() {
                 self.id.text = userData.getInfo("uscid") as? String ?? "Error Loading"
                 self.major.text = userData.getInfo("major") as? String ?? "Error Loading"
+                let db = Firestore.firestore()
+                db.collection("buildings").document(userData.getInfo("currbuilding") as! String).getDocument() { doc, err in
+                    if err == nil {
+                        if let data = doc?.data() {
+                            self.currBuilding.text = data["buildingName"] as! String == "" ? "Not Checked in" : "In \(data["buildingName"] as? String ?? "Unknown Building")"
+                        }
+                    }
+                }
             } else {
                 self.id.isHidden = true
                 self.major.isHidden = true
+                self.currBuilding.isHidden = true
             }
         }
     }
