@@ -10,7 +10,6 @@ import FirebaseFirestore
 
 class BuildingManualEditViewController: UIViewController {
 
-    @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var buildingNewTotalCapacityTextField: UITextField!
     @IBOutlet weak var buildingTotalCapacityContentLabel: UILabel!
@@ -48,7 +47,7 @@ class BuildingManualEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        errorLabel.alpha = 0;
         // Do any additional setup after loading the view.
         self.buildingNameContentLabel.text = buildingName!
     
@@ -76,5 +75,34 @@ class BuildingManualEditViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func updateButton(_ sender: Any) {
+        // if new capacity field empty
+        if (buildingNewTotalCapacityTextField.text == "") {
+            errorLabel.text = "Invalid New Capacity";
+            errorLabel.textColor = UIColor.red;
+            errorLabel.alpha = 1;
+            return;
+        }
+        // if new capacity field less than 0 or not a number
+        let newTotalCapacity = (Int(buildingNewTotalCapacityTextField.text ?? "-1") ?? -1);
+        if (newTotalCapacity < 1) {
+            errorLabel.text = "Invalid Capacity";
+            errorLabel.textColor = UIColor.red;
+            errorLabel.alpha = 1;
+            return;
+        }
+        // if new capacity field less than current capacity
+        if (newTotalCapacity < buildingCurrentCapacity ?? 0) {
+            errorLabel.text = "New Capacity > Current Capacity";
+            errorLabel.textColor = UIColor.red;
+            errorLabel.alpha = 1;
+            return;
+        }
+        // proceed
+        errorLabel.text = "Capacity Changed";
+        errorLabel.textColor = UIColor.green;
+        errorLabel.alpha = 1;
+        return
+    }
 }

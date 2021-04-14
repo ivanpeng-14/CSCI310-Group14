@@ -256,9 +256,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="updateButton:" destination="Vap-gN-s1P" eventType="touchUpInside" id="rJR-pJ-LPu"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="errorLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZI-qp-zks">
-                                <rect key="frame" x="20" y="511" width="79" height="21"/>
+                                <rect key="frame" x="20" y="511" width="374" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -275,7 +278,6 @@
                         <outlet property="buildingNewTotalCapacityTextField" destination="qwF-io-hFe" id="15C-Hb-FYu"/>
                         <outlet property="buildingTotalCapacityContentLabel" destination="tOJ-Gm-e4q" id="2ww-xC-Xjd"/>
                         <outlet property="errorLabel" destination="1ZI-qp-zks" id="vDW-T8-aK5"/>
-                        <outlet property="updateButton" destination="GBC-yt-R99" id="fTU-ok-02V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JhV-7d-NVC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
