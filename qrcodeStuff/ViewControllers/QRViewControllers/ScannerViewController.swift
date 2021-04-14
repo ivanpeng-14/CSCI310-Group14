@@ -200,10 +200,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 let buildingHistory = db.collection("buildings").document(buildingID)
 
                 buildingHistory.updateData(["currentStudents" : FieldValue.arrayRemove([self.studentID])])
-                sleep(3)
+//                print("Sleep")
+//                sleep(3)
+//                print("done sleeping")
                 //update capacity
-                let newCapacity = curr - 1
-                buildingHistory.updateData(["currentCapacity": newCapacity])
+//                let newCapacity = curr - 1
+//                buildingHistory.updateData(["currentCapacity": newCapacity])
 
                 //update students currBuilding
                 let studentDoc = db.collection("students").document(self.studentID)
@@ -216,6 +218,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
                 let alert2 = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
                 alert2.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                    let newCapacity = curr - 1
+                    buildingHistory.updateData(["currentCapacity": newCapacity])
                     self.viewDidLoad()
                 }))
                 self.present(alert2, animated: true)
@@ -240,11 +244,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 buildingHistory.updateData(["currentStudents" : FieldValue.arrayUnion([self.studentID])])
                 
                 //
-                sleep(3)
+//                print("Sleep")
+//                sleep(3)
+//                print("done sleeping")
                 
-                //update capacity
-                let newCapacity = curr + 1
-                buildingHistory.updateData(["currentCapacity": newCapacity])
+//                //update capacity
+//                let newCapacity = curr + 1
+//                buildingHistory.updateData(["currentCapacity": newCapacity])
                 
                 //update students currBuilding
                 let studentDoc = db.collection("students").document(self.studentID)
@@ -254,6 +260,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 
                 let alert2 = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
                 alert2.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                    //update capacity
+                    let newCapacity = curr + 1
+                    buildingHistory.updateData(["currentCapacity": newCapacity])
                     self.viewDidLoad()
                 }))
                 self.present(alert2, animated: true)
