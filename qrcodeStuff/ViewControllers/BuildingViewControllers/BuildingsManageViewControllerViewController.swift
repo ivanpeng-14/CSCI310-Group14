@@ -71,6 +71,9 @@ extension BuildingsManageViewController: UITableViewDelegate, UITableViewDataSou
         alert.addAction(UIAlertAction(title: "Get Building Info", style: .default, handler: { (action) in
             self.performSegue(withIdentifier: "buildingInfoVC", sender: self)
         }))
+        alert.addAction(UIAlertAction(title: "Edit Building Info", style: .default, handler: { (action) in
+            self.performSegue(withIdentifier: "buildingManualEditVC", sender: self)
+        }))
         self.present(alert, animated: true)
         
     }

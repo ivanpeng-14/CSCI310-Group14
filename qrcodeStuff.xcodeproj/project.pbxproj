@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04BD24322626724000C56258 /* BuildingManualEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BD24312626724000C56258 /* BuildingManualEditViewController.swift */; };
 		04C653CA2611BE3F00B72A4D /* addBuildingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C653C92611BE3F00B72A4D /* addBuildingUITests.swift */; };
 		0891BD2C261180D300FC384F /* buildingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0891BD2B261180D300FC384F /* buildingsTests.swift */; };
 		1429F29CCB1D4F665DB8FA74 /* Pods_qrcodeStuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D509E9B7950F2730DF164C /* Pods_qrcodeStuff.framework */; };
@@ -84,6 +85,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04BD24312626724000C56258 /* BuildingManualEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingManualEditViewController.swift; sourceTree = "<group>"; };
 		04C653C92611BE3F00B72A4D /* addBuildingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBuildingUITests.swift; sourceTree = "<group>"; };
 		0891BD2B261180D300FC384F /* buildingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buildingsTests.swift; sourceTree = "<group>"; };
 		1F53B48A2611D77900AFB2AE /* Login_Registration_UITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login_Registration_UITests.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				B17C6E9326081E7200C8E964 /* AddBuildingViewController.swift */,
 				B144A22026040DF10011FB9C /* BuildingXXXViewController.swift */,
 				B105AE70261D249B00B7029E /* StudentProfileTwoViewController.swift */,
+				04BD24312626724000C56258 /* BuildingManualEditViewController.swift */,
 			);
 			path = BuildingViewControllers;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 			files = (
 				B17C6E7A2607D7BF00C8E964 /* EditBuildingViewController.swift in Sources */,
 				B1F53734260A4FD7001FFA2B /* Constants.swift in Sources */,
+				04BD24322626724000C56258 /* BuildingManualEditViewController.swift in Sources */,
 				B12EA1ED260008550082CA9C /* AppDelegate.swift in Sources */,
 				BF2BC6BF2609AE0500E01139 /* ManagerTabBarController.swift in Sources */,
 				B17C6E9426081E7200C8E964 /* AddBuildingViewController.swift in Sources */,

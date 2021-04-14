@@ -181,6 +181,22 @@
             </objects>
             <point key="canvasLocation" x="-2028" y="1589"/>
         </scene>
+        <!--Building Manual Edit View Controller-->
+        <scene sceneID="CZF-LU-neW">
+            <objects>
+                <viewController id="Vap-gN-s1P" customClass="BuildingManualEditViewController" customModule="qrcodeStuff" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vIl-c3-cMs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hIQ-PK-V7A"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7wP-lH-E0U"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JhV-7d-NVC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1313" y="1601"/>
+        </scene>
         <!--StudentProfileTwoVC-->
         <scene sceneID="Uu8-ll-uo7">
             <objects>
@@ -426,6 +442,7 @@
                         <outlet property="tableView" destination="JVf-4u-xcQ" id="ifb-O9-xo5"/>
                         <segue destination="x7u-VO-qA9" kind="show" identifier="QRCodeVC" id="b4Q-B9-iUI"/>
                         <segue destination="4u6-jV-0m6" kind="show" identifier="buildingInfoVC" id="XRi-4q-xfQ"/>
+                        <segue destination="Vap-gN-s1P" kind="show" identifier="buildingManualEditVC" id="QRy-F6-sxH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="He1-sz-O6g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
