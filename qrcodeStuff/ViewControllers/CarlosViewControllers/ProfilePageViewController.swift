@@ -66,18 +66,22 @@ class ProfilePageViewController: UIViewController {
                 self.major.text = userData.getInfo("major") as? String ?? "Error Loading"
                 
                 let db = Firestore.firestore()
-                let building = userData.getInfo("currbuilding") as! String
-                
-                if building != ""{
-                    db.collection("buildings").document(building).getDocument() { doc, err in
-                        if err == nil {
-                            if let data = doc?.data() {
-                                self.currBuilding.text = "In \(data["buildingName"] as? String ?? "Unknown Building")"
+                db.collection("students").document((Auth.auth().currentUser?.email)!).addSnapshotListener() { doc, err in
+                    if let building = doc?.data()?["currbuilding"] as? String {
+                        print("got into async")
+                        print("building is \(building)")
+                        if building != ""{
+                            db.collection("buildings").document(building).getDocument() { doc, err in
+                                if err == nil {
+                                    if let data = doc?.data() {
+                                        self.currBuilding.text = "In \(data["buildingName"] as? String ?? "Unknown Building")"
+                                    }
+                                }
                             }
+                        } else {
+                            self.currBuilding.text = "Not Checked In"
                         }
                     }
-                } else {
-                    currBuilding.text = "Not Checked In"
                 }
             } else {
                 self.id.isHidden = true

@@ -37,6 +37,10 @@ class UserData {
         }
     }
     
+    func refresh() {
+        
+    }
+    
     func isStudent() -> Bool {
         return self.student ?? false
     }
