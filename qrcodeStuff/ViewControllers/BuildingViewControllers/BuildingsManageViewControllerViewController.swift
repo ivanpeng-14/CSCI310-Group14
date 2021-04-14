@@ -90,6 +90,12 @@ extension BuildingsManageViewController: UITableViewDelegate, UITableViewDataSou
             destination2.buildingName = buildings[index!].buildingName
             
         }
+        if let destination3 = segue.destination as? BuildingManualEditViewController {
+            // destination2.modalPresentationStyle = .fullScreen
+            let index = tableView.indexPathForSelectedRow?.row
+            destination3.buildingName = buildings[index!].buildingName
+            
+        }
     }
     
 }
