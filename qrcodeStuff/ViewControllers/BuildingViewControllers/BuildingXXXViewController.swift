@@ -43,7 +43,8 @@ class BuildingXXXViewController: UIViewController {
             self.studentsArray.removeAll()
             self.IDArray.removeAll()
             self.emailArray.removeAll()
-
+            self.tableView.reloadData()
+            
             print("TEMP ARRAY:  \(tempArray)")
 
             for item in tempArray
@@ -63,6 +64,7 @@ class BuildingXXXViewController: UIViewController {
                 }
             }
             self.tableView.reloadData()
+           
           }
     }
     
