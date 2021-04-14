@@ -39,10 +39,13 @@ class BuildingXXXViewController: UIViewController {
 
             let tempArray = data["currentStudents"] as? [String] ?? ["Building is empty"]
             
-            print("TEMP ARRAY:  \(tempArray)")
+           
             self.studentsArray.removeAll()
             self.IDArray.removeAll()
             self.emailArray.removeAll()
+
+            print("TEMP ARRAY:  \(tempArray)")
+
             for item in tempArray
             {
                 db.collection("students").document(item).getDocument { (document, error) in
@@ -59,8 +62,7 @@ class BuildingXXXViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             }
-
-
+            self.tableView.reloadData()
           }
     }
     

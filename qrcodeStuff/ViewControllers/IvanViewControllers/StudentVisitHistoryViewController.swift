@@ -40,6 +40,10 @@ class StudentVisitHistoryViewController: UIViewController {
                     }))
                     alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
                         let ref = db.collection("buildings").document(studentBuildingName)
+                        
+                        ref.updateData(["currentStudents" : FieldValue.arrayRemove([userID])])
+                        sleep(3)
+                        
                         db.collection("buildings").document(studentBuildingName).getDocument { (document, error) in
                             if error == nil {
                                 let documentData = document!.data()
@@ -50,8 +54,8 @@ class StudentVisitHistoryViewController: UIViewController {
                                 ref.updateData(["currentCapacity": newCapacity])
                                 
                                 //update building history
-                                ref.updateData(["currentStudents": FieldValue.arrayRemove([userID])])
-                                
+//                                ref.updateData(["currentStudents": FieldValue.arrayRemove([userID])])
+//                                sleep(3)
                         
                                 //update students currBuilding
                                 let studentDoc = db.collection("students").document(userID)
