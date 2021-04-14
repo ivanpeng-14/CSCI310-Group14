@@ -64,13 +64,20 @@ class ProfilePageViewController: UIViewController {
             if userData.isStudent() {
                 self.id.text = userData.getInfo("uscid") as? String ?? "Error Loading"
                 self.major.text = userData.getInfo("major") as? String ?? "Error Loading"
+                
                 let db = Firestore.firestore()
-                db.collection("buildings").document(userData.getInfo("currbuilding") as! String).getDocument() { doc, err in
-                    if err == nil {
-                        if let data = doc?.data() {
-                            self.currBuilding.text = data["buildingName"] as! String == "" ? "Not Checked in" : "In \(data["buildingName"] as? String ?? "Unknown Building")"
+                let building = userData.getInfo("currbuilding") as! String
+                
+                if building != ""{
+                    db.collection("buildings").document(building).getDocument() { doc, err in
+                        if err == nil {
+                            if let data = doc?.data() {
+                                self.currBuilding.text = "In \(data["buildingName"] as? String ?? "Unknown Building")"
+                            }
                         }
                     }
+                } else {
+                    currBuilding.text = "Not Checked In"
                 }
             } else {
                 self.id.isHidden = true

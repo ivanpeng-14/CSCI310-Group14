@@ -40,7 +40,15 @@ class PhotoUploadViewController: UIPhotoDelegate {
     
     // IB Actions
     @IBAction func photoIconTapped(_ sender: UITapGestureRecognizer) {
-        self.presentPicker()
+        let alert = UIAlertController(title: "Upload Photo", message: "Upload photo from..", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Photos", style: .default, handler: { _ in
+            self.presentPicker()
+        }))
+        alert.addAction(UIAlertAction(title: "URL", style: .default, handler: { _ in
+            self.photoFromURL()
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func createAccount(_ sender: Any) {

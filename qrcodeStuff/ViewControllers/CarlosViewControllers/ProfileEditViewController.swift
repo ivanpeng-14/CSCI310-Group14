@@ -86,7 +86,15 @@ class ProfileEditViewController: UIPhotoDelegate, UITextFieldDelegate {
     
     // IB Actions
     @IBAction func updatePhoto(_ sender: UIButton) {
-        self.presentPicker()
+        let alert = UIAlertController(title: "Upload Photo", message: "Upload photo from..", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Photos", style: .default, handler: { _ in
+            self.presentPicker()
+        }))
+        alert.addAction(UIAlertAction(title: "URL", style: .default, handler: { _ in
+            self.photoFromURL()
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func updatePassword(_ sender: Any) {
