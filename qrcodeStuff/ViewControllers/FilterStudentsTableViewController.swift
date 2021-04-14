@@ -33,6 +33,7 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
     
     var initialStudents = [Student]()
     var students = [Student]()
+    var emailArray: [String] = []
     var majorList = [
         "Aerospace Engineering",
         "Mechanical Engineering",
@@ -75,18 +76,60 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
         guard let newTimeZone = timeZone else {return}
         fromTime.timeZone = newTimeZone
         toTime.timeZone = newTimeZone
-//        fromTime.timezone = TimeZone.init(identifier: "UTC")
-//        toTime.timezone = TimeZone.init(identifier: "UTC")
         loadData()
         nameTextField.delegate = self
         idTextField.delegate = self
     }
     
-    
     func loadData() {
         service = BuildingService()
         service?.get(collectionID: "buildings") { buildings in
             self.allbuildings = buildings
+        }
+        
+        let db = Firestore.firestore()
+        self.emailArray.removeAll()
+        self.students.removeAll()
+        self.initialStudents.removeAll()
+        self.tableView.reloadData()
+        db.collection("students").getDocuments { (snapshot, error) in
+            if let err = error {
+                debugPrint("Error fetching docs: \(err)")
+            }
+            else {
+                // iterate over students
+                for document in (snapshot?.documents)! {
+                    let data = document.data()
+                    let deleted = data["deleted"] as? Bool ?? true
+                    if (!deleted) {
+                        let firstName = data["firstname"] as? String ?? "Anonymous"
+                        let lastName = data["lastname"] as? String ?? "Anonymous"
+                        let name = firstName + " " + lastName
+                        let email = data["email"] as? String ?? ""
+                        let major = data["major"] as? String ?? "None"
+                        let id = (data["uscid"] as! NSString).integerValue
+                        let checkIns = data["buildingHistory"] as? [String] ?? []
+                        for checkIn in checkIns {
+                            if checkIn.contains("into") { // check in
+                                let pattern = "Checked into (.*) at ([0-9\\- :+]+)"
+                                do {
+                                    let regex = try NSRegularExpression(pattern: pattern)
+                                    if let match = regex.firstMatch(in: checkIn, range: NSRange(checkIn.startIndex..., in: checkIn)) {
+                                        let buildingName = String(checkIn[Range(match.range(at: 1), in: checkIn)!])
+                                        let time = String(checkIn[Range(match.range(at: 2), in: checkIn)!])
+                                        let newStudent = Student(name: name, lastName:lastName, email:email, major: major, id: id, building: buildingName, time: time)
+                                        self.emailArray.append(email)
+                                        self.initialStudents.append(newStudent)
+                                        self.students.append(newStudent)
+                                    }
+                                } catch { print(error) }
+                            }
+                        } // end for checkIn loop
+                    } // end if !deleted
+                } // end document loop
+                
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -173,7 +216,6 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
         majorList.sort()
     }
     
-    
     @IBAction func searchButtonTapped(_ sender: Any) {
         let name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let id = idTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
@@ -183,8 +225,6 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
         let timeFormatter = DateFormatter()
         timeFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
         timeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-        let from = timeFormatter.string(from: fromTime.date)
-        let to = timeFormatter.string(from: toTime.date)
         self.students = self.initialStudents.filter({ (student) -> Bool in
             var filtered = true
             if (name != "") {
@@ -200,8 +240,11 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
                 filtered = filtered && String(student.id).contains(id)
             }
             timeFormatter.timeZone = TimeZone(abbreviation: "UTC")
-            let time = student.time ?? ""
+            let time = student.time
             let date = timeFormatter.date(from:time)
+            if fromTime.date > toTime.date {
+                fromTime.date = toTime.date
+            }
             let range = fromTime.date...toTime.date
             filtered = filtered && range.contains(date ?? Date())
             
@@ -209,32 +252,11 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
         })
     
         self.students.sort(by: {$0.lastName.caseInsensitiveCompare($1.lastName) == .orderedAscending})
-        self.tableView.reloadData()
-    }
-    
-    func filterTableView(ind:Int,text:String,initialStudents:[Student]) -> [Student] {
-        var students = [Student]()
-        switch ind {
-            case selectedScope.building.rawValue:
-                students = initialStudents.filter({ (student) -> Bool in
-                    return student.building.lowercased().contains(text.lowercased())
-                })
-//            case selectedScope.time.rawValue:
-//                students = initialStudents.filter({ (student) -> Bool in
-//                    return student.time.lowercased().contains(text.lowercased())
-//                })
-            case selectedScope.major.rawValue:
-                students = initialStudents.filter({ (student) -> Bool in
-                    return student.major.lowercased().contains(text.lowercased())
-                })
-            case selectedScope.id.rawValue:
-                students = initialStudents.filter({ (student) -> Bool in
-                    return String(student.id).contains(text)
-                })
-            default:
-                print("no type")
+        self.emailArray.removeAll()
+        for student in self.students {
+            self.emailArray.append(student.email)
         }
-        return students
+        self.tableView.reloadData()
     }
     
     @IBAction func clearButtonTapped(_ sender: Any) {
@@ -243,84 +265,6 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
         nameTextField.text = ""
         idTextField.text = ""
         searchButtonTapped((Any).self)
-    }
-    
-    func searchBarSetup() {
-        let searchBar = UISearchBar(frame: CGRect(x:0,y:0,width:(UIScreen.main.bounds.width),height:70))
-        searchBar.showsScopeBar = true
-        searchBar.scopeButtonTitles = ["Building","Check In Time","Major", "USC ID"]
-        searchBar.selectedScopeButtonIndex = 0
-        searchBar.delegate = self
-        self.tableView.tableHeaderView = searchBar
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchBar.autocapitalizationType = UITextAutocapitalizationType.none;
-        if searchText.isEmpty {
-            self.students = self.initialStudents
-            self.tableView.reloadData()
-        }
-        else {
-            self.students = filterTableView(ind: searchBar.selectedScopeButtonIndex, text:searchText, initialStudents:self.initialStudents)
-            self.tableView.reloadData()
-        }
-    }
-    
-    
-    func getBuildingName(buildingID: String, completion: @escaping (String?, Error?) -> Void) {
-        let db = Firestore.firestore()
-        db.collection("buildings").document(buildingID).getDocument { (document, error) in
-            if let document = document,
-                let buildingName = document.get("buildingName"),
-                document.exists {
-                completion((buildingName as! String), nil)
-            } else {
-                completion(nil, error)
-            }
-        }
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let db = Firestore.firestore()
-        db.collection("students").getDocuments { (snapshot, error) in
-            if let err = error {
-                debugPrint("Error fetching docs: \(err)")
-            }
-            else {
-                for document in (snapshot?.documents)! {
-                    let data = document.data()
-                    let buildingID = data["currbuilding"] as? String ?? ""
-                    let deleted = data["deleted"] as? Bool ?? true
-                    if (buildingID != "" && !deleted) {
-                        let firstName = data["firstname"] as? String ?? "Anonymous"
-                        let lastName = data["lastname"] as? String ?? "Anonymous"
-                        let name = firstName + " " + lastName
-                        let major = data["major"] as? String ?? "None"
-                        let id = (data["uscid"] as! NSString).integerValue
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
-                        let time = data["lastcheckin"] as? String ?? dateFormatter.string(from: Date())
-                        self.getBuildingName(buildingID: buildingID) { buildingName, error in
-                            let newStudent = Student(name: name, lastName:lastName, major: major, id: id, building:
-                                                        buildingName ?? "", time: time)
-                            
-                            self.initialStudents.append(newStudent)
-                            self.students.append(newStudent)
-                            self.tableView.reloadData()
-                        }
-                        
-                    }
-                    
-                }
-            }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.students = [Student]()
-        self.initialStudents = [Student]()
-        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -334,7 +278,6 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
         // #warning Incomplete implementation, return the number of rows
         return self.students.count
     }
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FilterStudentsTableViewCell
@@ -350,50 +293,26 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let alert = UIAlertController(title: "View Student Profile?", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            self.performSegue(withIdentifier: "studentSegue", sender: self)
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action) in
+            
+        }))
+        self.present(alert, animated: true)
+        
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? StudentProfileTwoViewController {
+            // destination.modalPresentationStyle = .fullScreen
+            let index = tableView.indexPathForSelectedRow?.row
+            destination.studentEmail = emailArray[index!]
+        }
+        
     }
-    */
 
 }

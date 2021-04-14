@@ -286,7 +286,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTE-Fm-DIR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1184.0579710144928" y="1592.4107142857142"/>
+            <point key="canvasLocation" x="-2523" y="2322"/>
         </scene>
         <!--Buildings Manage-->
         <scene sceneID="USc-U7-QEK">
@@ -2646,6 +2646,7 @@
                         <outlet property="tableView" destination="OYp-yk-A8q" id="0EM-BC-wgR"/>
                         <outlet property="timeSwitch" destination="zbj-h1-sn0" id="Kgo-eh-AJN"/>
                         <outlet property="toTime" destination="LY7-Xu-j2u" id="0aY-Ag-wGs"/>
+                        <segue destination="U1N-Kx-JNU" kind="show" identifier="studentSegue" id="h8M-Qx-hKq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEB-aE-Yuu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2654,12 +2655,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4cg-zW-O8H"/>
+        <segue reference="Y0x-uE-Bd7"/>
         <segue reference="KAh-SN-545"/>
+        <segue reference="BLP-6q-uxe"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="building" catalog="system" width="112" height="128"/>
-        <image name="camera.viewfinder" catalog="system" width="32" height="32"/>
+        <image name="camera.viewfinder" catalog="system" width="128" height="115"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>

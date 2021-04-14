@@ -13,14 +13,16 @@ class Student: NSObject {
     
     var name:String = ""
     var lastName:String = ""
+    var email:String = ""
     var major:String = ""
     var id:Int = 0
     var building:String = ""
     var time:String = ""
     
-    init(name:String,lastName:String,major:String,id:Int,building:String,time:String) {
+    init(name:String,lastName:String,email:String,major:String,id:Int,building:String,time:String) {
         self.name = name
         self.lastName = lastName
+        self.email = email
         self.major = major
         self.id = id
         self.building = building
@@ -52,7 +54,7 @@ class Student: NSObject {
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
                         let time = data["lastCheckIn"] as? String ?? dateFormatter.string(from: Date())
-                        let newStudent = Student(name: name, lastName: name, major: major, id: id, building:
+                        let newStudent = Student(name: name, lastName: name, email:"", major: major, id: id, building:
                                                     building, time: time)
                         students.append(newStudent)
                     }
