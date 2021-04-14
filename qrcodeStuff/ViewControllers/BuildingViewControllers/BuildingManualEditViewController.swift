@@ -100,9 +100,26 @@ class BuildingManualEditViewController: UIViewController {
             return;
         }
         // proceed
-        errorLabel.text = "Capacity Changed";
-        errorLabel.textColor = UIColor.green;
-        errorLabel.alpha = 1;
+        let db = Firestore.firestore()
+        db.collection("buildings").whereField("buildingName", isEqualTo: buildingName).getDocuments(){(querySnapshot, err) in
+            if ((querySnapshot?.isEmpty) == false) {
+                // building already exist
+                self.errorLabel.alpha = 0;
+                
+                db.collection("buildings").document((querySnapshot?.documents.first!.documentID)!).updateData(
+                    ["totalCapacity" :newTotalCapacity]
+                );
+                self.errorLabel.text = "Capacity Changed";
+                self.errorLabel.textColor = UIColor.green;
+                self.errorLabel.alpha = 1;
+            } else {
+                // building doesn't already exist
+                self.errorLabel.text = "Internal Error: Building Doesn't Exist";
+                self.errorLabel.textColor = UIColor.red;
+                self.errorLabel.alpha = 1;
+                
+            }
+        };
         return
     }
 }
