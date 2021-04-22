@@ -13,6 +13,7 @@ import Firebase
 class StudentProfileTwoViewController: UIViewController {
     var studentEmail: String?
     var historyArray: [String] = []
+    var buildingID: String?
     
     
     @IBOutlet weak var name: UILabel!
@@ -20,6 +21,76 @@ class StudentProfileTwoViewController: UIViewController {
     @IBOutlet weak var id: UILabel!
     @IBOutlet weak var major: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func kickOutButton(_ sender: Any) {
+        let db = Firestore.firestore()
+
+        db.collection("students").document(studentEmail!).getDocument { (document, error) in
+            if error == nil {
+                //check if document exists
+                if document != nil && document!.exists {
+                    let documentData = document!.data()
+                    let studentBuilding = documentData!["currbuilding"] as? String ?? ""
+                    //
+                    
+                    if studentBuilding == "" || self.buildingID != studentBuilding
+                    {
+                        let alert = UIAlertController(title: "Error", message: "Student is not checked in to this building anymore.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (action) in
+                            self.viewDidLoad()
+                        }))
+                        self.present(alert, animated: true)
+                    
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Kick Out", message: "Kick this student out?", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action) in
+                            self.viewDidLoad()
+                        }))
+                        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                            let ref = db.collection("buildings").document(studentBuilding)
+                            ref.updateData(["currentStudents" : FieldValue.arrayRemove([self.studentEmail!])])
+                            let alert2 = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+                            alert2.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                                db.collection("buildings").document(studentBuilding).getDocument { (document, error) in
+                                    if error == nil {
+                                        let ref = db.collection("buildings").document(studentBuilding)
+                                        let documentData = document!.data()
+                                        let actualName = documentData!["buildingName"] as? String ?? ""
+                                        //update capacity
+                                        let capacity = documentData!["currentCapacity"] as? Int ?? -1
+                                        let newCapacity = capacity - 1
+                                        ref.updateData(["currentCapacity": newCapacity])
+                                        
+                                        //update students currBuilding
+                                        let studentDoc = db.collection("students").document(self.studentEmail!)
+                                        studentDoc.updateData(["currbuilding": ""])
+                                        //update student history
+                                        let studentHistory = db.collection("students").document(self.studentEmail!)
+                                        studentHistory.updateData(["buildingHistory": FieldValue.arrayUnion(["Kicked out of \(actualName) at \(Date())"])])
+                                        
+                                    }
+                                }
+                                self.viewDidLoad()
+                            }))
+                            self.present(alert2, animated: true)
+                        }))
+                        self.present(alert, animated: true)
+                        
+                        
+    
+                        
+                   }
+
+                }
+
+            }
+        }
+           
+    }
+        
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

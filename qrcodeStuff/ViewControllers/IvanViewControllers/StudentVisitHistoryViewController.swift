@@ -53,9 +53,7 @@ class StudentVisitHistoryViewController: UIViewController {
                                 let newCapacity = capacity - 1
                                 ref.updateData(["currentCapacity": newCapacity])
                                 
-                                //update building history
-//                                ref.updateData(["currentStudents": FieldValue.arrayRemove([userID])])
-//                                sleep(3)
+            
                         
                                 //update students currBuilding
                                 let studentDoc = db.collection("students").document(userID)

@@ -863,13 +863,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7YW9BTNAM3;
+				DEVELOPMENT_TEAM = 986XWR8X97;
 				INFOPLIST_FILE = qrcodeStuff/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.carloslao.qrcodeStuff;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jenny8465.qrcodeStuff;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -889,7 +889,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.carloslao.qrcodeStuff;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jenny8465.qrcodeStuff;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -19,6 +19,7 @@ class BuildingXXXViewController: UIViewController {
     var IDArray: [String] = []
     var emailArray: [String] = []
     var checker = true
+    var buildingID: String?
     
     func loadData(buildingID: String) {
         let db = Firestore.firestore()
@@ -84,6 +85,7 @@ class BuildingXXXViewController: UIViewController {
             if error == nil {
                 for document in querySnapshot!.documents {
                     let buildingID = document.documentID
+                    self.buildingID = buildingID
                     self.loadData(buildingID: buildingID)
         
                 }
@@ -125,6 +127,7 @@ extension BuildingXXXViewController: UITableViewDelegate, UITableViewDataSource 
             // destination.modalPresentationStyle = .fullScreen
             let index = tableView.indexPathForSelectedRow?.row
             destination.studentEmail = emailArray[index!]
+            destination.buildingID = self.buildingID
         }
         
     }

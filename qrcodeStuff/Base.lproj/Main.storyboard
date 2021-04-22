@@ -354,6 +354,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvz-Zf-DMa">
+                                <rect key="frame" x="284" y="31" width="74" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Kick Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="kickOutButton:" destination="U1N-Kx-JNU" eventType="touchUpInside" id="4fO-YI-gbN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QFC-Zk-EcV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -389,7 +401,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTE-Fm-DIR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2523" y="2322"/>
+            <point key="canvasLocation" x="-2523.1884057971015" y="2321.6517857142858"/>
         </scene>
         <!--Buildings Manage-->
         <scene sceneID="USc-U7-QEK">
