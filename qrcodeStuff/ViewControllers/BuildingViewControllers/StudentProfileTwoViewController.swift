@@ -68,6 +68,9 @@ class StudentProfileTwoViewController: UIViewController {
                                         //update student history
                                         let studentHistory = db.collection("students").document(self.studentEmail!)
                                         studentHistory.updateData(["buildingHistory": FieldValue.arrayUnion(["Kicked out of \(actualName) at \(Date())"])])
+                                        //update kickOut in student
+                                        studentHistory.updateData(["kickOut": actualName])
+                                        
                                         
                                     }
                                 }

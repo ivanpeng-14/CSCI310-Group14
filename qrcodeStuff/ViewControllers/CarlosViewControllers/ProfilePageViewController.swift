@@ -57,7 +57,6 @@ class ProfilePageViewController: UIViewController {
         if let tab = self.tabBarController as? StudentTabBarController {
             self.user = tab.user
             self.userData = tab.userData
-            getNotifications()
         } else if let tab = self.tabBarController as? ManagerTabBarController {
             self.user = tab.user
             self.userData = tab.userData
@@ -87,6 +86,7 @@ class ProfilePageViewController: UIViewController {
             }
             
             if userData.isStudent() {
+                getNotifications()
                 self.id.text = userData.getInfo("uscid") as? String ?? "Error Loading"
                 self.major.text = userData.getInfo("major") as? String ?? "Error Loading"
                 
