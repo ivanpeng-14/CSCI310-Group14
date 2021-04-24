@@ -31,7 +31,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         self.studentID = (Auth.auth().currentUser?.email)!
         print("current student \(self.studentID)")
         
-        
+        getNotifications()
         
         let db = Firestore.firestore()
 
@@ -95,6 +95,37 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         captureSession.startRunning()
     }
+    
+    func getNotifications() {
+        let db = Firestore.firestore()
+        db.collection("students").document(self.studentID).addSnapshotListener { (documentSnapshot, error) in
+            guard let document = documentSnapshot else {
+              print("Error fetching document: \(error!)")
+              return
+            }
+            guard let data = document.data() else {
+              print("Document data was empty.")
+              return
+            }
+            
+            let kickOut = data["kickOut"] as? String ?? ""
+            if kickOut == ""
+            {
+                
+            }
+            else
+            {
+                let alert = UIAlertController(title: "You've been kicked out of \(kickOut)", message: "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                    // change kick out back to null
+                    let ref = db.collection("students").document(self.studentID)
+                    ref.updateData(["kickOut": ""])
+                    self.viewDidLoad()
+                }))
+                self.present(alert, animated: true)
+            }
+        }
+    }
 
     func failed() {
         let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
@@ -133,6 +164,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
     
     }
+    
     
     func found(curr: Int, total:Int, buildingID: String, buildingName: String) -> String {
         var message: String
@@ -200,12 +232,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 let buildingHistory = db.collection("buildings").document(buildingID)
 
                 buildingHistory.updateData(["currentStudents" : FieldValue.arrayRemove([self.studentID])])
-//                print("Sleep")
-//                sleep(3)
-//                print("done sleeping")
-                //update capacity
-//                let newCapacity = curr - 1
-//                buildingHistory.updateData(["currentCapacity": newCapacity])
+
 
                 //update students currBuilding
                 let studentDoc = db.collection("students").document(self.studentID)
@@ -243,14 +270,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 let buildingHistory = db.collection("buildings").document(buildingID)
                 buildingHistory.updateData(["currentStudents" : FieldValue.arrayUnion([self.studentID])])
                 
-                //
-//                print("Sleep")
-//                sleep(3)
-//                print("done sleeping")
-                
-//                //update capacity
-//                let newCapacity = curr + 1
-//                buildingHistory.updateData(["currentCapacity": newCapacity])
+
                 
                 //update students currBuilding
                 let studentDoc = db.collection("students").document(self.studentID)

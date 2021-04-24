@@ -190,6 +190,7 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
             let deleteStatus = false
             let currBuilding = ""
             let lastCheckIn = ""
+            let kickOut = ""
             
             // Create the user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
@@ -221,7 +222,8 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
                         "currbuilding": currBuilding,
                         "lastcheckin": lastCheckIn,
                         "uid": uid,
-                        "photo": "F29248B7-72C2-47C6-AE85-7F687071373F"
+                        "photo": "F29248B7-72C2-47C6-AE85-7F687071373F",
+                        "kickOut": kickOut
                     ]
                     db.collection("students").document(email).setData(studentData) { err in
                         if let err = err {

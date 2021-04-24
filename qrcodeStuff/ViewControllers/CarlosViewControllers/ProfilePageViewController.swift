@@ -8,8 +8,32 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
-
+import UserNotifications
 class ProfilePageViewController: UIViewController {
+    
+    func notify() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert]) { (granted, error) in
+           
+        }
+        let content = UNMutableNotificationContent()
+        content.title = "You got kicked out of the building!"
+        content.body = ""
+        
+        let date = Date().addingTimeInterval(5)
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        
+        center.add(request) { (error) in
+            
+        }
+    }
+    
+    
     
     // Current User
     var user : User?
@@ -33,6 +57,7 @@ class ProfilePageViewController: UIViewController {
         if let tab = self.tabBarController as? StudentTabBarController {
             self.user = tab.user
             self.userData = tab.userData
+            getNotifications()
         } else if let tab = self.tabBarController as? ManagerTabBarController {
             self.user = tab.user
             self.userData = tab.userData
@@ -44,7 +69,7 @@ class ProfilePageViewController: UIViewController {
         }
         
         super.viewDidLoad()
-        
+    
         profilePicture.layer.cornerRadius = profilePicture.bounds.width / 2
         
         editButton.layer.cornerRadius = 5
@@ -87,6 +112,36 @@ class ProfilePageViewController: UIViewController {
                 self.id.isHidden = true
                 self.major.isHidden = true
                 self.currBuilding.isHidden = true
+            }
+        }
+    }
+    func getNotifications() {
+        let db = Firestore.firestore()
+        db.collection("students").document(self.email.text!).addSnapshotListener { (documentSnapshot, error) in
+            guard let document = documentSnapshot else {
+              print("Error fetching document: \(error!)")
+              return
+            }
+            guard let data = document.data() else {
+              print("Document data was empty.")
+              return
+            }
+            
+            let kickOut = data["kickOut"] as? String ?? ""
+            if kickOut == ""
+            {
+                
+            }
+            else
+            {
+                let alert = UIAlertController(title: "You've been kicked out of \(kickOut)", message: "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                    // change kick out back to null
+                    let ref = db.collection("students").document(self.email.text!)
+                    ref.updateData(["kickOut": ""])
+                    self.viewDidLoad()
+                }))
+                self.present(alert, animated: true)
             }
         }
     }
