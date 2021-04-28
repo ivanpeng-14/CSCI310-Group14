@@ -19,6 +19,8 @@ class FilterStudentsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var idLabel: UILabel!
     
+    @IBOutlet weak var deletedLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

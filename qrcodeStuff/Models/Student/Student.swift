@@ -18,8 +18,9 @@ class Student: NSObject {
     var id:Int = 0
     var building:String = ""
     var time:String = ""
+    var deleted:Bool = false
     
-    init(name:String,lastName:String,email:String,major:String,id:Int,building:String,time:String) {
+    init(name:String,lastName:String,email:String,major:String,id:Int,building:String,time:String,deleted:Bool) {
         self.name = name
         self.lastName = lastName
         self.email = email
@@ -27,6 +28,7 @@ class Student: NSObject {
         self.id = id
         self.building = building
         self.time = time
+        self.deleted = deleted
     }
      
     override func isEqual(_ object: Any?) -> Bool {
@@ -34,35 +36,5 @@ class Student: NSObject {
                     && self.id == (object as? Student)?.id && self.building == (object as? Student)?.building
                     && self.time == (object as? Student)?.time)
     }
-    
-    class func getStudents() -> [Student]{
-        var students = [Student]()
-        
-        let db = Firestore.firestore()
-        db.collection("students").getDocuments { (snapshot, error) in
-            if let err = error {
-                debugPrint("Error fetching docs: \(err)")
-            }
-            else {
-                for document in (snapshot?.documents)! {
-                    let data = document.data()
-                    let name = data["name"] as? String ?? "Anonymous"
-                    if (name != "Null") {
-                        let major = data["major"] as? String ?? "None"
-                        let id = data["studentID"] as? Int ?? 0
-                        let building = data["currBuilding"] as? String ?? "Null"
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
-                        let time = data["lastCheckIn"] as? String ?? dateFormatter.string(from: Date())
-                        let newStudent = Student(name: name, lastName: name, email:"", major: major, id: id, building:
-                                                    building, time: time)
-                        students.append(newStudent)
-                    }
-                }
-            }
-        }
-        return students
-    }
-    
 }
 
