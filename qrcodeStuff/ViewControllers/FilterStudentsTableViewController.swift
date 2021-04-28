@@ -279,6 +279,8 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
         buildingTextField.text = ""
         nameTextField.text = ""
         idTextField.text = ""
+        timeSwitch.setOn(false, animated: false)
+        switchChanged(mySwitch:timeSwitch)
         searchButtonTapped((Any).self)
     }
 
