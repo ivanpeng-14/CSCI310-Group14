@@ -2364,6 +2364,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AMg-Wg-PVe">
+                                <rect key="frame" x="0.0" y="84" width="414" height="166"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RF-bH-f8H">
                                 <rect key="frame" x="28" y="54" width="66" height="30"/>
                                 <state key="normal" title="Checkout"/>
@@ -2371,14 +2376,14 @@
                                     <action selector="checkoutButton:" destination="qy8-5E-Au4" eventType="touchUpInside" id="d80-W6-oim"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Visit Feed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce0-i3-0gD">
-                                <rect key="frame" x="87" y="258" width="240" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="Visit Feed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce0-i3-0gD">
+                                <rect key="frame" x="0.0" y="258" width="414" height="32"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qu0-Ar-nzf">
-                                <rect key="frame" x="0.0" y="321" width="414" height="492"/>
+                                <rect key="frame" x="0.0" y="318" width="414" height="495"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BuildingCell" rowHeight="43.5" id="WGj-Fy-rcJ" customClass="BuildingManageTableViewCell" customModule="qrcodeStuff" customModuleProvider="target">
@@ -2428,7 +2433,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfy-d8-bra">
-                                <rect key="frame" x="266" y="297" width="28" height="15"/>
+                                <rect key="frame" x="266" y="297" width="40" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -2503,10 +2508,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qu0-Ar-nzf" firstAttribute="bottom" secondItem="Q2f-8y-lJ3" secondAttribute="bottom" id="62O-42-nPY"/>
-                            <constraint firstItem="qu0-Ar-nzf" firstAttribute="top" secondItem="ce0-i3-0gD" secondAttribute="bottom" constant="34" id="8Sa-UZ-KMC"/>
+                            <constraint firstItem="qu0-Ar-nzf" firstAttribute="top" secondItem="ce0-i3-0gD" secondAttribute="bottom" constant="31" id="8Sa-UZ-KMC"/>
                             <constraint firstAttribute="trailing" secondItem="qu0-Ar-nzf" secondAttribute="trailing" id="8YS-h4-OGN"/>
                             <constraint firstItem="6RF-bH-f8H" firstAttribute="leading" secondItem="Q2f-8y-lJ3" secondAttribute="leading" constant="32" id="FFP-Ne-MKi"/>
-                            <constraint firstItem="ce0-i3-0gD" firstAttribute="leading" secondItem="Q2f-8y-lJ3" secondAttribute="leading" constant="87" id="HU1-zo-2GX"/>
+                            <constraint firstItem="ce0-i3-0gD" firstAttribute="leading" secondItem="Q2f-8y-lJ3" secondAttribute="leading" id="HU1-zo-2GX"/>
                             <constraint firstItem="qu0-Ar-nzf" firstAttribute="leading" secondItem="Tek-Pb-FDs" secondAttribute="leading" id="IfX-9D-QZt"/>
                             <constraint firstItem="ce0-i3-0gD" firstAttribute="top" secondItem="Q2f-8y-lJ3" secondAttribute="top" constant="214" id="l33-Xh-4gE"/>
                             <constraint firstItem="6RF-bH-f8H" firstAttribute="top" secondItem="Q2f-8y-lJ3" secondAttribute="top" constant="4" id="nkI-6k-i13"/>
