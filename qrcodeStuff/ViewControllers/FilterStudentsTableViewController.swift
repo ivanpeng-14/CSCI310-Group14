@@ -90,7 +90,6 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
             }
             
             // empty out arrays to avoid duplicates
-            self.emailArray.removeAll()
             self.students.removeAll()
             self.initialStudents.removeAll()
             
@@ -114,7 +113,6 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
                                 let buildingName = String(checkIn[Range(match.range(at: 1), in: checkIn)!])
                                 let time = String(checkIn[Range(match.range(at: 2), in: checkIn)!])
                                 let newStudent = Student(name: name, lastName:lastName, email:email, major: major, id: id, building: buildingName, time: time, deleted: deleted)
-                                self.emailArray.append(email)
                                 self.initialStudents.append(newStudent)
                                 self.students.append(newStudent)
                             }
@@ -125,6 +123,10 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
             
             self.initialStudents.sort(by: {$0.lastName.caseInsensitiveCompare($1.lastName) == .orderedAscending})
             self.students.sort(by: {$0.lastName.caseInsensitiveCompare($1.lastName) == .orderedAscending})
+            self.emailArray.removeAll()
+            for student in self.students {
+                self.emailArray.append(student.email)
+            }
             self.tableView.reloadData()
         }
     }
