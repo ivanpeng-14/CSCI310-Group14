@@ -15,7 +15,7 @@ import UniformTypeIdentifiers
 
 class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
 
-    
+    var isUpdate = false;
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var csvStatusLabel: UILabel!
     
@@ -97,6 +97,7 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     @IBAction func uploadCSVButton(_ sender: UIButton) {
+        self.isUpdate = true;
         let supportedfiles : [UTType] = [UTType.commaSeparatedText]
                 
         let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedfiles, asCopy: true)
@@ -106,6 +107,18 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
         
         present(controller, animated: true, completion: nil)
 
+    }
+    
+    @IBAction func addCSVButton(_ sender: Any) {
+        self.isUpdate = false;
+        let supportedfiles : [UTType] = [UTType.commaSeparatedText]
+                
+        let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedfiles, asCopy: true)
+        
+        controller.delegate = self
+        controller.allowsMultipleSelection = false
+        
+        present(controller, animated: true, completion: nil)
     }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt docurl: URL) {
@@ -163,40 +176,65 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
                             print("valid")
                             
                             // building already exist
-                            
-                            
-                            // check to make sure current number of students <= new capacity
-                            let currCapacity = (querySnapshot?.documents.first!.get("currentCapacity"))! as! Int;
-                            let totalCapacity = Int(arrItem["totalCapacity"]!) ?? 0;
-                            
-                            // valid
-                            if (currCapacity < totalCapacity) {
-                                let currstring = self.csvStatusLabel.attributedText;
-                                let string = NSMutableAttributedString();
-                                string.append(currstring!);
-                                string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) )'s capacity updated to \(String(arrItem["totalCapacity"]!) ) \n", attributes: validAttributes));
-                                self.csvStatusLabel.attributedText = string;
+                            if (self.isUpdate) {
+                                // check to make sure current number of students <= new capacity
+                                let currCapacity = (querySnapshot?.documents.first!.get("currentCapacity"))! as! Int;
+                                let totalCapacity = Int(arrItem["totalCapacity"]!) ?? 0;
                                 
-                                db.collection("buildings").document((querySnapshot?.documents.first!.documentID)!).updateData(["totalCapacity" :Int(arrItem["totalCapacity"]!) ?? 0 ]);
-                            }
-                            // invalid
-                            else {
+                                // valid
+                                if (currCapacity < totalCapacity) {
+                                    let currstring = self.csvStatusLabel.attributedText;
+                                    let string = NSMutableAttributedString();
+                                    string.append(currstring!);
+                                    string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) )'s capacity updated to \(String(arrItem["totalCapacity"]!) ) \n", attributes: validAttributes));
+                                    self.csvStatusLabel.attributedText = string;
+                                    
+                                    db.collection("buildings").document((querySnapshot?.documents.first!.documentID)!).updateData(["totalCapacity" :Int(arrItem["totalCapacity"]!) ?? 0 ]);
+                                }
+                                // invalid
+                                else {
+                                    print("invalid")
+                                    let currstring = self.csvStatusLabel.attributedText;
+                                    let string = NSMutableAttributedString();
+                                    string.append(currstring!);
+                                    string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) )'s currentCapacity exceeds \(String(arrItem["totalCapacity"]!) ) \n", attributes: invalidAttributes));
+                                    self.csvStatusLabel.attributedText = string;
+                                }
+                            } else {
                                 print("invalid")
                                 let currstring = self.csvStatusLabel.attributedText;
                                 let string = NSMutableAttributedString();
                                 string.append(currstring!);
-                                string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) )'s currentCapacity exceeds \(String(arrItem["totalCapacity"]!) ) \n", attributes: invalidAttributes));
+                                string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) ) already exists! Can't Add.\n", attributes: invalidAttributes));
                                 self.csvStatusLabel.attributedText = string;
                             }
                             
                             
+                            
+                            
                         } else {
-                            print("invalid")
-                            let currstring = self.csvStatusLabel.attributedText;
-                            let string = NSMutableAttributedString();
-                            string.append(currstring!);
-                            string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) ) is not an existing building \n", attributes: invalidAttributes));
-                            self.csvStatusLabel.attributedText = string;
+                            if(self.isUpdate) {
+                                print("invalid")
+                                let currstring = self.csvStatusLabel.attributedText;
+                                let string = NSMutableAttributedString();
+                                string.append(currstring!);
+                                string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) ) is not an existing building \n", attributes: invalidAttributes));
+                                self.csvStatusLabel.attributedText = string;
+                            } else {
+                                let currstring = self.csvStatusLabel.attributedText;
+                                let string = NSMutableAttributedString();
+                                string.append(currstring!);
+                                string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) ) has been created wth capacity \(String(arrItem["totalCapacity"]!) ) \n", attributes: validAttributes));
+                                self.csvStatusLabel.attributedText = string;
+                                
+                                db.collection("buildings").addDocument(data: [
+                                    "buildingName": arrItem["buildingName"]! , "totalCapacity": Int(arrItem["totalCapacity"]!) ?? 0,
+                                    "currentCapacity": 0,
+                                    "currentStudents" : []
+                                    
+                                ]);
+                            }
+                            
                             // building doesn't already exist
 
                             /**db.collection("buildings").addDocument(data: [
