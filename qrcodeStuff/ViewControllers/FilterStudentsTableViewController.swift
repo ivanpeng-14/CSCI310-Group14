@@ -101,7 +101,7 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
                 let name = firstName + " " + lastName
                 let email = data["email"] as? String ?? ""
                 let major = data["major"] as? String ?? "None"
-                let id = (data["uscid"] as! NSString).integerValue
+                let id = data["uscid"] as? String ?? ""
                 let deleted = data["deleted"] as? Bool ?? true
                 let checkIns = data["buildingHistory"] as? [String] ?? []
                 for checkIn in checkIns {
@@ -253,7 +253,7 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
                     filtered = filtered && student.major.lowercased().contains(major.lowercased())
                 }
                 if (id != "") {
-                    filtered = filtered && String(student.id).contains(id)
+                    filtered = filtered && student.id.contains(id)
                 }
                 timeFormatter.timeZone = TimeZone(abbreviation: "UTC")
                 let time = student.time

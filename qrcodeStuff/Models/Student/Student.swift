@@ -15,12 +15,12 @@ class Student: NSObject {
     var lastName:String = ""
     var email:String = ""
     var major:String = ""
-    var id:Int = 0
+    var id:String = ""
     var building:String = ""
     var time:String = ""
     var deleted:Bool = false
     
-    init(name:String,lastName:String,email:String,major:String,id:Int,building:String,time:String,deleted:Bool) {
+    init(name:String,lastName:String,email:String,major:String,id:String,building:String,time:String,deleted:Bool) {
         self.name = name
         self.lastName = lastName
         self.email = email
