@@ -11,6 +11,7 @@ target 'qrcodeStuff' do
 	pod 'SwiftCSV'
   pod 'Firebase/Storage'
 	pod 'FirebaseUI/Auth'
+  pod 'Alamofire'
 
 target 'appTests' do
 use_frameworks!

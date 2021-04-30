@@ -58,6 +58,8 @@ class StudentProfileTwoViewController: UIViewController, UITextFieldDelegate, UI
                     let studentBuilding = documentData!["currbuilding"] as? String ?? ""
                     //
                     
+                    let firstname = documentData!["firstname"] as! String
+                    
                     if studentBuilding == "" || self.buildingID != studentBuilding
                     {
                         let alert = UIAlertController(title: "Error", message: "Student is not checked in to this building anymore.", preferredStyle: .alert)
@@ -96,7 +98,8 @@ class StudentProfileTwoViewController: UIViewController, UITextFieldDelegate, UI
                                         //update kickOut in student
                                         studentHistory.updateData(["kickOut": actualName])
                                         
-                                        
+                                        //send kickOut email
+                                        EmailSender().kickEmail(for: self.studentEmail!, name: firstname, building: actualName)
                                     }
                                 }
                                 self.viewDidLoad()

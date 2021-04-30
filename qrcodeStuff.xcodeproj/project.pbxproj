@@ -58,6 +58,7 @@
 		B1F53736260A4FD7001FFA2B /* UIPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F53731260A4FD7001FFA2B /* UIPhotoDelegate.swift */; };
 		B1F53737260A4FD7001FFA2B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F53732260A4FD7001FFA2B /* UserData.swift */; };
 		B1F53738260A4FD7001FFA2B /* FirestoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F53733260A4FD7001FFA2B /* FirestoreAccessor.swift */; };
+		BF1D1767263BE14600C104F5 /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D1766263BE14600C104F5 /* EmailSender.swift */; };
 		BF2176EA26119D39002BFE83 /* deleteAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2176E926119D39002BFE83 /* deleteAccountTests.swift */; };
 		BF2BC6B72609ADB900E01139 /* PhotoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */; };
 		BF2BC6BF2609AE0500E01139 /* ManagerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */; };
@@ -146,6 +147,7 @@
 		B1F53732260A4FD7001FFA2B /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		B1F53733260A4FD7001FFA2B /* FirestoreAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreAccessor.swift; sourceTree = "<group>"; };
 		B9ABC153630151697F232D06 /* Pods_qrcodeStuff_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qrcodeStuff_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF1D1766263BE14600C104F5 /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
 		BF2176E926119D39002BFE83 /* deleteAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteAccountTests.swift; sourceTree = "<group>"; };
 		BF2BC6B62609ADB900E01139 /* PhotoUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoUploadViewController.swift; path = qrcodeStuff/ViewControllers/CarlosViewControllers/PhotoUploadViewController.swift; sourceTree = SOURCE_ROOT; };
 		BF2BC6BA2609AE0500E01139 /* ManagerTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerTabBarController.swift; path = qrcodeStuff/ViewControllers/CarlosViewControllers/ManagerTabBarController.swift; sourceTree = SOURCE_ROOT; };
@@ -367,6 +369,7 @@
 				B1F53731260A4FD7001FFA2B /* UIPhotoDelegate.swift */,
 				B1F53732260A4FD7001FFA2B /* UserData.swift */,
 				B1F53733260A4FD7001FFA2B /* FirestoreAccessor.swift */,
+				BF1D1766263BE14600C104F5 /* EmailSender.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				8F814C8526086B15008FF4E2 /* FilterStudentsTableViewCell.swift in Sources */,
 				BF2BC6C12609AE0500E01139 /* DeleteAccountViewController.swift in Sources */,
 				B1F53735260A4FD7001FFA2B /* Utilities.swift in Sources */,
+				BF1D1767263BE14600C104F5 /* EmailSender.swift in Sources */,
 				B17C6E752607D7A300C8E964 /* BuildingViewController.swift in Sources */,
 				B17C6E6E2607D74B00C8E964 /* buildingService.swift in Sources */,
 				BF2BC6C32609AE0500E01139 /* StudentTabBarController.swift in Sources */,
