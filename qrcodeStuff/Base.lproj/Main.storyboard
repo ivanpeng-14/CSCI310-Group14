@@ -2022,7 +2022,7 @@
                                                     <constraint firstAttribute="width" secondItem="sCx-ng-HDd" secondAttribute="height" multiplier="201:55" id="jsg-qp-iQY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="Create Account">
+                                                <state key="normal" title="Finish">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -3030,7 +3030,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Y0x-uE-Bd7"/>
-        <segue reference="Sv0-DI-NGx"/>
+        <segue reference="KAh-SN-545"/>
         <segue reference="h8M-Qx-hKq"/>
     </inferredMetricsTieBreakers>
     <resources>

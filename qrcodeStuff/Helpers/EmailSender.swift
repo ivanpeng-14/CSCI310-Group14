@@ -41,7 +41,7 @@ struct EmailSender {
     func verificationEmail(for email: String, name: String) {
         let subject = "Thank You for Signing Up with Trojan Check In!"
         let text = "Welcome to Trojan Check In, \(name)! Thank you for signing up for our services. Upon receiving this email, your email has officially been verified. That's it! You don't have to do any more. Stay safe and fight on!"
-        let html = "<h3>Welcome to Trojan Check In \(name)!</h3><p>Thank you for signing up for our services.<br />Upon receiving this email, your email has officially been verified.<br />That's it! You don't have to do any more.</p><h4>Stay Safe and Fight On!</h4>"
+        let html = "<h3>Welcome to Trojan Check In, \(name)!</h3><p>Thank you for signing up for our services.<br />Upon receiving this email, your email has officially been verified.<br />That's it! You don't have to do any more.</p><h4>Stay Safe and Fight On!</h4>"
         
         sendEmail(to: email, name: name, subject: subject, text: text, html: html)
     }

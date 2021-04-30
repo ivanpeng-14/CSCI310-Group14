@@ -152,15 +152,16 @@ class ManagerSignUpViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                     
-                    // Transition to the home screen
                     print("Successfully created Manager!")
+                    
+                    // Send email
+                    EmailSender().verificationEmail(for: email, name: firstName)
+                    
+                    // Transition to the home screen
                     self.performSegue(withIdentifier: "UploadPhoto", sender: self)
                 }
                 
             }
-            
-            
-            
         }
     }
     
