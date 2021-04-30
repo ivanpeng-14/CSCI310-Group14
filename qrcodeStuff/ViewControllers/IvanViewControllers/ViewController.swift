@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var continueButton: UIButton!
     
@@ -39,6 +39,12 @@ class ViewController: UIViewController {
 //            self.transitionToHome()
         }
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("pressed return")
+        textField.resignFirstResponder()
+        return false
     }
     
     func isLoggedIn() -> Bool {

@@ -115,6 +115,7 @@ class ProfilePageViewController: UIViewController {
             }
         }
     }
+    
     func getNotifications() {
         let db = Firestore.firestore()
         db.collection("students").document(self.email.text!).addSnapshotListener { (documentSnapshot, error) in
@@ -171,16 +172,23 @@ class ProfilePageViewController: UIViewController {
     }
     
     @IBAction func logOutPressed(_ sender: UIButton) {
-        do {
-            try Auth.auth().signOut()
-            UserDefaults.standard.set(false, forKey: "isLoggedIn")
-            UserDefaults.standard.synchronize()
-            print("User is not logged in anymore!")
-            returnToLogin()
-        } catch let e as NSError {
-            print("Error signing out: \(e)")
-        }
-
+        let alert = UIAlertController(title: "Log Out", message: "Are you sure you want to log out?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {_ in
+            do {
+                try Auth.auth().signOut()
+                UserDefaults.standard.set(false, forKey: "isLoggedIn")
+                UserDefaults.standard.synchronize()
+                print("User is not logged in anymore!")
+                self.returnToLogin()
+            } catch let e as NSError {
+                print("Error signing out: \(e)")
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
     func returnToLogin() {
