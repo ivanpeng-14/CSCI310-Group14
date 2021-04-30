@@ -23,9 +23,26 @@ class ViewController: UIViewController {
     var user: User?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         print(Auth.auth().currentUser?.email ?? "no user logged in")
+        super.viewDidLoad()
         setUpElements()
+        if isLoggedIn() {
+            print("Previously logged in!")
+            let homevc = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.homeViewController) as! HomeViewController
+
+            
+            
+            self.navigationController?.pushViewController(homevc, animated: false)
+        }
+        else {
+            print("Previously NOT logged in!")
+//            self.transitionToHome()
+        }
+        
+    }
+    
+    func isLoggedIn() -> Bool {
+        return UserDefaults.standard.bool(forKey: "isLoggedIn")
     }
 
     func setUpElements() {
@@ -120,6 +137,8 @@ class ViewController: UIViewController {
                                 }
                                 else {
                                     print("Successful login")
+                                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                                    UserDefaults.standard.synchronize()
                                     self.transitionToHome()
                                 }
                             }
