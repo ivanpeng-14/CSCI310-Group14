@@ -229,19 +229,30 @@ class StudentVisitHistoryViewController: UIViewController, UITextFieldDelegate, 
         // format time
         let timeFormatter = DateFormatter()
         timeFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        timeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        timeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         self.tempBuildingHistory = self.initialBuildingHistory.filter({ (item) -> Bool in
             var buildingName = ""
             var buildingTime = ""
+            
             if item.contains("into") { // check in
-                let list = item.split(separator: " ")
-                buildingName = String(list[2] + " " + list[3] + " " + list[4])
-                buildingTime = String(list[6] + " " + list[7])
+                let pattern = "Checked into (.*) at ([0-9\\- :+]+)"
+                do {
+                    let regex = try NSRegularExpression(pattern: pattern)
+                    if let match = regex.firstMatch(in: item, range: NSRange(item.startIndex..., in: item)) {
+                        buildingName = String(item[Range(match.range(at: 1), in: item)!])
+                        buildingTime = String(item[Range(match.range(at: 2), in: item)!])
+                    }
+                } catch { print(error) }
             }
             else { // check out
-                let list = item.split(separator: " ")
-                buildingName = String(list[3] + " " + list[4] + " " + list[5])
-                buildingTime = String(list[7] + " " + list[8])
+                let pattern = "Checked out of (.*) at ([0-9\\- :+]+)"
+                do {
+                    let regex = try NSRegularExpression(pattern: pattern)
+                    if let match = regex.firstMatch(in: item, range: NSRange(item.startIndex..., in: item)) {
+                        buildingName = String(item[Range(match.range(at: 1), in: item)!])
+                        buildingTime = String(item[Range(match.range(at: 2), in: item)!])
+                    }
+                } catch { print(error) }
             }
             
             var filtered = true
@@ -282,21 +293,50 @@ extension StudentVisitHistoryViewController: UITableViewDelegate, UITableViewDat
         var buildingTime = ""
         var checkIn = false
         
-        if tempBuildingHistory[indexPath.row].contains("into") { // check in
-            
-            let list = tempBuildingHistory[indexPath.row].split(separator: " ")
-            print(list)
-            buildingName = String(list[2] + " " + list[3] + " " + list[4])
-            buildingTime = String(list[6] + ", " + list[7])
+        let item = tempBuildingHistory[indexPath.row]
+        if item.contains("into") { // check in
+            // Checked into [building_name] at 0000-00-00 00:00:00 +0000
+            // buildingName = [building_name] and buildingTime = 0000-00-00 00:00:00
+            let pattern = "Checked into (.*) at ([0-9\\- :]+)[ +]*"
+            do {
+                let regex = try NSRegularExpression(pattern: pattern)
+                if let match = regex.firstMatch(in: item, range: NSRange(item.startIndex..., in: item)) {
+                    buildingName = String(item[Range(match.range(at: 1), in: item)!])
+                    buildingTime = String(item[Range(match.range(at: 2), in: item)!])
+                    // add a comma in time for page format
+                    let list = buildingTime.split(separator: " ")
+                    buildingTime = String(list[0] + ", " + list[1])
+                }
+            } catch { print(error) }
             checkIn = true
         }
         else { // check out
-            
-            let list = tempBuildingHistory[indexPath.row].split(separator: " ")
-            print(list)
-            buildingName = String(list[3] + " " + list[4] + " " + list[5])
-            buildingTime = String(list[7] + ", " + list[8])
+            let pattern = "Checked out of (.*) at ([0-9\\- :]+)[ +]*"
+            do {
+                let regex = try NSRegularExpression(pattern: pattern)
+                if let match = regex.firstMatch(in: item, range: NSRange(item.startIndex..., in: item)) {
+                    buildingName = String(item[Range(match.range(at: 1), in: item)!])
+                    buildingTime = String(item[Range(match.range(at: 2), in: item)!])
+                    let list = buildingTime.split(separator: " ")
+                    buildingTime = String(list[0] + ", " + list[1])
+                }
+            } catch { print(error) }
         }
+//        if item.contains("into") { // check in
+//
+//            let list = tempBuildingHistory[indexPath.row].split(separator: " ")
+//            print(list)
+//            buildingName = String(list[2] + " " + list[3] + " " + list[4])
+//            buildingTime = String(list[6] + ", " + list[7])
+//            checkIn = true
+//        }
+//        else { // check out
+//
+//            let list = tempBuildingHistory[indexPath.row].split(separator: " ")
+//            print(list)
+//            buildingName = String(list[3] + " " + list[4] + " " + list[5])
+//            buildingTime = String(list[7] + ", " + list[8])
+//        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "BuildingCell") as! BuildingManageTableViewCell
         cell.setBuildingViewFeed(buildingName: buildingName, lastCheckInTime: buildingTime, checkIn: checkIn)
