@@ -197,7 +197,7 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
                 
                 // Check for errors
                 if err != nil {
-                    
+                    print(email)
                     // There was an error creating the user
                     let errorMessage = err!.localizedDescription
                     print(errorMessage)
@@ -233,6 +233,9 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
                             print("Document successfully written!")
                         }
                     }
+                    
+                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                    UserDefaults.standard.synchronize()
                     
                     print("Student successfully signed up!")
                     

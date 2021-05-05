@@ -140,6 +140,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
                             if (deleted != nil) {
                                 if (deleted!) {
                                     self.errorLabel.text = "This user account has been deleted. Please sign up with a new account!"
+                                    
+                                    // RESTORE DELETED ACCOUNTS
+                                    let alert = UIAlertController(title: "Restore deleted account", message: "This user account has been deleted. Would you like to restore your account?", preferredStyle: .alert)
+                                    
+                                    alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: {action in
+                                        self.userData?.updateData(key: "deleted", val: false)
+                                        print("Successful login after restoring deleted account")
+                                        UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                                        UserDefaults.standard.synchronize()
+                                        self.transitionToHome()
+                                    }))
+                                    
+                                    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                                    
+                                    self.present(alert, animated: true)
                                 }
                                 else {
                                     print("Successful login")

@@ -50,7 +50,7 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func deleteConfirmed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Delete Account?", message: "Are you sure you want to delete your account? This action is permanent and cannot be undone. You will not be able to create a new account with this email.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Delete Account?", message: "Are you sure you want to delete your account? If you choose to delete this account, you may restore it in the future.", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: {action in
             let passwordCorrect = self.password.text == self.userData?.getInfo("password") as? String ?? ""

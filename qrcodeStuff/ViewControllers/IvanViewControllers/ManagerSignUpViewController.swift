@@ -152,6 +152,9 @@ class ManagerSignUpViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                     
+                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                    UserDefaults.standard.synchronize()
+                    
                     print("Successfully created Manager!")
                     
                     // Send email
