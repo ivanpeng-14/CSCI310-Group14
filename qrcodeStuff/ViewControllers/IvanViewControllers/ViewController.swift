@@ -27,10 +27,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setUpElements()
         if isLoggedIn() {
+            // avoid app crashing
+            if (Auth.auth().currentUser?.email == nil) {
+                UserDefaults.standard.set(false, forKey: "isLoggedIn")
+                UserDefaults.standard.synchronize()
+            }
+            
             print("Previously logged in!")
             let homevc = storyboard?.instantiateViewController(identifier:  Constants.Storyboard.homeViewController) as! HomeViewController
-
-            
             
             self.navigationController?.pushViewController(homevc, animated: false)
         }

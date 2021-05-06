@@ -24,7 +24,6 @@ class HomeViewController: UIViewController {
         }
         super.viewDidLoad()
         self.modalPresentationStyle = .fullScreen
-        print("userIsManager is " + String(userIsManager))
 //        displayUserData()
     }
     

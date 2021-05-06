@@ -85,7 +85,7 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
     func deleteUser() {
         userData?.updateData(key: "deleted", val: true)
         
-        if willCheckOut(userData?.getInfo("currbuilding") as! String){
+        if (userData?.isStudent() ?? false && willCheckOut(userData?.getInfo("currbuilding") as! String)) {
             checkOutUser()
         }
         
