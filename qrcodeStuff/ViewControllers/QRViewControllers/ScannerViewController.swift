@@ -266,26 +266,36 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (action) in
                 //update database
                 let db = Firestore.firestore()
-                //update building history
                 let buildingHistory = db.collection("buildings").document(buildingID)
-                buildingHistory.updateData(["currentStudents" : FieldValue.arrayUnion([self.studentID])])
                 
-
-                
-                //update students currBuilding
-                let studentDoc = db.collection("students").document(self.studentID)
-                studentDoc.updateData(["currbuilding": buildingID])
-                studentDoc.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked into \(buildingName) at \(Date())"])])
-                studentDoc.updateData(["lastcheckin": "\(Date())"])
-                
-                let alert2 = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
-                alert2.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
-                    //update capacity
-                    let newCapacity = curr + 1
-                    buildingHistory.updateData(["currentCapacity": newCapacity])
-                    self.viewDidLoad()
-                }))
-                self.present(alert2, animated: true)
+                //make sure building still exists and isn't over capacity
+                buildingHistory.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        //update building history
+                        buildingHistory.updateData(["currentStudents" : FieldValue.arrayUnion([self.studentID])])
+                        //update students currBuilding
+                        let studentDoc = db.collection("students").document(self.studentID)
+                        studentDoc.updateData(["currbuilding": buildingID])
+                        studentDoc.updateData(["buildingHistory": FieldValue.arrayUnion(["Checked into \(buildingName) at \(Date())"])])
+                        studentDoc.updateData(["lastcheckin": "\(Date())"])
+                        
+                        let alert2 = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+                        alert2.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                            //update capacity
+                            let newCapacity = curr + 1
+                            buildingHistory.updateData(["currentCapacity": newCapacity])
+                            self.viewDidLoad()
+                        }))
+                        self.present(alert2, animated: true)
+                    } else {
+                        let alert3 = UIAlertController(title: "Building was removed", message: "", preferredStyle: .alert)
+                        alert3.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                            self.viewDidLoad()
+                        }))
+                        self.present(alert3, animated: true)
+                    }
+                }
+    
             }))
             self.present(alert, animated: true)
         }
