@@ -122,4 +122,33 @@ class BuildingManualEditViewController: UIViewController {
         };
         return
     }
+    @IBAction func removeButton(_ sender: Any) {
+        // if current capacity not 0
+        if (buildingCurrentCapacity ?? 0 != 0) {
+            errorLabel.text = "Building not empty; can't delete";
+            errorLabel.textColor = UIColor.red;
+            errorLabel.alpha = 1;
+            return;
+        }
+        // proceed
+        let db = Firestore.firestore()
+        db.collection("buildings").whereField("buildingName", isEqualTo: buildingName).getDocuments(){(querySnapshot, err) in
+            if ((querySnapshot?.isEmpty) == false) {
+                // building already exist
+                self.errorLabel.alpha = 0;
+                
+                db.collection("buildings").document((querySnapshot?.documents.first!.documentID)!).delete();
+                self.errorLabel.text = "Building Deleted";
+                self.errorLabel.textColor = UIColor.green;
+                self.errorLabel.alpha = 1;
+            } else {
+                // building doesn't already exist
+                self.errorLabel.text = "Internal Error: Building Doesn't Exist";
+                self.errorLabel.textColor = UIColor.red;
+                self.errorLabel.alpha = 1;
+                
+            }
+        };
+        return
+    }
 }
