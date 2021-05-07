@@ -15,7 +15,7 @@ import UniformTypeIdentifiers
 
 class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
 
-    var isUpdate = false;
+    var buttonSelected = 1;
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var csvStatusLabel: UILabel!
     
@@ -97,7 +97,7 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     @IBAction func uploadCSVButton(_ sender: UIButton) {
-        self.isUpdate = true;
+        self.buttonSelected = 1;
         let supportedfiles : [UTType] = [UTType.commaSeparatedText]
                 
         let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedfiles, asCopy: true)
@@ -110,7 +110,7 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     @IBAction func addCSVButton(_ sender: Any) {
-        self.isUpdate = false;
+        self.buttonSelected = 2;
         let supportedfiles : [UTType] = [UTType.commaSeparatedText]
                 
         let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedfiles, asCopy: true)
@@ -121,6 +121,17 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
         present(controller, animated: true, completion: nil)
     }
     
+    @IBAction func removeCSVButton(_ sender: Any) {
+        self.buttonSelected = 3;
+        let supportedfiles : [UTType] = [UTType.commaSeparatedText]
+                
+        let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedfiles, asCopy: true)
+        
+        controller.delegate = self
+        controller.allowsMultipleSelection = false
+        
+        present(controller, animated: true, completion: nil)
+    }
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt docurl: URL) {
         print("a file was selected")
         print("path: \(docurl.absoluteString)")
@@ -176,7 +187,7 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
                             print("valid")
                             
                             // building already exist
-                            if (self.isUpdate) {
+                            if (self.buttonSelected == 1) {
                                 // check to make sure current number of students <= new capacity
                                 let currCapacity = (querySnapshot?.documents.first!.get("currentCapacity"))! as! Int;
                                 let totalCapacity = Int(arrItem["totalCapacity"]!) ?? 0;
@@ -200,27 +211,43 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
                                     string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) )'s currentCapacity exceeds \(String(arrItem["totalCapacity"]!) ) \n", attributes: invalidAttributes));
                                     self.csvStatusLabel.attributedText = string;
                                 }
-                            } else {
+                            } else if (self.buttonSelected == 2) {
                                 print("invalid")
                                 let currstring = self.csvStatusLabel.attributedText;
                                 let string = NSMutableAttributedString();
                                 string.append(currstring!);
                                 string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) ) already exists! Can't Add.\n", attributes: invalidAttributes));
                                 self.csvStatusLabel.attributedText = string;
+                            } else if (self.buttonSelected == 3) {
+                                let currCapacity = (querySnapshot?.documents.first!.get("currentCapacity"))! as! Int;
+                                if (currCapacity != 0) {
+                                    let currstring = self.csvStatusLabel.attributedText;
+                                    let string = NSMutableAttributedString();
+                                    string.append(currstring!);
+                                    string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) ) is not empty! Can't remove.\n", attributes: invalidAttributes));
+                                    self.csvStatusLabel.attributedText = string;
+                                } else {
+                                    querySnapshot?.documents.first?.reference.delete();
+                                    let currstring = self.csvStatusLabel.attributedText;
+                                    let string = NSMutableAttributedString();
+                                    string.append(currstring!);
+                                    string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) ) removed.\n", attributes: validAttributes));
+                                    self.csvStatusLabel.attributedText = string;
+                                }
                             }
                             
                             
                             
                             
                         } else {
-                            if(self.isUpdate) {
+                            if(self.buttonSelected == 1) {
                                 print("invalid")
                                 let currstring = self.csvStatusLabel.attributedText;
                                 let string = NSMutableAttributedString();
                                 string.append(currstring!);
                                 string.append(NSAttributedString(string: "\(String(arrItem["buildingName"]!) ) is not an existing building \n", attributes: invalidAttributes));
                                 self.csvStatusLabel.attributedText = string;
-                            } else {
+                            } else if (self.buttonSelected == 2){
                                 let currstring = self.csvStatusLabel.attributedText;
                                 let string = NSMutableAttributedString();
                                 string.append(currstring!);
@@ -233,6 +260,8 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
                                     "currentStudents" : []
                                     
                                 ]);
+                            } else if (self.buttonSelected == 3) {
+                                
                             }
                             
                             // building doesn't already exist
