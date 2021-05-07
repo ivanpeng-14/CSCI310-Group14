@@ -77,6 +77,10 @@ class BuildingManualEditViewController: UIViewController {
     */
     
     @IBAction func updateButton(_ sender: Any) {
+        if (self.buildingNameContentLabel.text == "--") {
+            return;
+        }
+        
         // if new capacity field empty
         if (buildingNewTotalCapacityTextField.text == "") {
             errorLabel.text = "Invalid New Capacity";
@@ -123,6 +127,10 @@ class BuildingManualEditViewController: UIViewController {
         return
     }
     @IBAction func removeButton(_ sender: Any) {
+        if (self.buildingNameContentLabel.text == "--") {
+            return;
+        }
+        
         // if current capacity not 0
         if (buildingCurrentCapacity ?? 0 != 0) {
             errorLabel.text = "Building not empty; can't delete";
@@ -141,6 +149,10 @@ class BuildingManualEditViewController: UIViewController {
                 self.errorLabel.text = "Building Deleted";
                 self.errorLabel.textColor = UIColor.green;
                 self.errorLabel.alpha = 1;
+                self.buildingNameContentLabel.text = "--";
+                self.buildingTotalCapacityContentLabel.text = "--";
+                self.buildingCurrentCapacityContentLabel.text = "--";
+                
             } else {
                 // building doesn't already exist
                 self.errorLabel.text = "Internal Error: Building Doesn't Exist";
