@@ -85,7 +85,7 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
     func deleteUser() {
         userData?.updateData(key: "deleted", val: true)
         
-        if (userData?.isStudent() ?? false && willCheckOut(userData?.getInfo("currbuilding") as! String)) {
+        if (willCheckOut(self.userData)) {
             checkOutUser()
         }
         
@@ -97,8 +97,11 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func willCheckOut(_ currbuilding: String) -> Bool {
-        return !(!(userData?.isStudent())! || currbuilding == "")
+    func willCheckOut(_ userData: UserData?) -> Bool {
+        if let userData = userData{
+            return (userData.isStudent() && userData.getInfo("currbuilding") as! String != "")
+        }
+        return false
     }
     
     func checkOutUser() {
