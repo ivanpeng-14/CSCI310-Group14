@@ -113,6 +113,10 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
         return false
     }
     
+    func isOnlyNumbers(string: String) -> Bool {
+        return string.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+    }
+    
     // Returns nil if correct, otherwise returns error label as String message
     func validateFields() -> String? {
         let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -141,9 +145,23 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
             return "You must sign up with a USC email."
         }
         
+        // Check password length >= 8
+        if password?.count ?? 0 < 8 {
+            return "Passwords must contain at least 8 characters."
+        }
+        
         // Check password == confirmPassword
         if password != confirm {
             return "Passwords must match."
+        }
+        
+        if isOnlyNumbers(string: uscID ?? "") == false {
+            return "USC ID must only contain digits."
+        }
+        
+        // Check USC ID length == 10
+        if uscID?.count ?? 0 != 10 {
+            return "USC ID must contain 10 digits."
         }
         
         return nil
@@ -241,6 +259,10 @@ class StudentSignUpViewController: UIViewController, UIPickerViewDelegate, UIPic
                     
                     // Send email
                     EmailSender().verificationEmail(for: email, name: firstName)
+                    
+                    // Set log in status
+                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                    UserDefaults.standard.synchronize()
                     
                     // Transition to the home screen
                     self.performSegue(withIdentifier: "UploadPhoto", sender: self)

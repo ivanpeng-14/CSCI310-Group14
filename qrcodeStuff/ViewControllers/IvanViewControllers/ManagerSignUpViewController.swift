@@ -65,12 +65,18 @@ class ManagerSignUpViewController: UIViewController, UITextFieldDelegate {
             
             return "You must sign up with a USC email."
         }
+        
+        // Check password length >= 8
+        if password?.count ?? 0 < 8 {
+            return "Passwords must contain at least 8 characters."
+        }
+        
         if password != confirm {
             return "Passwords must match."
         }
         // Check password strength -- TODO
         
-        
+
         
         
         return nil
@@ -159,6 +165,10 @@ class ManagerSignUpViewController: UIViewController, UITextFieldDelegate {
                     
                     // Send email
                     EmailSender().verificationEmail(for: email, name: firstName)
+                    
+                    // Set log in status
+                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                    UserDefaults.standard.synchronize()
                     
                     // Transition to the home screen
                     self.performSegue(withIdentifier: "UploadPhoto", sender: self)

@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     var userData : UserData?
 
     override func viewDidLoad() {
+        
         if let email = self.user?.email {
             userEmail = email
             self.userData = UserData(email)
@@ -25,6 +26,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.modalPresentationStyle = .fullScreen
 //        displayUserData()
+
     }
     
     func loadData() {
@@ -46,6 +48,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+
     @IBAction func returnTapped(_ sender: Any) {
         self.transitionToLogin()
     }
