@@ -13,7 +13,7 @@ import SwiftCSV
 import MobileCoreServices
 import UniformTypeIdentifiers
 
-class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
+class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate, UITextFieldDelegate {
 
     var buttonSelected = 1;
     @IBOutlet weak var scrollView: UIScrollView!
@@ -33,9 +33,17 @@ class AddBuildingViewController: UIViewController, UIDocumentPickerDelegate {
     
     override func viewDidLoad() {
         scrollView.contentLayoutGuide.bottomAnchor.constraint(equalTo: csvStatusLabel.bottomAnchor).isActive = true;
+        buildingNameTextField.delegate = self
+        capacityTextField.delegate = self
         super.viewDidLoad()
         setUpElements()
         // Do any additional setup after loading the view.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("pressed return")
+        textField.resignFirstResponder()
+        return false
     }
     
     func setUpElements() {

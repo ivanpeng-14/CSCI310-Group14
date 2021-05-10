@@ -76,6 +76,12 @@ class FilterStudentsViewController: UIViewController, UITextFieldDelegate, UIPic
         idTextField.delegate = self
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("pressed return")
+        textField.resignFirstResponder()
+        return false
+    }
+    
     func loadData() {
         service = BuildingService()
         service?.get(collectionID: "buildings") { buildings in

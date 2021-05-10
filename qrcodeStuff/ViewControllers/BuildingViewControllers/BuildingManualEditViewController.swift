@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseFirestore
 
-class BuildingManualEditViewController: UIViewController {
+class BuildingManualEditViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var buildingNewTotalCapacityTextField: UITextField!
@@ -50,7 +50,7 @@ class BuildingManualEditViewController: UIViewController {
         errorLabel.alpha = 0;
         // Do any additional setup after loading the view.
         self.buildingNameContentLabel.text = buildingName!
-    
+        buildingNewTotalCapacityTextField.delegate = self
         
         let db = Firestore.firestore()
 
@@ -63,6 +63,12 @@ class BuildingManualEditViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("pressed return")
+        textField.resignFirstResponder()
+        return false
     }
     
 

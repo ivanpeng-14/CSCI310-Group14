@@ -25,6 +25,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         print(Auth.auth().currentUser?.email ?? "no user logged in")
         super.viewDidLoad()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         setUpElements()
         if isLoggedIn() {
             // avoid app crashing
