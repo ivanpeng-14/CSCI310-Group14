@@ -38,6 +38,14 @@ struct EmailSender {
                     }
     }
     
+    func passwordResetEmail(for email: String, name: String, code: String) {
+        let subject = "Trojan Check In Password Reset"
+        let text = "Uh Oh! It seems like you go locked out of your account. Use this code to reset your password: \(code)"
+        let html = "<h3>Uh Oh!</h3><p>It seems like you go locked out of your account.<br />Use this code to reset your password:<br /><strong>\(code)</strong></p>"
+        
+        sendEmail(to: email, name: name, subject: subject, text: text, html: html)
+    }
+    
     func verificationEmail(for email: String, name: String) {
         let subject = "Thank You for Signing Up with Trojan Check In!"
         let text = "Welcome to Trojan Check In, \(name)! Thank you for signing up for our services. Upon receiving this email, your email has officially been verified. That's it! You don't have to do any more. Stay safe and fight on!"
